@@ -1,0 +1,451 @@
+/* -------------------------------- */
+/* BASIC STUFF */
+/* -------------------------------- */
+
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #fff;
+  color: #464648;
+  font-family: "Manrope", sans-serif;
+  font-weight: 300;
+  font-size: 15px;
+  text-rendering: optimizeLegibility;
+}
+
+/* Hide scrollbar */
+::-webkit-scrollbar{
+    width: 0px;
+    background: transparent;
+}
+/* -------------------------------- */
+/* REUSABLE */
+/* -------------------------------- */
+.flex-box {
+  display: flex;
+}
+
+.side-panel {
+  padding: 20px;
+  height: 100vh;
+  width: 25%;
+  background-color: #fff;
+}
+
+.main-panel {
+  padding: 20px;
+  height: 100vh;
+  width: 75%;
+  background-color: #f6f7fb;
+}
+
+.btn-red {
+  padding: 10px 20px;
+  width: 70%;
+  margin: 0 auto;
+  color: #fff;
+  background-color: #d84981;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.btn-red:hover {
+  transform: translateY(-2px) scale(1.001);
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
+}
+
+button{ font-size: 100%;}
+/* -------------------------------- */
+/* SIDE PANEL */
+/* -------------------------------- */
+
+.head-text-logo {
+  padding: 10px;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.logo {
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
+  background-color: #d84981;
+}
+
+.head-text-logo p {
+  font-size: 110%;
+  font-weight: 500;
+  margin-left: 20px;
+}
+
+.add-project-btn {
+  margin-bottom: 10px;
+  background-color: #49d8a0;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  padding: 10px;
+  width: 100%;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  outline: none;
+  transition: all 0.2s ease;
+}
+.add-project-btn:hover,
+.project-card:hover {
+  transform: translateY(-5px) scale(1.01);
+  box-shadow: 6px 6px 8px rgba(0, 0, 0, 0.3);
+}
+
+.project-card {
+  margin: 20px 0;
+  padding: 10px 20px;
+  height: 100px;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+.project-card p{ 
+  font-size: 110%;
+  font-weight: 500;
+}
+.active-card,
+.project-card:hover {
+  background-color: #49d8a0;
+  color: #fff;
+}
+
+.card-circle{
+    height: 70px;
+    width: 70px;
+}
+
+.card-circle circle{
+    fill: none;
+    stroke-width: 10;
+    stroke: #000;
+    transform: translate(5px,5px);
+    stroke-dasharray: 190;
+    stroke-dashoffset: 190;
+}
+.card-circle circle:nth-child(1){
+    stroke-dashoffset: 0;
+    stroke: #f3f3f3;
+}
+.card-circle circle:nth-child(2){
+    stroke-dashoffset: calc(190 - ((190*80)/100));
+    stroke: #49d8a0;
+}
+
+.active-card .card-circle circle:nth-child(2){
+    stroke-dashoffset: calc(190 - ((190*80)/100));
+    stroke: #d84981;
+}
+
+.project-card:hover circle:nth-child(2){
+    stroke-dashoffset: calc(190 - ((190*80)/100));
+    stroke: #d84981;
+}
+
+
+/* -------------------------------- */
+/* MAIN PANEL */
+/* -------------------------------- */
+
+/*----- Header ---------------*/
+header {
+  justify-content: space-between;
+  align-items: center;
+  height: 17%;
+}
+header div {
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
+}
+
+.slice-one {
+  padding: 20px 50px;
+  background-color: #49d8a0;
+  width: 75%;
+  height: 100%;
+  align-items: center;
+  border-radius: 5px;
+  color: #fff;
+}
+
+h1 {
+  margin-top: 10px;
+}
+
+.slice-two {
+  padding: 10px 10px;
+  background-color: #49d8a0;
+  width: 23%;
+  height: 100%;
+  color: #fff;
+  align-items: center;
+  text-align: center;
+  border-radius: 5px;
+}
+.slice-two p {
+  margin-bottom: 10px;
+}
+
+/*----- Middle tabs ----------*/
+
+.middle-tabs {
+  margin-top: 20px;
+  width: 100%;
+  height: 55%;
+}
+.tab-buttons{
+  flex-direction: row;
+  justify-content: space-between;
+  height: 12%;
+}
+
+.button-box {
+  width: auto;
+}
+
+.button-box button {
+  outline: none;
+  background-color: #fff;
+  border: 0;
+  width: auto;
+  height: 90%;
+  margin-right: 10px;
+  padding: 0 20px;
+  border-radius: 5px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+.active-tab {
+  background-color: #fff;
+  border-radius: 5px;
+  transform: scale(1.01);
+  box-shadow: 1px -1px 8px rgba(0, 0, 0, 0.3);
+}
+
+.button-box button:hover {
+  box-shadow: 1px -1px 8px rgba(0, 0, 0, 0.3);
+  transform: scale(1.01);
+}
+
+.tab-line {
+  margin: 5px 0;
+}
+
+.tab-content {
+  height: 90%;
+  width: 100%;
+  background-color: #fff;
+  text-align: center;
+  padding: 30px;
+  display: none;
+  border-radius: 5px;
+  box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.3);
+  z-index: 999;
+}
+
+/*----- Footer ---------------*/
+footer {
+  bottom: 0px;
+  margin-bottom: 20px;
+  position: fixed;
+  width: 72.1%;
+  height: 17%;
+  background-color: #49d8a0;
+  border-radius: 5px;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
+}
+
+
+/* -------------------------------- */
+/* DETAILS TAB */
+/* -------------------------------- */
+
+.tab-container{
+  text-align: left;
+}
+
+.left-side-details{
+  padding: 10px;
+  width: 70%;
+}
+.left-side-details .content{
+  margin-bottom: 10px;
+}
+.left-side-details .heading,
+.right-side-details .heading{ font-weight: 700;}
+
+.right-side-details{
+  position: relative;
+  flex-direction: column;
+  padding: 10px;
+  width: 30%;
+  justify-content: center;
+  align-items: center;
+}
+
+.date-box{
+  justify-content: space-between;
+  width: 75%;
+  margin: 0 auto;
+  margin-top: -20px;
+}
+
+.right-side-details .detail-circle{
+  margin-top: 20px;
+  height: 150px;
+  width: 150px;
+ 
+}
+
+.right-side-details .detail-circle circle{
+    fill: none;
+    stroke-width: 15;
+    stroke: #000;
+    transform: translate(5px,5px);
+    stroke-dasharray: 440;
+    stroke-dashoffset: 440;
+     transform: translate(10px,10px);
+}
+
+.right-side-details .detail-circle circle:nth-child(1){
+  stroke-dashoffset: 0;
+  stroke: #f3f3f3;
+}
+.right-side-details .detail-circle circle:nth-child(2){
+  stroke-dashoffset: calc(440 - ((440*75)/100)); 
+  stroke: #49d8a0;
+}
+
+.edit-details-btn{
+  text-align: right;
+  font-size: 100%;
+  width: auto;
+  height: 100%;
+  padding: 5px 10px;
+  background-color: #49d8a0;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  color: #fff;
+  box-shadow: 1px -1px 8px rgba(0, 0, 0, 0.3);
+}
+.edit-details-btn:hover{
+  transform: scale(1.01);
+}
+
+.percentage-completed{
+  position: absolute;
+  top: 52%;
+  font-size: 150%;
+}
+
+
+/* -------------------------------- */
+/* RESOURCES TAB */
+/* -------------------------------- */
+
+.tab-content{
+  text-align: left;
+}
+
+.add-resources-btn{
+  border: 0;
+  padding: 10px 12px;
+  width: 25%;
+  background-color: #49d8a0;
+  outline: none;
+  cursor: pointer;
+  color: #fff;
+  border-radius: 5px;
+  transition: all 0.2s ease;
+}
+.add-resources-btn:hover{
+  transform: scale(1.01);
+  box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.3);
+}
+
+.resource-table{
+  margin-top: 10px;
+  width: 100%;
+}
+
+.resource-table th{
+  background-color: #49d8a0;
+  color: #fff;
+  text-align: center;
+}
+td,th{
+  box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+  padding: 8px;
+  transition: all 0.2s ease;
+}
+
+.edit-resource:hover,
+.delete-resource:hover{
+  background-color: #49d8a0;
+  cursor: pointer;
+}
+
+/* -------------------------------- */
+/* INVOICE TAB */
+/* -------------------------------- */
+.generate-invoice-box{ 
+  align-items: center;
+  justify-content: center;
+}
+.generate-invoice-box label{
+  font-weight: 700;
+  margin-right: 10px;
+}
+.generate-invoice-box input{ 
+  padding: 5px;
+  margin-right: 10px
+}
+
+.generate-invoice-btn{
+  background-color: #49d8a0;
+  padding: 10px;
+  width: 25%;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.generate-invoice-btn:hover{
+  transform: scale(1.01);
+  box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.3);
+}
+
+.invoice-details{
+  width: 100%;
+}
+.invoice-details th{ background-color: #49d8a0;}
+
+.scroll-box{
+  margin-top: 20px;
+  height: 70%;
+  overflow: scroll;
+}
+
+.total-amount-label{font-weight: 700;}
+.total-amount{
+  font-weight: 300;
+  margin-left: 20px;
+}
