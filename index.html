@@ -10,39 +10,39 @@
   <title>Dashboard</title>
 </head>
 
-<body class="flex-box">
+<body class="flex-box" onload="getProjects()">
   <!--    Side panel section-->
   <section class="side-panel">
 
     <div class="head-text-logo flex-box">
       <div class="logo"></div>
-      <p>Project Management Ststem</p>
+      <p>Project Management System</p>
     </div>
 
 
     <button class="add-project-btn">+ Add Projects</button>
 
 
-    <div class="card-holder">
+    <div class="card-holder" id="projectList">
       <div class="project-card active-card flex-box">
         <p>Project Name</p>
         <svg class="card-circle">
-          <circle cx="30px" cy="30px" r="30px"></circle>
-          <circle cx="30px" cy="30px" r="30px"></circle>
+          <circle class="circle" cx="30px" cy="30px" r="30px"></circle>
+          <circle class="circle" cx="30px" cy="30px" r="30px"></circle>
         </svg>
       </div>
       <div class="project-card flex-box">
         <p>Project Name</p>
         <svg class="card-circle">
-          <circle cx="30px" cy="30px" r="30px"></circle>
-          <circle cx="30px" cy="30px" r="30px"></circle>
+          <circle class="circle" cx="30px" cy="30px" r="30px"></circle>
+          <circle class="circle" cx="30px" cy="30px" r="30px"></circle>
         </svg>
       </div>
       <div class="project-card flex-box">
         <p>Project Name</p>
         <svg class="card-circle">
-          <circle cx="30px" cy="30px" r="30px"></circle>
-          <circle cx="30px" cy="30px" r="30px"></circle>
+          <circle class="circle" cx="30px" cy="30px" r="30px"></circle>
+          <circle class="circle" cx="30px" cy="30px" r="30px"></circle>
         </svg>
       </div>
     </div>

@@ -130,7 +130,7 @@ button{ font-size: 100%;}
     width: 70px;
 }
 
-.card-circle circle{
+.circle{
     fill: none;
     stroke-width: 10;
     stroke: #000;
