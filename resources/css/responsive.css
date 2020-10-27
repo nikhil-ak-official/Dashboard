@@ -1,140 +1,6 @@
-/*---------- Mobile view ----------------*/
-@media only screen and (max-width: 420px) {
-  .main-panel {
-    height: 100vh;
-    width: 100vw;
-    padding: 10px;
-    background-color: aquamarine;
-  }
-
-  .middle-tabs {
-    width: 100%;
-    height: 78%;
-  }
-
-  /*-------------- Side panel Navigation -----*/
-  .side-panel{
-    display: block;
-    position: fixed;
-    width: 100%;
-    height: 100vh;
-    z-index: 1000;
-    clip-path: circle(100px at 90% -15%);
-    transition: all 0.5s ease;
-  }
-
-  .side-panel.open{
-    clip-path: circle(1100px at 90% -15%);
-  }
-
-  /*-------------- Header --------------------*/
-  .mobile-hamburger{
-    display: block;
-    box-shadow: none;
-    z-index: 2000;
-  }
-
-  .line{
-    width: 30px;
-    height: 3px;
-    background: #fff;
-    margin: 5px;
-    box-shadow: none;
-  }
-  .line-dark{ background: #000;}
-
-
-
-  header {
-    flex-direction: column;
-    height: 10%;
-  }
-
-  h1 {margin-top: 0;}
-  .slice-one {
-    width: 100%;
-    align-items: center;
-    justify-content: space-between;
-    padding: 20px 20px;
-  }
-  .slice-two {
-    display: none;
-  }
-
-  /*-------------- Details tab ---------------*/
-  .tab-container {
-    flex-direction: column;
-  }
-  .tab-content {
-    padding: 10px;
-  }
-  .left-side-details {
-    padding: 5px;
-    width: 100%;
-  }
-
-  .right-side-details {
-    width: 100%;
-    padding: 0px 5px;
-  }
-
-  .date-box {
-    margin-top: 0px;
-    justify-content: end;
-    width: 100%;
-    margin: 0;
-  }
-
-  .date-box div {
-    margin-right: 10px;
-  }
-
-  .percentage-completed{
-    top: 56%;
-    font-size: 150%;
-  }
-  
-  /*-------------- Resources tab ---------------*/
-  .add-resources-btn{
-    padding: 8px 10px;
-    width: 50%;
-  }
-
-  th{ 
-    width: fit-content;
-    padding: 8px 8px;
-  }
-
-  /*-------------- Invoice tab ---------------*/
-  .generate-invoice-box{
-    flex-direction: column;
-  }
-
-  .generate-invoice-box label,
-  .generate-invoice-box input,
-  .generate-invoice-box button {
-    margin-top: 10px;
-  }
-
-  .generate-invoice-btn{
-    width: 100%;
-  }
-
-  .total-amount-label{
-    margin-top: 10px;
-  }
-
-  /*-------------- Footer ---------------*/
-  footer {
-    height: 8%;
-    width: 95%;
-  }
-}
-
-
 /*---------- Tab view ----------------*/
-@media only screen and (max-width: 768px){
-    .main-panel {
+@media only screen and (max-width: 768px) {
+  .main-panel {
     height: 100vh;
     width: 100vw;
     padding: 10px;
@@ -146,45 +12,69 @@
   }
 
   /*-------------- Side panel Navigation -----*/
-  .side-panel{
+  .side-panel {
     display: block;
     position: fixed;
     width: 100%;
     height: 100vh;
     z-index: 1000;
+    -webkit-clip-path: circle(100px at 90% -15%);
     clip-path: circle(100px at 90% -15%);
+    -webkit-transition: all 0.5s ease;
     transition: all 0.5s ease;
   }
 
-  .side-panel.open{
+  .side-panel.open {
+    -webkit-clip-path: circle(1500px at 90% -15%);
     clip-path: circle(1500px at 90% -15%);
   }
 
+  .tab-content {
+    height: 90%;
+  }
+
+  .total-amount-label{
+    margin-top: 20px;
+  }
+
   /*-------------- Header --------------------*/
-  .mobile-hamburger{
+  .mobile-hamburger {
     display: block;
+    -webkit-box-shadow: none;
     box-shadow: none;
     z-index: 2000;
   }
 
-  .line{
+  .line {
     width: 30px;
     height: 3px;
     background: #fff;
     margin: 5px;
+    -webkit-box-shadow: none;
     box-shadow: none;
   }
-  .line-dark{ background: #000;}
+  .line-dark {
+    background: #000;
+  }
 
-    header {
+  header {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
     flex-direction: column;
     height: 10%;
   }
 
-  h1 {margin-top: 0;}
+  h1 {
+    margin-top: 0;
+  }
   .slice-one {
     width: 100%;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
     justify-content: space-between;
     padding: 20px 20px;
   }
@@ -198,3 +88,203 @@
     width: 97%;
   }
 }
+
+
+
+/*---------- Mobile view ----------------*/
+@media only screen and (max-width: 420px) {
+  .main-panel {
+    height: 90vh;
+    width: 100vw;
+    padding: 10px;
+  }
+
+  .middle-tabs {
+    width: 100%;
+    height: 88%;
+  }
+
+  /*-------------- Side panel Navigation -----*/
+  .side-panel {
+    display: block;
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    z-index: 1000;
+    -webkit-clip-path: circle(100px at 90% -15%);
+    clip-path: circle(100px at 90% -15%);
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+  }
+
+  .side-panel.open {
+    -webkit-clip-path: circle(1100px at 90% -15%);
+    clip-path: circle(1100px at 90% -15%);
+  }
+
+  /*-------------- Header --------------------*/
+  .mobile-hamburger {
+    display: block;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    z-index: 2000;
+  }
+
+  .line {
+    width: 30px;
+    height: 3px;
+    background: #fff;
+    margin: 5px;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+  .line-dark {
+    background: #000;
+  }
+
+  header {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    height: 10%;
+  }
+
+  h1 {
+    margin-top: 0;
+  }
+  .slice-one {
+    width: 100%;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    padding: 20px 20px;
+  }
+  .slice-two {
+    display: none;
+  }
+
+  /*-------------- Details tab ---------------*/
+  .tab-container {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    overflow: scroll;
+  }
+  .tab-content {
+    padding: 10px;
+    height: 80%;
+  }
+  .left-side-details {
+    padding: 5px;
+    width: 100%;
+  }
+
+  .right-side-details {
+    width: 100%;
+    padding: 0px 5px;
+  }
+
+  .date-box {
+    margin-top: 0px;
+    -webkit-box-pack: end;
+    -ms-flex-pack: end;
+    justify-content: end;
+    width: 100%;
+    margin: 0;
+  }
+
+  .date-box div {
+    margin-right: 10px;
+  }
+
+  .percentage-completed {
+    top: 56%;
+    font-size: 150%;
+  }
+
+  /*-------------- Resources tab ---------------*/
+  .add-resources-btn {
+    padding: 8px 10px;
+    width: 50%;
+  }
+
+  th {
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+    padding: 8px 8px;
+  }
+
+  /*-------------- Invoice tab ---------------*/
+  .scroll-box {
+    height: 60%;
+  }
+  .generate-invoice-box {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+
+  .generate-invoice-box label,
+  .generate-invoice-box input,
+  .generate-invoice-box button {
+    margin-top: 10px;
+  }
+
+  .generate-invoice-btn {
+    width: 100%;
+  }
+
+  .total-amount-label {
+    margin-top: 20px;
+  }
+
+  /*-------------- Footer ---------------*/
+  footer {
+    height: 8%;
+    width: 96% !important;
+  }
+}
+
+/*---------- Mobile view ----------------*/
+@media only screen and (max-width: 360px) {
+  .main-panel {
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+    width: 100vw;
+    padding: 10px;
+  }
+
+  /*-------------- Details tab ---------------*/
+  .tab-container {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    height: 100%;
+    overflow: scroll;
+  }
+  .tab-content {
+    padding: 10px;
+    height: 400px;
+  }
+
+  /*-------------- Invoice tab ---------------*/
+  .scroll-box {
+    height: 55% !important;
+  }
+
+  /*-------------- Footer ---------------*/
+  footer {
+    height: 8%;
+    width: 95% !important;
+  }
+}
+

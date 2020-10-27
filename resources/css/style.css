@@ -28,6 +28,8 @@ html {
 /* REUSABLE */
 /* -------------------------------- */
 .flex-box {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 
@@ -54,10 +56,13 @@ html {
   border: none;
   outline: none;
   cursor: pointer;
+  -webkit-transition: all 0.2s ease;
   transition: all 0.2s ease;
 }
 .btn-red:hover {
+  -webkit-transform: translateY(-2px) scale(1.001);
   transform: translateY(-2px) scale(1.001);
+  -webkit-box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
   box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
 }
 
@@ -68,6 +73,8 @@ button{ font-size: 100%;}
 
 .head-text-logo {
   padding: 10px;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
   margin-bottom: 30px;
 }
@@ -93,14 +100,18 @@ button{ font-size: 100%;}
   color: #fff;
   padding: 10px;
   width: 100%;
+  -webkit-box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
   box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
   cursor: pointer;
   outline: none;
+  -webkit-transition: all 0.2s ease;
   transition: all 0.2s ease;
 }
 .add-project-btn:hover,
 .project-card:hover {
+  -webkit-transform: translateY(-5px) scale(1.01);
   transform: translateY(-5px) scale(1.01);
+  -webkit-box-shadow: 6px 6px 8px rgba(0, 0, 0, 0.3);
   box-shadow: 6px 6px 8px rgba(0, 0, 0, 0.3);
 }
 
@@ -108,11 +119,17 @@ button{ font-size: 100%;}
   margin: 20px 0;
   padding: 10px 20px;
   height: 100px;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
   justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
   background-color: #fff;
   border-radius: 5px;
+  -webkit-box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
   box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
+  -webkit-transition: all 0.2s ease;
   transition: all 0.2s ease;
   cursor: pointer;
 }
@@ -135,6 +152,7 @@ button{ font-size: 100%;}
     fill: none;
     stroke-width: 10;
     stroke: #000;
+    -webkit-transform: translate(5px,5px);
     transform: translate(5px,5px);
     stroke-dasharray: 190;
     stroke-dashoffset: 190;
@@ -166,11 +184,16 @@ button{ font-size: 100%;}
 /*----- Header ---------------*/
 .mobile-hamburger{display: none;}
 header {
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
   justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
   height: 17%;
 }
 header div {
+  -webkit-box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
   box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
 }
 
@@ -179,6 +202,8 @@ header div {
   background-color: #49d8a0;
   width: 75%;
   height: 100%;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
   border-radius: 5px;
   color: #fff;
@@ -194,6 +219,8 @@ h1 {
   width: 23%;
   height: 100%;
   color: #fff;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
   text-align: center;
   border-radius: 5px;
@@ -211,6 +238,8 @@ h1 {
 }
 
 .tab-buttons{
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
   justify-content: space-between;
 }
 
@@ -219,6 +248,7 @@ h1 {
   outline: none;
   border: none;
   border-radius: 5px;
+  -webkit-transition: all 0.2s ease;
   transition: all 0.2s ease;
 }
 
@@ -234,7 +264,9 @@ h1 {
 
 .active-tab,
  .tab-buttons button:hover{
+  -webkit-transform: scale(1.01);
   transform: scale(1.01);
+  -webkit-box-shadow: 1px -1px 8px rgba(0, 0, 0, 0.3);
   box-shadow: 1px -1px 8px rgba(0, 0, 0, 0.3); 
 }
 
@@ -251,6 +283,7 @@ h1 {
   padding: 30px;
   display: none;
   border-radius: 5px;
+  -webkit-box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.3);
   box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.3);
   z-index: 999;
 }
@@ -264,6 +297,7 @@ footer {
   height: 17%;
   background-color: #49d8a0;
   border-radius: 5px;
+  -webkit-box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
   box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
 }
 
@@ -288,14 +322,23 @@ footer {
 
 .right-side-details{
   position: relative;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
   padding: 10px;
   width: 30%;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
 }
 
 .date-box{
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
   justify-content: space-between;
   width: 75%;
   margin: 0 auto;
@@ -313,9 +356,11 @@ footer {
     fill: none;
     stroke-width: 15;
     stroke: #000;
+    -webkit-transform: translate(5px,5px);
     transform: translate(5px,5px);
     stroke-dasharray: 440;
     stroke-dashoffset: 440;
+     -webkit-transform: translate(10px,10px);
      transform: translate(10px,10px);
 }
 
@@ -358,10 +403,13 @@ footer {
   cursor: pointer;
   color: #fff;
   border-radius: 5px;
+  -webkit-transition: all 0.2s ease;
   transition: all 0.2s ease;
 }
 .add-resources-btn:hover{
+  -webkit-transform: scale(1.01);
   transform: scale(1.01);
+  -webkit-box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.3);
   box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.3);
 }
 
@@ -376,9 +424,11 @@ footer {
   text-align: center;
 }
 td,th{
+  -webkit-box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.3);
   box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.3);
   border-radius: 5px;
   padding: 8px 5px;
+  -webkit-transition: all 0.2s ease;
   transition: all 0.2s ease;
 }
 
@@ -392,7 +442,11 @@ td,th{
 /* INVOICE TAB */
 /* -------------------------------- */
 .generate-invoice-box{ 
+  -webkit-box-align: center; 
+  -ms-flex-align: center; 
   align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
 }
 .generate-invoice-box label{
@@ -413,10 +467,13 @@ td,th{
   color: #fff;
   outline: none;
   cursor: pointer;
+  -webkit-transition: all 0.2s ease;
   transition: all 0.2s ease;
 }
 .generate-invoice-btn:hover{
+  -webkit-transform: scale(1.01);
   transform: scale(1.01);
+  -webkit-box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.3);
   box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.3);
 }
 
