@@ -489,7 +489,10 @@ td,th{
   overflow: scroll;
 }
 
-.total-amount-label{font-weight: 700;}
+.total-amount-label{
+  margin-top: 15px;
+  font-weight: 700;
+}
 .total-amount{
   font-weight: 300;
   margin-left: 20px;
