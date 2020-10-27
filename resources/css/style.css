@@ -54,6 +54,7 @@ html {
   color: #fff;
   background-color: #d84981;
   border: none;
+  border-radius: 5px;
   outline: none;
   cursor: pointer;
   -webkit-transition: all 0.2s ease;
