@@ -21,6 +21,7 @@ html {
 /* Hide scrollbar */
 ::-webkit-scrollbar{
     width: 0px;
+    height: 0px;
     background: transparent;
 }
 /* -------------------------------- */
@@ -163,6 +164,7 @@ button{ font-size: 100%;}
 /* -------------------------------- */
 
 /*----- Header ---------------*/
+.mobile-hamburger{display: none;}
 header {
   justify-content: space-between;
   align-items: center;
@@ -207,39 +209,35 @@ h1 {
   width: 100%;
   height: 55%;
 }
+
 .tab-buttons{
-  flex-direction: row;
   justify-content: space-between;
-  height: 12%;
+}
+
+.tab-buttons button{
+  padding: 8px 10px;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  transition: all 0.2s ease;
 }
 
 .button-box {
-  width: auto;
+  width: 70%;
+  overflow: scroll;
 }
 
-.button-box button {
-  outline: none;
+.button-box button{
+  margin-right: 5px;
   background-color: #fff;
-  border: 0;
-  width: auto;
-  height: 90%;
-  margin-right: 10px;
-  padding: 0 20px;
-  border-radius: 5px;
-  transition: all 0.2s ease;
-  cursor: pointer;
-}
-.active-tab {
-  background-color: #fff;
-  border-radius: 5px;
-  transform: scale(1.01);
-  box-shadow: 1px -1px 8px rgba(0, 0, 0, 0.3);
 }
 
-.button-box button:hover {
-  box-shadow: 1px -1px 8px rgba(0, 0, 0, 0.3);
+.active-tab,
+ .tab-buttons button:hover{
   transform: scale(1.01);
+  box-shadow: 1px -1px 8px rgba(0, 0, 0, 0.3); 
 }
+
 
 .tab-line {
   margin: 5px 0;
@@ -331,21 +329,10 @@ footer {
 }
 
 .edit-details-btn{
-  text-align: right;
-  font-size: 100%;
-  width: auto;
-  height: 100%;
-  padding: 5px 10px;
   background-color: #49d8a0;
-  border: none;
-  border-radius: 5px;
-  outline: none;
   color: #fff;
-  box-shadow: 1px -1px 8px rgba(0, 0, 0, 0.3);
 }
-.edit-details-btn:hover{
-  transform: scale(1.01);
-}
+
 
 .percentage-completed{
   position: absolute;
@@ -391,7 +378,7 @@ footer {
 td,th{
   box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.3);
   border-radius: 5px;
-  padding: 8px;
+  padding: 8px 5px;
   transition: all 0.2s ease;
 }
 
