@@ -1,16 +1,12 @@
 /*---------- Mobile view ----------------*/
 @media only screen and (max-width: 420px) {
-
-
   .main-panel {
     height: 100vh;
     width: 100vw;
     padding: 10px;
     background-color: aquamarine;
   }
-  /* .side-panel {
-    display: none;
-  } */
+
   .middle-tabs {
     width: 100%;
     height: 78%;
@@ -132,5 +128,73 @@
   footer {
     height: 8%;
     width: 95%;
+  }
+}
+
+
+/*---------- Tab view ----------------*/
+@media only screen and (max-width: 768px){
+    .main-panel {
+    height: 100vh;
+    width: 100vw;
+    padding: 10px;
+  }
+
+  .middle-tabs {
+    width: 100%;
+    height: 70%;
+  }
+
+  /*-------------- Side panel Navigation -----*/
+  .side-panel{
+    display: block;
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    z-index: 1000;
+    clip-path: circle(100px at 90% -15%);
+    transition: all 0.5s ease;
+  }
+
+  .side-panel.open{
+    clip-path: circle(1500px at 90% -15%);
+  }
+
+  /*-------------- Header --------------------*/
+  .mobile-hamburger{
+    display: block;
+    box-shadow: none;
+    z-index: 2000;
+  }
+
+  .line{
+    width: 30px;
+    height: 3px;
+    background: #fff;
+    margin: 5px;
+    box-shadow: none;
+  }
+  .line-dark{ background: #000;}
+
+    header {
+    flex-direction: column;
+    height: 10%;
+  }
+
+  h1 {margin-top: 0;}
+  .slice-one {
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 20px;
+  }
+  .slice-two {
+    display: none;
+  }
+
+  /*-------------- Footer ---------------*/
+  footer {
+    height: 10%;
+    width: 97%;
   }
 }
