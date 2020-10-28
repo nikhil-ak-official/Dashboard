@@ -1,28 +1,31 @@
 import apis from "./api.js";
 
-// apis.getprojectAPI('get', 'https://api.jsonbin.io/b/5f9927b030aaa01ce619f147', (obj) => {
-//   console.log(obj[0])
-// })
-apis.getAPI("get", "https://api.jsonbin.io/b/5f997bfb30aaa01ce61a108a", (obj) => {
-    
-    activeProject(obj);})
-
-var cards = document.getElementsByClassName('project-card');
-console.log(cards)
-for (let card of cards) {
-  card.addEventListener("click", () => {
-    
-    apis.getAPI("get", "https://api.jsonbin.io/b/5f997bfb30aaa01ce61a108a", (obj) => {
+apis.getAPI(
+  "get",
+  "https://api.jsonbin.io/b/5f997bfb30aaa01ce61a108a",
+  (obj) => {
     activeProject(obj);
-    });
-  })
-}
+    var cards = document.getElementsByClassName("project-card");
+    console.log(cards[0]);
+    for (let card of cards) {
+      card.addEventListener("click", () => {
+        apis.getAPI(
+          "get",
+          "https://api.jsonbin.io/b/5f997bfb30aaa01ce61a108a",
+          (obj) => {
+            activeProject(obj);
+          }
+        );
+      });
+    }
+  }
+);
 
 function activeProject(obj) {
-    console.log("success!!!!")
+  console.log("success!!!!");
   let activeProjectCard = document.querySelector(".active-card p").textContent;
   obj.forEach((project) => {
-    if ((project.project_name === activeProjectCard)) {
+    if (project.project_name === activeProjectCard) {
       document.querySelector(
         ".tab-container"
       ).innerHTML = `<div class="left-side-details">
