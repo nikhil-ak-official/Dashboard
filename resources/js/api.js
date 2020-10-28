@@ -20,7 +20,7 @@ let getAPI = function (method,url,callback){
     xhr.send()
   }
   
-  let test = function(method,url,callback){
+  let getprojectAPI = function(method,url,callback){
     let req = new XMLHttpRequest();
   
     req.onload = function () {
@@ -39,12 +39,32 @@ let getAPI = function (method,url,callback){
     }
   
     req.open(method, url, true);
-    req.setRequestHeader("secret-key", "$2b$10$b3HdJLya6P949p.eYlsxQuusyZSqNRrDPHWTobEvW9/c15QlIWZrK")
+    req.setRequestHeader("secret-key", '$2b$10$xIEnlbVbLhmfMP16vPF8OOHDlXWhhHBXh8kJXi.zbrHGKsXYlazYO');
     req.send();
   }
   
-  
-  
-  
-  let apis = { getAPI,test }
-  export default apis
+  let putAPI = function (method,url,body){
+    let xhrp = new XMLHttpRequest(); 
+    xhrp.onload = function () {
+          if (this.status === 200) {
+            try {
+              let responseObj = JSON.parse(this.responseText);
+              console.log(responseObj);
+            }
+            catch {
+              console.warn('JSON not parsed')
+            }
+          }
+          else {
+            console.warn('JSON not found')
+          }
+        }
+    xhrp.open(method, url, true); 
+    xhrp.setRequestHeader('Content-type','application/json; charset=utf-8');
+    xhrp.setRequestHeader('secret-key',  '$2b$10$xIEnlbVbLhmfMP16vPF8OOHDlXWhhHBXh8kJXi.zbrHGKsXYlazYO');
+    xhrp.setRequestHeader('versioning', false);
+    xhrp.send(body);
+  }
+    
+    let apis = { test,putAPI,getprojectAPI}
+    export default apis
