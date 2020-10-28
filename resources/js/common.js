@@ -182,37 +182,37 @@ function removeProjects() {
 }
 
 /*---------------- Edit projects form ------------------------*/
-const cancelEditProjectsBtn = document.querySelector(".cancel-edit-btn");
-const allEditProjectFields = document.querySelectorAll(
-  ".edit-project-validate"
-);
+// const cancelEditProjectsBtn = document.querySelector(".cancel-edit-btn");
+// const allEditProjectFields = document.querySelectorAll(
+//   ".edit-project-validate"
+// );
 
-editButton.addEventListener("click", () => {
-  popup("EditProject");
-});
+// editButton.addEventListener("click", () => {
+//   popup("EditProject");
+// });
 
-cancelEditProjectsBtn.addEventListener("click", () => {
-  popup("EditProject");
-});
+// cancelEditProjectsBtn.addEventListener("click", () => {
+//   popup("EditProject");
+// });
 
 
 
-/*---------------- Field validation ------------------------*/
+// /*---------------- Field validation ------------------------*/
 
-// Validate on blur (Add projects)
-allAddProjectFields.forEach((field) => {
-  field.addEventListener("blur", (e) => {
-    console.log("hel");
-    utils.validate(e.target);
-  });
-});
+// // Validate on blur (Add projects)
+// allAddProjectFields.forEach((field) => {
+//   field.addEventListener("blur", (e) => {
+//     console.log("hel");
+//     utils.validate(e.target);
+//   });
+// });
 
-// Validate on blur (Edit projects)
-allEditProjectFields.forEach((field) => {
-  field.addEventListener("blur", (e) => {
-    utils.validate(e.target);
-  });
-});
+// // Validate on blur (Edit projects)
+// allEditProjectFields.forEach((field) => {
+//   field.addEventListener("blur", (e) => {
+//     utils.validate(e.target);
+//   });
+// });
 
 
 
