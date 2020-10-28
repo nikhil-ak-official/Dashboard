@@ -7,6 +7,9 @@
   <link rel="stylesheet" href="resources/css/style.css">
   <link rel="stylesheet" href="resources/css/responsive.css">
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="http://bootstrap-tagsinput.github.io/bootstrap-tagsinput/dist/bootstrap-tagsinput.css">
+
   <title>Dashboard</title>
 </head>
 
@@ -262,7 +265,7 @@
 
     <div class="project-technologies-group group flex-box">
       <label for="project-technologies">Project Technologies</label>
-      <input type="text" name="project-technologies" id="project-technologies" class="add-project-validate" required>
+      <input type="text" name="project-technologies" id="project-technologies" class="add-project-validate" data-role="tagsinput" required>
       <p class="project-technologies-error"></p>
     </div>
 
@@ -294,6 +297,8 @@
 
   <script type="module" src="resources/js/api.js"></script>
   <script type="module" src="resources/js/common.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="http://bootstrap-tagsinput.github.io/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js"></script>
 </body>
 
 </html>

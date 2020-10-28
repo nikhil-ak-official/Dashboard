@@ -525,7 +525,7 @@ th {
   flex-direction: column;
   position: fixed;
   padding: 20px;
-  top: 45%;
+  top: 50%;
   visibility: hidden;
   left: 50%;
   width: 500px;
@@ -546,13 +546,13 @@ th {
 
 .popup input,
 .popup textarea{
-  border: 1px solid #464648;
+  border: 1px solid #c7c7c7;
 }
 
 
 .group {
   flex-direction: column;
-  margin: 15px 0;
+  margin: 5px 0;
 }
 
 .date-set-box div {
