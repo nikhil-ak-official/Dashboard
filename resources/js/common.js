@@ -11,6 +11,9 @@ apis.test('get', 'https://api.jsonbin.io/b/5f997bfb30aaa01ce61a108a', (obj) => {
   displayProjects();
 })
 
+apis.getprojectAPI('get', 'https://api.jsonbin.io/b/5f9927b030aaa01ce619f147', (obj) => {
+  
+})
 
 /*---------------- Tab view setup ------------------------*/
 
@@ -34,9 +37,9 @@ function setTabs(index) {
   tabs.forEach((tab) => {
     tab.style.display = 'none'
   })
-
+  
   tabs[index].style.display = 'block'
-
+  console.log(tabs[index])
   if(tabs[index].dataset.editable == 'true'){
     editButton.style.display = 'block'
     editButton.textContent = `Edit ${buttons[index].textContent}`
@@ -86,9 +89,7 @@ function displayProjects() {
   for(var i=0;i<cards.length;i++) {
     let card = cards[i];
     cards[i].addEventListener("click",function() {addClass(card,cards)});
-  }
-  
-    
+  }   
 }
   
 function addClass(card,cards) {

@@ -20,7 +20,7 @@ let getAPI = function (method,url,callback){
     xhr.send()
   }
   
-  let test = function(method,url,callback){
+  let getprojectAPI = function(method,url,callback){
     let req = new XMLHttpRequest();
   
     req.onload = function () {
@@ -42,7 +42,6 @@ let getAPI = function (method,url,callback){
     req.setRequestHeader("secret-key", '$2b$10$xIEnlbVbLhmfMP16vPF8OOHDlXWhhHBXh8kJXi.zbrHGKsXYlazYO');
     req.send();
   }
-  
   
   let putAPI = function (method,url,body){
     let xhrp = new XMLHttpRequest(); 
@@ -67,5 +66,5 @@ let getAPI = function (method,url,callback){
     xhrp.send(body);
   }
     
-    let apis = { getAPI,test,putAPI}
+    let apis = { test,putAPI,getprojectAPI}
     export default apis
