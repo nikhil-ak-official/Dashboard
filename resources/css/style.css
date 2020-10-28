@@ -506,7 +506,8 @@ th {
 /* -------------------------------- */
 /* ADD PROJECT POPUP */
 /* -------------------------------- */
-.add-project-line {
+.add-project-line,
+.edit-project-line{
   margin-top: 5px;
 }
 
@@ -583,12 +584,14 @@ th {
   cursor: pointer;
 }
 
-.add-project-popup-btn {
+.add-project-popup-btn,
+.edit-project-popup-btn {
   background-color: #49d8a0;
   transition: all 0.2s ease;
 }
 
-.add-project-popup-btn:hover {
+.add-project-popup-btn:hover,
+.edit-project-popup-btn:hover{
   transform: scale(1.01);
   box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.3);
 }

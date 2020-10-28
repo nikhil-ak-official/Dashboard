@@ -114,16 +114,22 @@ const cancelAddProjectsBtn = document.querySelector('.cancel-popup-btn')
 const allAddProjectFields = document.querySelectorAll('.add-project-validate')
 
 addProjectsBtn.addEventListener('click',()=>{
-  popup()
+  popup('AddProject')
 })
 cancelAddProjectsBtn.addEventListener('click',()=>{
-  popup()
+  popup('AddProject')
 })
 
-function popup(){
+function popup(typeOfPopup){
+  if(typeOfPopup == 'AddProject'){
+    var popupCard = document.querySelector('.add-project-popup')
+  }
+  else{
+    var popupCard = document.querySelector('.edit-project-popup')
+  }
   const leftSection = document.querySelector('.side-panel')
   const rightSection = document.querySelector('.main-panel')
-  const popupCard = document.querySelector('.add-project-popup')
+  
 
   leftSection.classList.toggle('blur')
   rightSection.classList.toggle('blur')
@@ -131,12 +137,22 @@ function popup(){
 }
 
 
-//
-const add = document.querySelector('.add-project-popup-btn')
-add.addEventListener('click',()=>{
-  validateFields(allAddProjectFields)
+// //
+// const add = document.querySelector('.add-project-popup-btn')
+// add.addEventListener('click',()=>{
+//   validateFields(allAddProjectFields)
+// })
+// //
+
+/*---------------- Edit projects form ------------------------*/
+const editProjectBtn = document.querySelector('.edit-details-btn')
+
+editButton.addEventListener('click',()=>{
+  popup('EditProject')
 })
-//
+
+
+
 /*---------------- Field validation ------------------------*/
 // General validation of required fields
 function validateFields(fields) {
