@@ -529,10 +529,12 @@ th {
   visibility: hidden;
   left: 50%;
   width: 500px;
+  height: 97%;
   transform: translate(-50%, -50%);
   background-color: #fff;
   border-radius: 5px;
   z-index: 99999;
+  overflow: scroll;
 }
 .popup div {
   width: 100%;
@@ -544,11 +546,14 @@ th {
   border-radius: 5px;
 }
 
-.popup input,
-.popup textarea{
-  border: 1px solid #c7c7c7;
+.project-technologies-group {
+  position: relative;
 }
 
+.popup input,
+.popup textarea {
+  border: 1px solid #c7c7c7;
+}
 
 .group {
   flex-direction: column;
@@ -578,22 +583,44 @@ th {
   cursor: pointer;
 }
 
-.add-project-popup-btn{
+.add-project-popup-btn {
   background-color: #49d8a0;
   transition: all 0.2s ease;
 }
 
-.add-project-popup-btn:hover{
+.add-project-popup-btn:hover {
   transform: scale(1.01);
   box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.3);
 }
 
-.cancel-popup-btn{
+.cancel-popup-btn {
   background-color: #d84981;
   transition: all 0.2s ease;
 }
 
-.cancel-popup-btn:hover{
+.cancel-popup-btn:hover {
   transform: scale(1.01);
   box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.3);
 }
+
+/* .autocomplete{
+  background-color: #49d8a0;
+  position: absolute;
+  padding: 5px;
+  top: 90%;
+  max-height: 150%;
+  overflow: scroll;
+  display: none;
+}
+
+.autocomplete p{
+  width: 100%;
+}
+
+.autocomplete-hr{
+  margin: 2px 0;
+}
+
+.autocomplete-active{
+  display: block;
+} */

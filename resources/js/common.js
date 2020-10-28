@@ -1,5 +1,6 @@
 
 import apis from './api.js'
+const arrayOfTechnologies = ["HTML","CSS","JavaScript"]
 apis.getAPI('get', 'resources/json/project.json', (obj) => {
   displayProjects(obj)
 })
@@ -162,7 +163,7 @@ allAddProjectFields.forEach((field)=>{
 // Setting the error
 function setError(input, msg) {
   const errorField = document.querySelector(`.${input.id}-error`)
-  input.style.border = '1px solid #ff0033'
+  errorField.style.color = '#ff0033'
   errorField.textContent = msg
   // isValid = false
 }
@@ -170,6 +171,20 @@ function setError(input, msg) {
 // Clearing errors
 function clearError(input) {
   const fieldError = document.querySelector(`.${input.id}-error`)
-  input.style.border = '1px solid #2ecc71'
+  fieldError.style.color = '#2ecc71'
   fieldError.textContent = ''
 }
+
+/*---------------- Auto complete ------------------------*/
+// const addTech = document.querySelector('#project-technologies')
+
+// console.log(addTech.parentNode)
+
+// addTech.addEventListener('keydown',(e)=>{
+//   autocomplete(e,arrayOfTechnologies)
+//   console.log('check')
+// })
+
+// function autocomplete(inputField,array){
+//   console.log(inputField.parentNode)
+// }
