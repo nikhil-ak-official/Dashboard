@@ -244,7 +244,56 @@
     <!--      Footer ends here-->
   </section>
 
-  
+  <!-- Pop up - Add projects -->
+  <section class="popup add-project-popup">
+    <h3 class="add-project-heading">Add Project</h3>
+    <hr class="add-project-line">
+    <div class="project-name-group group flex-box">
+      <label for="project-name">Project Name</label>
+      <input type="text" name="project-name" id="project-name">
+      <p class="project-name-error"></p>
+    </div>
+
+    <div class="project-description-group group flex-box">
+      <label for="project-description">Project Description</label>
+      <!-- <input type="text" name="project-description" id="project-description"> -->
+      <textarea name="project-description" id="project-description"></textarea>
+      <p class="project-description-error"></p>
+    </div>
+
+    <div class="project-technologies-group group flex-box">
+      <label for="project-technologies">Project Technologies</label>
+      <input type="text" name="project-technologies" id="project-technologies">
+      <p class="project-technologies-error"></p>
+    </div>
+
+    <div class="project-percentage-group group flex-box">
+      <label for="project-percentage">Percentage Completed</label>
+      <input type="text" name="project-percentage" id="project-percentage">
+      <p class="project-percentage-error"></p>
+    </div>
+
+    <div class="date-set-box flex-box">
+      <div class="project-startDate-group flex-box">
+        <label for="project-startDate">Start Date</label>
+        <input type="text" name="project-startDate" id="project-startDate">
+        <p class="project-startDate-error"></p>
+      </div>
+
+      <div class="project-endDate-group flex-box">
+        <label for="project-endDate">End Date</label>
+        <input type="text" name="project-endDate" id="project-endDate">
+        <p class="project-endDate-error"></p>
+      </div>
+    </div>
+
+    <div class="popup-button-box flex-box">
+      <button class="add-project-popup-btn">Add</button>
+      <button class="cancel-popup-btn">Cancel</button>
+    </div>
+
+  </section>
+
   <script type="module" src="resources/js/api.js"></script>
   <script type="module" src="resources/js/common.js"></script>
 </body>

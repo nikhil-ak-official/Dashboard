@@ -291,6 +291,13 @@
     height: 8%;
     width: 96% !important;
   }
+  
+  /*-------------- Add projects popup -----*/
+  .popup {
+    padding: 10px;
+    width: 80%;
+    transform: translate(-50%, -50%);
+  }
 }
 
 /*---------- Mobile view ----------------*/
