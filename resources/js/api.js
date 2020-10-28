@@ -89,5 +89,5 @@ let getAPI = function (method,url,callback){
     xhrp.send(body);
   }
     
-    let apis = { test,putAPI,getprojectAPI,getAPI}
+    let apis = { test,putAPI,getAPI}
     export default apis
