@@ -11,9 +11,9 @@ apis.test('get', 'https://api.jsonbin.io/b/5f997bfb30aaa01ce61a108a', (obj) => {
   displayProjects();
 })
 
-apis.getprojectAPI('get', 'https://api.jsonbin.io/b/5f9927b030aaa01ce619f147', (obj) => {
+// apis.getprojectAPI('get', 'https://api.jsonbin.io/b/5f9927b030aaa01ce619f147', (obj) => {
   
-})
+// })
 
 /*---------------- Tab view setup ------------------------*/
 
