@@ -110,6 +110,7 @@ hamburger.addEventListener('click',()=>{
 /*---------------- Add projects form ------------------------*/
 const addProjectsBtn = document.querySelector('.add-project-btn')
 const cancelAddProjectsBtn = document.querySelector('.cancel-popup-btn')
+const allAddProjectFields = document.querySelectorAll('.add-project-validate')
 
 addProjectsBtn.addEventListener('click',()=>{
   popup()
@@ -126,4 +127,49 @@ function popup(){
   leftSection.classList.toggle('blur')
   rightSection.classList.toggle('blur')
   popupCard.classList.toggle('active')
+}
+
+
+//
+const add = document.querySelector('.add-project-popup-btn')
+add.addEventListener('click',()=>{
+  validateFields(allAddProjectFields)
+})
+//
+/*---------------- Field validation ------------------------*/
+// General validation of required fields
+function validateFields(fields) {
+  fields.forEach((field)=>{validate(field)})
+}
+
+// Validation for 'Add projects' and 'Edit projects'
+function validate(field) {
+  clearError(field)
+  if (field.required && field.value.length == 0) {
+    setError(field, `${field.name} cannot be blank.`) 
+  }
+}
+
+// Validate on blur (Add projects)
+allAddProjectFields.forEach((field)=>{
+  field.addEventListener('blur',(e)=>{
+    validate(e.target)
+  })
+})
+
+
+
+// Setting the error
+function setError(input, msg) {
+  const errorField = document.querySelector(`.${input.id}-error`)
+  input.style.border = '1px solid #ff0033'
+  errorField.textContent = msg
+  // isValid = false
+}
+
+// Clearing errors
+function clearError(input) {
+  const fieldError = document.querySelector(`.${input.id}-error`)
+  input.style.border = '1px solid #2ecc71'
+  fieldError.textContent = ''
 }
