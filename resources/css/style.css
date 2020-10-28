@@ -372,7 +372,7 @@ footer {
   stroke: #f3f3f3;
 }
 .right-side-details .detail-circle circle:nth-child(2){
-  stroke-dashoffset: calc(440 - ((440*75)/100)); 
+  stroke-dashoffset: calc(440 - ((440*75)/100));
   stroke: #49d8a0;
 }
 

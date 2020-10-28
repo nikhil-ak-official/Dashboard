@@ -1,9 +1,13 @@
 
 import apis from './api.js'
+
 apis.getAPI('get', 'resources/json/project.json', (obj) => {
   displayProjects(obj)
 })
 
+apis.getprojectAPI('get', 'https://api.jsonbin.io/b/5f9927b030aaa01ce619f147', (obj) => {
+  
+})
 
 /*---------------- Tab view setup ------------------------*/
 
@@ -27,9 +31,9 @@ function setTabs(index) {
   tabs.forEach((tab) => {
     tab.style.display = 'none'
   })
-
+  
   tabs[index].style.display = 'block'
-
+  console.log(tabs[index])
   if(tabs[index].dataset.editable == 'true'){
     editButton.style.display = 'block'
     editButton.textContent = `Edit ${buttons[index].textContent}`
@@ -85,6 +89,7 @@ function displayProjects(projects) {
     
 }
   
+
 function addClass(card,cards) {
   removeClass(cards);
   card.classList.add("active-card");
@@ -107,4 +112,3 @@ hamburger.addEventListener('click',()=>{
     line.classList.toggle('line-dark')
   })
 })
-

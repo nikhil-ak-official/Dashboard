@@ -20,7 +20,7 @@ let getAPI = function (method,url,callback){
     xhr.send()
   }
   
-  let test = function(method,url,callback){
+  let getprojectAPI = function(method,url,callback){
     let req = new XMLHttpRequest();
   
     req.onload = function () {
@@ -46,5 +46,5 @@ let getAPI = function (method,url,callback){
   
   
   
-  let apis = { getAPI,test }
+  let apis = { getAPI, getprojectAPI }
   export default apis
