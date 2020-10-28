@@ -152,8 +152,10 @@ button{ font-size: 100%;}
 .card-circle circle{
     fill: none;
     stroke-width: 10;
-    stroke: #000;
+    /* stroke: #000; */
+
     -webkit-transform: translate(5px,5px);
+
     transform: translate(5px,5px);
     stroke-dasharray: 190;
     stroke-dashoffset: 190;
@@ -163,17 +165,17 @@ button{ font-size: 100%;}
     stroke: #f3f3f3;
 }
 .card-circle circle:nth-child(2){
-    stroke-dashoffset: calc(190 - ((190*80)/100));
+    /* stroke-dashoffset: calc(190 - ((190*80)/100)); */
     stroke: #49d8a0;
 }
 
 .active-card .card-circle circle:nth-child(2){
-    stroke-dashoffset: calc(190 - ((190*80)/100));
+    /* stroke-dashoffset: calc(190 - ((190*80)/100)); */
     stroke: #d84981;
 }
 
 .project-card:hover circle:nth-child(2){
-    stroke-dashoffset: calc(190 - ((190*80)/100));
+    /* stroke-dashoffset: calc(190 - ((190*80)/100)); */
     stroke: #d84981;
 }
 
