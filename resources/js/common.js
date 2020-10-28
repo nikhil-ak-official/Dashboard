@@ -124,8 +124,11 @@ function popup(typeOfPopup){
   if(typeOfPopup == 'AddProject'){
     var popupCard = document.querySelector('.add-project-popup')
   }
-  else{
+  else if(typeOfPopup == 'EditProject'){
     var popupCard = document.querySelector('.edit-project-popup')
+  }
+  else{
+    var popupCard = document.querySelector('.add-resources-popup')
   }
   const leftSection = document.querySelector('.side-panel')
   const rightSection = document.querySelector('.main-panel')
@@ -137,14 +140,14 @@ function popup(typeOfPopup){
 }
 
 
-//
-const add = document.querySelector('.edit-project-popup-btn')
-add.addEventListener('click',()=>{
-  console.log(allEditProjectFields)
-  validateFields(allEditProjectFields)
+// //
+// const add = document.querySelector('.edit-project-popup-btn')
+// add.addEventListener('click',()=>{
+//   console.log(allEditProjectFields)
+//   validateFields(allEditProjectFields)
   
-})
-//
+// })
+// //
 
 /*---------------- Edit projects form ------------------------*/
 const cancelEditProjectsBtn = document.querySelector('.cancel-edit-btn')
@@ -158,6 +161,19 @@ cancelEditProjectsBtn.addEventListener('click',()=>{
   popup('EditProject')
 })
 
+
+/*---------------- Add resources form ------------------------*/
+const addResourceBtn = document.querySelector('.add-resources-btn')
+const cancelAddResourcesBtn = document.querySelector('.cancel-add-resources-btn')
+const allAddResourcesFields = document.querySelectorAll('.add-resources-validate')
+
+addResourceBtn.addEventListener('click',()=>{
+  popup('AddResources')
+})
+
+cancelAddResourcesBtn.addEventListener('click',()=>{
+  popup('AddResources')
+})
 
 /*---------------- Field validation ------------------------*/
 // General validation of required fields
@@ -182,6 +198,13 @@ allAddProjectFields.forEach((field)=>{
 
 // Validate on blur (Edit projects)
 allEditProjectFields.forEach((field)=>{
+  field.addEventListener('blur',(e)=>{
+    validate(e.target)
+  })
+})
+
+// Validate on blur (Add resources)
+allAddResourcesFields.forEach((field)=>{
   field.addEventListener('blur',(e)=>{
     validate(e.target)
   })

@@ -354,6 +354,45 @@
     </div>
   </section>
 
+    <!-- Pop up - Add resources -->
+    <section class="popup add-resources-popup">
+      <h3 class="add-resources-heading">Add Resources</h3>
+      <hr class="edit-project-line">
+
+      <div class="add-resources-name-group group flex-box">
+        <label for="name">Name</label>
+        <input type="text" name="name" id="name-add" class="add-resources-validate" required>
+        <p class="name-add-error"></p>
+      </div>
+
+      <div class="add-resources-email-group group flex-box">
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email-add" class="add-resources-validate" required>
+        <p class="email-add-error"></p>
+      </div>
+
+      <div class="add-resources-billable-group group flex-box">
+        <div class="checkbox-container flex-box">
+          <label for="billable">Billable</label>
+          <input type="checkbox" name="name" id="billable-add" class="add-resources-validate" required>
+        </div>
+        <p class="billable-add-error"></p>
+      </div>
+
+      <div class="add-resources-rate-group group flex-box">
+        <label for="rate">Rate per hour</label>
+        <input type="text" name="rate" id="rate-add" class="add-resources-validate" required>
+        <p class="rate-add-error"></p>
+      </div>
+
+      <div class="popup-button-box flex-box">
+        <button class="add-resources-popup-btn">Add</button>
+        <button class="cancel-add-resources-btn">Cancel</button>
+      </div>
+    
+      
+    </section>
+
   <script type="module" src="resources/js/api.js"></script>
   <script type="module" src="resources/js/common.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
