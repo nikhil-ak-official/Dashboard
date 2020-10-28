@@ -1,8 +1,14 @@
 
 import apis from './api.js'
-const arrayOfTechnologies = ["HTML","CSS","JavaScript"]
-apis.getAPI('get', 'resources/json/project.json', (obj) => {
-  displayProjects(obj)
+const arrayOfTechnologies = ["HTML","CSS","JavaScript"];
+var projects;
+// apis.getAPI('get', 'resources/json/project.json', (obj) => {
+//   projects = obj;
+//   displayProjects();
+// })
+apis.test('get', 'https://api.jsonbin.io/b/5f997bfb30aaa01ce61a108a', (obj) => {
+  projects = obj;
+  displayProjects();
 })
 
 
@@ -41,7 +47,7 @@ setTabs(0)
 
 
 /*---------------- Dynamic project list ------------------------*/
-function displayProjects(projects) {
+function displayProjects() {
   
   if(projects) {
     
@@ -143,14 +149,50 @@ function popup(typeOfPopup){
 }
 
 
-// //
-// const add = document.querySelector('.edit-project-popup-btn')
-// add.addEventListener('click',()=>{
-//   console.log(allEditProjectFields)
-//   validateFields(allEditProjectFields)
+
+
+/*------------------------add projects to server-----------------------------*/
+
+const add = document.querySelector('.add-project-popup-btn');
+add.addEventListener('click',()=>{
+  console.log(allAddProjectFields)
+  validateFields(allAddProjectFields);
+  if(isAddProjectValid == true) {
+    addProject();
+    popup('AddProject');
+  }
   
-// })
-// //
+})
+function addProject() {
+  let projectId = projects.length+1;
+  let projName = document.getElementById("project-name").value;
+  let projDesc = document.getElementById("project-description").value;
+  let techs = document.getElementById("project-technologies").value;
+  let percent = document.getElementById("project-percentage").value;
+  let start = document.getElementById("project-startDate").value;
+  let end = document.getElementById("project-endDate").value;
+  let projectObj = {
+    "id": projectId,
+    "project_name": projName,
+    "project_desc": projDesc,
+    "tech_used": techs,
+    "percentage_complete": percent,
+    "start_date": start,
+    "end_date": end
+  };
+  projects.push(projectObj);
+  console.log(projects);
+  apis.putAPI('PUT', 'https://api.jsonbin.io/b/5f997bfb30aaa01ce61a108a', JSON.stringify(projects));
+  removeProjects();
+  displayProjects();
+
+}
+
+function removeProjects() {
+  document.getElementById("projectList").innerHTML = "";
+}
+
+
 
 /*---------------- Edit projects form ------------------------*/
 const cancelEditProjectsBtn = document.querySelector('.cancel-edit-btn')
@@ -196,6 +238,7 @@ cancelEditResourceBtn.addEventListener('click',()=>{
 
 /*---------------- Field validation ------------------------*/
 // General validation of required fields
+var isAddProjectValid = true;
 function validateFields(fields) {
   fields.forEach((field)=>{validate(field)})
 }
@@ -243,12 +286,13 @@ function setError(input, msg) {
   const errorField = document.querySelector(`.${input.id}-error`)
   errorField.style.color = '#ff0033'
   errorField.textContent = msg
-  // isValid = false
+  isAddProjectValid = false
 }
 
 // Clearing errors
 function clearError(input) {
   const fieldError = document.querySelector(`.${input.id}-error`)
   fieldError.style.color = '#2ecc71'
-  fieldError.textContent = ''
+  fieldError.textContent = '';
+  isAddProjectValid = true;
 }
