@@ -110,7 +110,7 @@ hamburger.addEventListener('click',()=>{
 
 /*---------------- Add projects form ------------------------*/
 const addProjectsBtn = document.querySelector('.add-project-btn')
-const cancelAddProjectsBtn = document.querySelector('.cancel-popup-btn')
+const cancelAddProjectsBtn = document.querySelector('.cancel-add-btn')
 const allAddProjectFields = document.querySelectorAll('.add-project-validate')
 
 addProjectsBtn.addEventListener('click',()=>{
@@ -137,20 +137,26 @@ function popup(typeOfPopup){
 }
 
 
-// //
-// const add = document.querySelector('.add-project-popup-btn')
-// add.addEventListener('click',()=>{
-//   validateFields(allAddProjectFields)
-// })
-// //
+//
+const add = document.querySelector('.edit-project-popup-btn')
+add.addEventListener('click',()=>{
+  console.log(allEditProjectFields)
+  validateFields(allEditProjectFields)
+  
+})
+//
 
 /*---------------- Edit projects form ------------------------*/
-const editProjectBtn = document.querySelector('.edit-details-btn')
+const cancelEditProjectsBtn = document.querySelector('.cancel-edit-btn')
+const allEditProjectFields = document.querySelectorAll('.edit-project-validate')
 
 editButton.addEventListener('click',()=>{
   popup('EditProject')
 })
 
+cancelEditProjectsBtn.addEventListener('click',()=>{
+  popup('EditProject')
+})
 
 
 /*---------------- Field validation ------------------------*/
@@ -174,6 +180,13 @@ allAddProjectFields.forEach((field)=>{
   })
 })
 
+// Validate on blur (Edit projects)
+allEditProjectFields.forEach((field)=>{
+  field.addEventListener('blur',(e)=>{
+    validate(e.target)
+  })
+})
+
 
 
 // Setting the error
@@ -190,17 +203,3 @@ function clearError(input) {
   fieldError.style.color = '#2ecc71'
   fieldError.textContent = ''
 }
-
-/*---------------- Auto complete ------------------------*/
-// const addTech = document.querySelector('#project-technologies')
-
-// console.log(addTech.parentNode)
-
-// addTech.addEventListener('keydown',(e)=>{
-//   autocomplete(e,arrayOfTechnologies)
-//   console.log('check')
-// })
-
-// function autocomplete(inputField,array){
-//   console.log(inputField.parentNode)
-// }

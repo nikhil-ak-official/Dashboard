@@ -428,8 +428,7 @@ footer {
 }
 td,
 th {
-  /* border-radius: 5px; */
-  padding: 8px 5px !important;
+  padding: 8px 5px !important; /* Required to overwrite bootstrap*/
   border: 1px solid #464648;
   -webkit-transition: all 0.2s ease;
   transition: all 0.2s ease;
@@ -595,12 +594,14 @@ th {
   box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.3);
 }
 
-.cancel-popup-btn {
+.cancel-add-btn,
+.cancel-edit-btn {
   background-color: #d84981;
   transition: all 0.2s ease;
 }
 
-.cancel-popup-btn:hover {
+.cancel-add-btn:hover,
+.cancel-edit-btn:hover {
   transform: scale(1.01);
   box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.3);
 }
