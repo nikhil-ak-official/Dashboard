@@ -4,10 +4,11 @@ import apis from "./api.js";
 //   console.log(obj[0])
 // })
 apis.getAPI("get", "https://api.jsonbin.io/b/5f997bfb30aaa01ce61a108a", (obj) => {
-    console.log(obj)
+    
     activeProject(obj);})
 
-var cards = document.getElementsByClassName("project-card");
+var cards = document.getElementsByClassName('project-card');
+console.log(cards)
 for (let card of cards) {
   card.addEventListener("click", () => {
     
