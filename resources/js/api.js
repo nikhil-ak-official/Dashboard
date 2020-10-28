@@ -16,7 +16,8 @@ let getAPI = function (method,url,callback){
       }
     }
   
-    xhr.open(method, url)
+    xhr.open(method, url, true)
+    xhr.setRequestHeader("secret-key", '$2b$10$xIEnlbVbLhmfMP16vPF8OOHDlXWhhHBXh8kJXi.zbrHGKsXYlazYO')
     xhr.send()
   }
   

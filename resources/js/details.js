@@ -3,20 +3,22 @@ import apis from "./api.js";
 // apis.getprojectAPI('get', 'https://api.jsonbin.io/b/5f9927b030aaa01ce619f147', (obj) => {
 //   console.log(obj[0])
 // })
-apis.getAPI("get", "resources/json/project.json", (obj) => {
+apis.getAPI("get", "https://api.jsonbin.io/b/5f997bfb30aaa01ce61a108a", (obj) => {
+    console.log(obj)
     activeProject(obj);})
 
 var cards = document.getElementsByClassName("project-card");
 for (let card of cards) {
   card.addEventListener("click", () => {
     
-    apis.getAPI("get", "resources/json/project.json", (obj) => {
+    apis.getAPI("get", "https://api.jsonbin.io/b/5f997bfb30aaa01ce61a108a", (obj) => {
     activeProject(obj);
     });
   })
 }
 
 function activeProject(obj) {
+    console.log("success!!!!")
   let activeProjectCard = document.querySelector(".active-card p").textContent;
   obj.forEach((project) => {
     if ((project.project_name === activeProjectCard)) {
