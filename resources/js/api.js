@@ -20,28 +20,28 @@ let getAPI = function (method,url,callback){
     xhr.send()
   }
   
-  let getprojectAPI = function(method,url,callback){
-    let req = new XMLHttpRequest();
+  // let getprojectAPI = function(method,url,callback){
+  //   let req = new XMLHttpRequest();
   
-    req.onload = function () {
-      if (this.status === 200 && req.readyState == XMLHttpRequest.DONE) {
-        try {
-          let responseObj = JSON.parse(this.responseText)
-          callback(responseObj)
-        }
-        catch {
-          console.warn('JSON not parsed')
-        }
-      }
-      else {
-        console.warn('JSON not found')
-      }
-    }
+  //   req.onload = function () {
+  //     if (this.status === 200 && req.readyState == XMLHttpRequest.DONE) {
+  //       try {
+  //         let responseObj = JSON.parse(this.responseText)
+  //         callback(responseObj)
+  //       }
+  //       catch {
+  //         console.warn('JSON not parsed')
+  //       }
+  //     }
+  //     else {
+  //       console.warn('JSON not found')
+  //     }
+  //   }
   
-    req.open(method, url, true);
-    req.setRequestHeader("secret-key", '$2b$10$xIEnlbVbLhmfMP16vPF8OOHDlXWhhHBXh8kJXi.zbrHGKsXYlazYO');
-    req.send();
-  }
+  //   req.open(method, url, true);
+  //   req.setRequestHeader("secret-key", '$2b$10$xIEnlbVbLhmfMP16vPF8OOHDlXWhhHBXh8kJXi.zbrHGKsXYlazYO');
+  //   req.send();
+  // }
   
   let test = function(method,url,callback){
     let req = new XMLHttpRequest();
