@@ -7,6 +7,9 @@
   <link rel="stylesheet" href="resources/css/style.css">
   <link rel="stylesheet" href="resources/css/responsive.css">
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="http://bootstrap-tagsinput.github.io/bootstrap-tagsinput/dist/bootstrap-tagsinput.css">
+
   <title>Dashboard</title>
 </head>
 
@@ -142,7 +145,7 @@
                 <td>thejus@qburst.com</td>
                 <td>true</td>
                 <td>100</td>
-                <td class="edit-resource">Ed</td>
+                <td class="edit-resource"><ion-icon name="create-outline"></ion-icon></td>
                 <td class="delete-resource">Del</td>
               </tr>
               <tr>
@@ -150,7 +153,7 @@
                 <td>thejus@qburst.com</td>
                 <td>true</td>
                 <td>100</td>
-                <td class="edit-resource">Ed</td>
+                <td class="edit-resource"><ion-icon name="create-outline"></td>
                 <td class="delete-resource">Del</td>
               </tr>
               <tr>
@@ -158,7 +161,7 @@
                 <td>thejus@qburst.com</td>
                 <td>true</td>
                 <td>100</td>
-                <td class="edit-resource">Ed</td>
+                <td class="edit-resource"><ion-icon name="create-outline"></td>
                 <td class="delete-resource">Del</td>
               </tr>
           
@@ -244,9 +247,192 @@
     <!--      Footer ends here-->
   </section>
 
+  <!-- Pop up - Add projects -->
+  <section class="popup add-project-popup">
+    <h3 class="add-project-heading">Add Project</h3>
+    <hr class="add-project-line">
+    <div class="project-name-group group flex-box">
+      <label for="Project Name">Project Name</label>
+      <input type="text" name="Project Name" id="project-name" class="add-project-validate" required>
+      <p class="project-name-error"></p>
+    </div>
+
+    <div class="project-description-group group flex-box">
+      <label for="Description">Project Description</label>
+      <textarea name="Description" id="project-description" class="add-project-validate" required></textarea>
+      <p class="project-description-error"></p>
+    </div>
+
+    <div class="project-technologies-group group flex-box">
+      <label for="Technologies">Project Technologies</label>
+      <input type="text" name="Technologies" id="project-technologies" class="add-project-validate" data-role="tagsinput" required>
+      <!-- <div class="autocomplete">
+        <p>jdhgfa</p>
+        <hr class="autocomplete-hr">
+        <p>dfgag</p>
+      </div> -->
+      <p class="project-technologies-error"></p>
+    </div>
+
+    <div class="project-percentage-group group flex-box">
+      <label for="Percentage">Percentage Completed</label>
+      <input type="text" name="Percentage" id="project-percentage" class="add-project-validate" required>
+      <p class="project-percentage-error"></p>
+    </div>
+
+    <div class="date-set-box flex-box">
+      <div class="project-startDate-group flex-box">
+        <label for="Start Date">Start Date</label>
+        <input type="date" name="Start Date" id="project-startDate" class="add-project-validate" required>
+        <p class="project-startDate-error"></p>
+      </div>
+
+      <div class="project-endDate-group flex-box">
+        <label for="End Date">End Date</label>
+        <input type="date" name="End Date" id="project-endDate" class="add-project-validate" required>
+        <p class="project-endDate-error"></p>
+      </div>
+    </div>
+
+    <div class="popup-button-box flex-box">
+      <button class="add-project-popup-btn">Add</button>
+      <button class="cancel-add-btn">Cancel</button>
+    </div>
+  </section>
+
+  <!-- Pop up - Edit projects -->
+  <section class="popup edit-project-popup">
+    <h3 class="edit-project-heading">Edit Project</h3>
+    <hr class="edit-project-line">
+    <div class="edit-project-name-group group flex-box">
+      <label for="Project Name">Project Name</label>
+      <input type="text" name="Project Name" id="project-name-edit" class="edit-project-validate" required>
+      <p class="project-name-edit-error"></p>
+    </div>
   
+    <div class="edit-project-description-group group flex-box">
+      <label for="Description">Project Description</label>
+      <textarea name="project-description" id="Description-edit" class="edit-project-validate" required></textarea>
+      <p class="project-description-edit-error"></p>
+    </div>
+  
+    <div class="edit-project-technologies-group group flex-box">
+      <label for="Technologies">Project Technologies</label>
+      <input type="text" name="Technologies" id="project-technologies-edit" class="edit-project-validate"
+        data-role="tagsinput" required>
+      <!-- <div class="autocomplete">
+          <p>jdhgfa</p>
+          <hr class="autocomplete-hr">
+          <p>dfgag</p>
+        </div> -->
+      <p class="project-technologies-edit-error"></p>
+    </div>
+  
+    <div class="edit-project-percentage-group group flex-box">
+      <label for="Percentage">Percentage Completed</label>
+      <input type="text" name="Percentage" id="project-percentage-edit" class="edit-project-validate" required>
+      <p class="project-percentage-edit-error"></p>
+    </div>
+  
+    <div class="date-set-box flex-box">
+      <div class="edit-project-startDate-group flex-box">
+        <label for="Start Date">Start Date</label>
+        <input type="date" name="Start Date" id="project-startDate-edit" class="edit-project-validate" required>
+        <p class="project-startDate-edit-error"></p>
+      </div>
+  
+      <div class="edit-project-endDate-group flex-box">
+        <label for="End Date">End Date</label>
+        <input type="date" name="End Date" id="project-endDate-edit" class="edit-project-validate" required>
+        <p class="project-endDate-edit-error"></p>
+      </div>
+    </div>
+  
+    <div class="popup-button-box flex-box">
+      <button class="edit-project-popup-btn">Update</button>
+      <button class="cancel-edit-btn">Cancel</button>
+    </div>
+  </section>
+
+    <!-- Pop up - Add resources -->
+    <section class="popup add-resources-popup">
+      <h3 class="add-resources-heading">Add Resources</h3>
+      <hr class="edit-project-line">
+
+      <div class="add-resources-name-group group flex-box">
+        <label for="Name">Name</label>
+        <input type="text" name="Name" id="name-add" class="add-resources-validate" required>
+        <p class="name-add-error"></p>
+      </div>
+
+      <div class="add-resources-email-group group flex-box">
+        <label for="Email">Email</label>
+        <input type="email" name="Email" id="email-add" class="add-resources-validate" required>
+        <p class="email-add-error"></p>
+      </div>
+
+      <div class="add-resources-billable-group group flex-box">
+        <div class="checkbox-container flex-box">
+          <label for="billable">Billable</label>
+          <input type="checkbox" name="name" id="billable-add" class="add-resources-validate" required>
+        </div>
+        <p class="billable-add-error"></p>
+      </div>
+
+      <div class="add-resources-rate-group group flex-box">
+        <label for="Rate">Rate per hour</label>
+        <input type="text" name="Rate" id="rate-add" class="add-resources-validate" required>
+        <p class="rate-add-error"></p>
+      </div>
+
+      <div class="popup-button-box flex-box">
+        <button class="add-resources-popup-btn">Add</button>
+        <button class="cancel-add-resources-btn">Cancel</button>
+      </div>
+    </section>
+
+    <!-- Pop up - Add resources -->
+    <section class="popup edit-resources-popup">
+      <h3 class="add-resources-heading">Add Resources</h3>
+      <hr class="edit-project-line">
+    
+      <div class="edit-resources-name-group group flex-box">
+        <label for="Name">Name</label>
+        <input type="text" name="Name" id="edit-name-add" class="edit-resources-validate" required>
+        <p class="edit-name-add-error"></p>
+      </div>
+    
+      <div class="add-resources-email-group group flex-box">
+        <label for="Email">Email</label>
+        <input type="email" name="Email" id="edit-email-add" class="edit-resources-validate" required>
+        <p class="edit-email-add-error"></p>
+      </div>
+    
+      <div class="add-resources-billable-group group flex-box">
+        <div class="checkbox-container flex-box">
+          <label for="billable">Billable</label>
+          <input type="checkbox" name="name" id="edit-billable-add" class="edit-resources-validate" required>
+        </div>
+        <p class="edit-billable-add-error"></p>
+      </div>
+    
+      <div class="add-resources-rate-group group flex-box">
+        <label for="Rate">Rate per hour</label>
+        <input type="text" name="rate" id="edit-rate-add" class="edit-resources-validate" required>
+        <p class="edit-rate-add-error"></p>
+      </div>
+    
+      <div class="popup-button-box flex-box">
+        <button class="edit-resources-popup-btn">Add</button>
+        <button class="cancel-edit-resources-btn">Cancel</button>
+      </div>
+    </section>
+
   <script type="module" src="resources/js/api.js"></script>
   <script type="module" src="resources/js/common.js"></script>
+  <script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="http://bootstrap-tagsinput.github.io/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js"></script>
 </body>
 
 </html>
