@@ -23,13 +23,14 @@ let getAPI = function (method,url,secretKey,asyncType,callback){
   
 
   
-  let putAPI = function (method,url,secretKey,body){
+  let putAPI = function (method,url,secretKey,body,callback){
     let xhrp = new XMLHttpRequest(); 
     xhrp.onload = function () {
           if (this.status === 200) {
             try {
               let responseObj = JSON.parse(this.responseText);
               console.log(responseObj);
+              callback(responseObj);
             }
             catch {
               console.warn('JSON not parsed')
