@@ -38,9 +38,8 @@ function setTabs(index) {
 
 setTabs(0)
 
-// projectLists 
 
-
+/*---------------- Dynamic project list ------------------------*/
 function displayProjects(projects) {
   
   if(projects) {
@@ -108,3 +107,23 @@ hamburger.addEventListener('click',()=>{
   })
 })
 
+/*---------------- Add projects form ------------------------*/
+const addProjectsBtn = document.querySelector('.add-project-btn')
+const cancelAddProjectsBtn = document.querySelector('.cancel-popup-btn')
+
+addProjectsBtn.addEventListener('click',()=>{
+  popup()
+})
+cancelAddProjectsBtn.addEventListener('click',()=>{
+  popup()
+})
+
+function popup(){
+  const leftSection = document.querySelector('.side-panel')
+  const rightSection = document.querySelector('.main-panel')
+  const popupCard = document.querySelector('.add-project-popup')
+
+  leftSection.classList.toggle('blur')
+  rightSection.classList.toggle('blur')
+  popupCard.classList.toggle('active')
+}
