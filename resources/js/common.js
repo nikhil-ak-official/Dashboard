@@ -127,8 +127,11 @@ function popup(typeOfPopup){
   else if(typeOfPopup == 'EditProject'){
     var popupCard = document.querySelector('.edit-project-popup')
   }
-  else{
+  else if (typeOfPopup == "AddResources"){
     var popupCard = document.querySelector('.add-resources-popup')
+  }
+  else{
+    var popupCard = document.querySelector('.edit-resources-popup')
   }
   const leftSection = document.querySelector('.side-panel')
   const rightSection = document.querySelector('.main-panel')
@@ -161,7 +164,6 @@ cancelEditProjectsBtn.addEventListener('click',()=>{
   popup('EditProject')
 })
 
-
 /*---------------- Add resources form ------------------------*/
 const addResourceBtn = document.querySelector('.add-resources-btn')
 const cancelAddResourcesBtn = document.querySelector('.cancel-add-resources-btn')
@@ -174,6 +176,23 @@ addResourceBtn.addEventListener('click',()=>{
 cancelAddResourcesBtn.addEventListener('click',()=>{
   popup('AddResources')
 })
+
+
+/*---------------- Edit resources form ------------------------*/
+const editResourceBtn = document.querySelectorAll('.edit-resource')
+const cancelEditResourceBtn = document.querySelector('.cancel-edit-resources-btn')
+const allEditResourcesFields = document.querySelectorAll('.edit-resources-validate')
+
+editResourceBtn.forEach((btn)=>{
+  btn.addEventListener('click',()=>{
+    popup('EditResources')
+  })
+})
+
+cancelEditResourceBtn.addEventListener('click',()=>{
+  popup('EditResources')
+})
+
 
 /*---------------- Field validation ------------------------*/
 // General validation of required fields
@@ -205,6 +224,13 @@ allEditProjectFields.forEach((field)=>{
 
 // Validate on blur (Add resources)
 allAddResourcesFields.forEach((field)=>{
+  field.addEventListener('blur',(e)=>{
+    validate(e.target)
+  })
+})
+
+// Validate on blur (Edit resources)
+allEditResourcesFields.forEach((field)=>{
   field.addEventListener('blur',(e)=>{
     validate(e.target)
   })
