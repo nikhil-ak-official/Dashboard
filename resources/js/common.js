@@ -1,7 +1,6 @@
 
 import apis from './api.js'
 apis.getAPI('get', 'resources/json/project.json', (obj) => {
-  console.log(obj);
   displayProjects(obj)
 })
 
@@ -11,6 +10,12 @@ apis.getAPI('get', 'resources/json/project.json', (obj) => {
 const buttons = document.querySelectorAll('.button-box button')
 const tabs = document.querySelectorAll('.tab-content')
 const editButton = document.querySelector('.edit-details-btn')
+
+buttons.forEach((button)=>{
+  button.addEventListener('click',(e)=>{
+    setTabs(e.target.dataset.index)
+  })
+})
 
 function setTabs(index) {
   buttons.forEach((button) => {
@@ -33,17 +38,15 @@ function setTabs(index) {
 
 setTabs(0)
 
-
-
 // projectLists 
 
 
 function displayProjects(projects) {
-  console.log("hello");
+  
   if(projects) {
     
     projects.forEach(project=> {
-      console.log(project);
+      
       let projectCard = document.createElement("div");
       projectCard.classList.add("project-card", "flex-box");
       document.getElementById("projectList").appendChild(projectCard);
@@ -58,13 +61,13 @@ function displayProjects(projects) {
       circle1.setAttribute("cy","30px");
       circle1.setAttribute("r","30px");
       progressBar.appendChild(circle1);
-      console.log(circle1);
+     
       let circle2 = document.createElementNS("http://www.w3.org/2000/svg", "circle");
       circle2.setAttribute("cx","30px");
       circle2.setAttribute("cy","30px");
       circle2.setAttribute("r","30px");
       let percentage = project.percentage_complete;
-      console.log(percentage);
+      
       let cal = (190 - ((190*`${percentage}`)/100));
       circle2.style.strokeDashoffset = cal;
       progressBar.appendChild(circle2);
