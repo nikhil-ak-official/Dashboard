@@ -1,5 +1,5 @@
 import apis from "./api.js";
-
+ 
 apis.getAPI(
   "get",
   "https://api.jsonbin.io/b/5f997bfb30aaa01ce61a108a",

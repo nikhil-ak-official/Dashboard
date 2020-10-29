@@ -1,4 +1,5 @@
 import utils from './utils.js'
+import apis from './api.js'
 /*---------------- Add resources form ------------------------*/
 const addResourceBtn = document.querySelector(".add-resources-btn");
 const cancelAddResourcesBtn = document.querySelector(
@@ -48,3 +49,12 @@ allEditResourcesFields.forEach((field) => {
     utils.validate(e.target);
   });
 });
+
+
+/*---------------- Edit resources form ------------------------*/
+const cards = document.querySelectorAll('.project-card')
+console.log(cards)
+
+apis.getAPI('get','https://api.jsonbin.io/b/5f9a787af0402361dcee3688','$2b$10$NEmByr.wcR1MzqmA7E5m/eXoUX47ULRuimK6yv/dP.v8o0uHIFtwa',true,(object)=>{
+  console.log(object)
+})
