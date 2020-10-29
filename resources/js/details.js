@@ -68,3 +68,36 @@ function activeProject(obj) {
     }
   });
 }
+
+
+/*---------------- Edit projects form ------------------------*/
+const cancelEditProjectsBtn = document.querySelector(".cancel-edit-btn");
+const allEditProjectFields = document.querySelectorAll(
+  ".edit-project-validate"
+);
+
+editButton.addEventListener("click", () => {
+  utils.popup("EditProject");
+});
+
+cancelEditProjectsBtn.addEventListener("click", () => {
+  utils.popup("EditProject");
+});
+
+
+
+/*---------------- Field validation ------------------------*/
+
+// Validate on blur (Add projects)
+allAddProjectFields.forEach((field) => {
+  field.addEventListener("blur", (e) => {
+    utils.validate(e.target);
+  });
+});
+
+// Validate on blur (Edit projects)
+allEditProjectFields.forEach((field) => {
+  field.addEventListener("blur", (e) => {
+    utils.validate(e.target);
+  });
+});
