@@ -22,16 +22,20 @@ let popup = function(typeOfPopup){
 
 let isValid = true;
   let validateFields = function (fields,valid,callback) {
-      isValid = valid;
+    isValid = valid;
+    console.log(fields);
     fields.forEach((field)=>{validate(field)});
     callback(isValid);
   }
   
   // Validation for 'Add projects' and 'Edit projects'
   let validate = function (field) {
-    clearError(field)
+   
     if (field.required && field.value.length == 0) {
       setError(field, `${field.name} cannot be blank.`) 
+    }
+    else {
+      clearError(field);
     }
   }
 
@@ -40,12 +44,13 @@ let isValid = true;
     const errorField = document.querySelector(`.${input.id}-error`)
     errorField.style.color = '#ff0033'
     errorField.textContent = msg
-    isValid = false
+    isValid = false;
+
   }
   
   // Clearing errors
   function clearError(input) {
-    const fieldError = document.querySelector(`.${input.id}-error`)
+    const fieldError = document.querySelector(`.${input.id}-error`);
     fieldError.style.color = '#2ecc71'
     fieldError.textContent = '';
   }

@@ -1,32 +1,30 @@
 import apis from "./api.js";
- 
+import utils from './utils.js';
+var projects;
 apis.getAPI(
   "get",
-  "https://api.jsonbin.io/b/5f9aac18f0402361dcee48d9",
-  "$2b$10$b3HdJLya6P949p.eYlsxQuusyZSqNRrDPHWTobEvW9/c15QlIWZrK",
+  "https://api.jsonbin.io/b/5f9aad119291173cbca54ba0",
+  '$2b$10$ZiLJWecMZrSPnVOa15q2EOuAgE.3G.vauU.jzNyjYWa6KdbI0e6sm',
   true,
   (obj) => {
-    activeProject(obj);
-    let cards = document.getElementsByClassName("project-card");
+    projects = obj;
+    activeProject();
+    var cards = document.getElementsByClassName("project-card");
+    console.log(cards[0]);
     for (let card of cards) {
       card.addEventListener("click", () => {
-        apis.getAPI(
-          "get",
-          "https://api.jsonbin.io/b/5f9aac18f0402361dcee48d9",
-  "$2b$10$b3HdJLya6P949p.eYlsxQuusyZSqNRrDPHWTobEvW9/c15QlIWZrK",
-          true,
-          (obj) => {
-            activeProject(obj);
+            activeProject();
           }
-        );
-      });
+        )
     }
-  }
-);
+  });
 
-function activeProject(obj) {
+
+var activeObj;
+function activeProject() {
+  console.log("success!!!!");
   let activeProjectCard = document.querySelector(".active-card p").textContent;
-  obj.forEach((project) => {
+  projects.forEach((project) => {
     if (project.project_name === activeProjectCard) {
       document.querySelector(
         ".tab-container"
@@ -65,6 +63,8 @@ function activeProject(obj) {
         ".detail-circle :nth-child(2)"
       ).style.strokeDashoffset =
         440 - (440 * `${project.percentage_complete}`) / 100;
+
+        activeObj = project;
     }
   });
 }
@@ -72,28 +72,87 @@ function activeProject(obj) {
 
 /*---------------- Edit projects form ------------------------*/
 const cancelEditProjectsBtn = document.querySelector(".cancel-edit-btn");
-const allEditProjectFields = document.querySelectorAll(
-  ".edit-project-validate"
-);
+const editButton = document.querySelector(".edit-details-btn");
+// const allAddProjectFields = document.querySelectorAll(".add-project-validate");
+const allEditProjectFields = document.querySelectorAll(".edit-project-validate");
 
 editButton.addEventListener("click", () => {
   utils.popup("EditProject");
+  editProject();
 });
 
 cancelEditProjectsBtn.addEventListener("click", () => {
   utils.popup("EditProject");
+
 });
 
+function editProject() {
+  document.getElementById("project-name-edit" ).value = activeObj.project_name; ;
+  document.getElementById("project-description-edit").value = activeObj.project_desc;
+  console.log(activeObj.tech_used);
+  document.getElementById("project-technologies-edit").value = activeObj.tech_used;
+  console.log(document.getElementById("project-technologies-edit"));
+  document.getElementById("project-percentage-edit").value = activeObj.percentage_complete;
+  document.getElementById("project-startDate-edit").value = activeObj.start_date;
+  document.getElementById("project-endDate-edit").value  = activeObj.end_date;
+}
+
+const edit = document.querySelector(".edit-project-popup-btn");
+var isEditProjectValid = true;
+edit.addEventListener("click", () => {
+  const allEditProjectFields = document.querySelectorAll(".edit-project-validate");
+  console.log("edit");
+  utils.validateFields(allEditProjectFields, isEditProjectValid, (valid) => {
+    if (valid === true) {
+      console.log("validated");
+      getEdited();
+      utils.popup("EditProject");
+    }
+  });
+});
+
+function getEdited() {
+  let projectId = activeObj.id;
+  let projName = document.getElementById("project-name-edit" ).value;
+  let projDesc = document.getElementById("project-description-edit").value;
+  let techs = document.getElementById("project-technologies-edit").value;
+  let percent = document.getElementById("project-percentage-edit").value;
+  let start = document.getElementById("project-startDate-edit").value;
+  let end = document.getElementById("project-endDate-edit").value;
+  projects[projectId-1].id = projectId;
+  projects[projectId-1].project_name = projName;
+  projects[projectId-1].project_desc = projDesc;
+  projects[projectId-1].tech_used = techs;
+  projects[projectId-1].percentage_complete = percent;
+  projects[projectId-1].start_date = start;
+  projects[projectId-1].end_date = end;
+  
+  console.log(projects);
+  apis.putAPI(
+    "PUT",
+    "https://api.jsonbin.io/b/5f9aad119291173cbca54ba0",
+    '$2b$10$ZiLJWecMZrSPnVOa15q2EOuAgE.3G.vauU.jzNyjYWa6KdbI0e6sm',
+    JSON.stringify(projects),
+    (res) => {location.reload();}
+  );
+  removeProject();
+  activeProject();
+}
+
+function removeProject() {
+  document.querySelector(".tab-container").innerHTML == "";
+
+}
 
 
 /*---------------- Field validation ------------------------*/
 
 // Validate on blur (Add projects)
-allAddProjectFields.forEach((field) => {
-  field.addEventListener("blur", (e) => {
-    utils.validate(e.target);
-  });
-});
+// allAddProjectFields.forEach((field) => {
+//   field.addEventListener("blur", (e) => {
+//     utils.validate(e.target);
+//   });
+// });
 
 // Validate on blur (Edit projects)
 allEditProjectFields.forEach((field) => {
@@ -101,3 +160,4 @@ allEditProjectFields.forEach((field) => {
     utils.validate(e.target);
   });
 });
+
