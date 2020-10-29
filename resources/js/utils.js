@@ -48,7 +48,6 @@ let isValid = true;
     const fieldError = document.querySelector(`.${input.id}-error`)
     fieldError.style.color = '#2ecc71'
     fieldError.textContent = '';
-    isValid = true;
   }
 
   let utils = {popup,validateFields,validate};

@@ -17,15 +17,25 @@ cancelAddResourcesBtn.addEventListener("click", () => {
   utils.popup("AddResources");
 });
 
-//--------Add resource button-------//
+//--------------------Add resource button------------------------//
 
-document.querySelector('.add-resources-popup-btn').addEventListener("click", ()=>{
+document.querySelector('.add-resources-popup-btn').addEventListener("click", () => {
+
+  const allAddResourceFields = document.querySelectorAll(".add-resources-validate");
+  var isAddResourceValid = true;
   apis.getAPI('get', 'https://api.jsonbin.io/b/5f9a9eba9291173cbca5476f',
-      '$2b$10$b3HdJLya6P949p.eYlsxQuusyZSqNRrDPHWTobEvW9/c15QlIWZrK', true, (obj) => {AddResources(obj)})
+    '$2b$10$b3HdJLya6P949p.eYlsxQuusyZSqNRrDPHWTobEvW9/c15QlIWZrK', true, (obj) => {
+      utils.validateFields(allAddResourceFields, isAddResourceValid, (valid) => {
+        if (valid === true) {
+          console.log("validated");
+          AddResources(obj)
+        }
+      })
+
+    })
 })
 
-
-function AddResources(resources){
+function AddResources(resources) {
   let resourceId = resources.length + 1;
   let resourceName = document.getElementById('name-add').value;
   let resourceEmail = document.getElementById('email-add').value;
@@ -39,7 +49,7 @@ function AddResources(resources){
     name: resourceName,
     email: resourceEmail,
     billable: resourceBillable,
-    rate_per_hour: Number(resourceRate) 
+    rate_per_hour: Number(resourceRate)
   }
   resources.push(newResource);
   console.log(resources);
@@ -47,7 +57,7 @@ function AddResources(resources){
     "PUT",
     'https://api.jsonbin.io/b/5f9a9eba9291173cbca5476f',
     '$2b$10$b3HdJLya6P949p.eYlsxQuusyZSqNRrDPHWTobEvW9/c15QlIWZrK',
-    JSON.stringify(resources)
+    JSON.stringify(resources), (obj)=>{location.reload()}
   );
   utils.popup("AddResources")
 }
@@ -100,7 +110,7 @@ cards.forEach((card) => {
 
 function resourceCall(card) {
   apis.getAPI('get', 'https://api.jsonbin.io/b/5f9a9eba9291173cbca5476f',
-  '$2b$10$b3HdJLya6P949p.eYlsxQuusyZSqNRrDPHWTobEvW9/c15QlIWZrK', true, (allResources) => {
+    '$2b$10$b3HdJLya6P949p.eYlsxQuusyZSqNRrDPHWTobEvW9/c15QlIWZrK', true, (allResources) => {
       let selectedResources = allResources.filter((resources) => resources.project_id == card.dataset.id)
       tableMaker(selectedResources)
     })
