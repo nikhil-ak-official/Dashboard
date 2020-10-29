@@ -17,6 +17,42 @@ cancelAddResourcesBtn.addEventListener("click", () => {
   utils.popup("AddResources");
 });
 
+//--------Add resource button-------//
+
+document.querySelector('.add-resources-popup-btn').addEventListener("click", ()=>{
+  apis.getAPI('get', 'https://api.jsonbin.io/b/5f9a9eba9291173cbca5476f',
+      '$2b$10$b3HdJLya6P949p.eYlsxQuusyZSqNRrDPHWTobEvW9/c15QlIWZrK', true, (obj) => {AddResources(obj)})
+})
+
+
+function AddResources(resources){
+  let resourceId = resources.length + 1;
+  let resourceName = document.getElementById('name-add').value;
+  let resourceEmail = document.getElementById('email-add').value;
+  let resourceBillable = document.getElementById('billable-add').checked;
+  let resourceRate = document.getElementById('rate-add').value;
+  let projectId = document.querySelector('.active-card').dataset.id;
+
+  let newResource = {
+    id: resourceId,
+    project_id: Number(projectId),
+    name: resourceName,
+    email: resourceEmail,
+    billable: resourceBillable,
+    rate_per_hour: Number(resourceRate) 
+  }
+  resources.push(newResource);
+  console.log(resources);
+  apis.putAPI(
+    "PUT",
+    'https://api.jsonbin.io/b/5f9a9eba9291173cbca5476f',
+    '$2b$10$b3HdJLya6P949p.eYlsxQuusyZSqNRrDPHWTobEvW9/c15QlIWZrK',
+    JSON.stringify(resources)
+  );
+  utils.popup("AddResources")
+}
+
+
 /*---------------- Edit resources form ------------------------*/
 const editResourceBtn = document.querySelectorAll(".edit-resource");
 const cancelEditResourceBtn = document.querySelector(
@@ -63,8 +99,8 @@ cards.forEach((card) => {
 })
 
 function resourceCall(card) {
-  apis.getAPI('get', 'https://api.jsonbin.io/b/5f9a46df857f4b5f9adf733e',
-    '$2b$10$1KZ6VDOn5QBsDQ6Fk2BGdeDrxrbQVt6vqpDTnFlM5xykGvBmx7hkC', true, (allResources) => {
+  apis.getAPI('get', 'https://api.jsonbin.io/b/5f9a9eba9291173cbca5476f',
+  '$2b$10$b3HdJLya6P949p.eYlsxQuusyZSqNRrDPHWTobEvW9/c15QlIWZrK', true, (allResources) => {
       let selectedResources = allResources.filter((resources) => resources.project_id == card.dataset.id)
       tableMaker(selectedResources)
     })
