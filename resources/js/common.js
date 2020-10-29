@@ -34,6 +34,7 @@ function setTabs(index) {
   buttons[index].className = "active-tab";
 
   tabs.forEach((tab) => {
+
     tab.style.display = "none";
   });
 
@@ -55,6 +56,7 @@ function displayProjects() {
     projects.forEach((project) => {
       let projectCard = document.createElement("div");
       projectCard.classList.add("project-card", "flex-box");
+      projectCard.setAttribute('data-id',`${project.id}`)
       document.getElementById("projectList").appendChild(projectCard);
       let para = document.createElement("p");
       para.innerHTML = project.project_name;
@@ -135,7 +137,6 @@ cancelAddProjectsBtn.addEventListener("click", () => {
 
 
 /*------------------------add projects to server-----------------------------*/
-
 const add = document.querySelector(".add-project-popup-btn");
 var isAddProjectValid = true;
 add.addEventListener("click", () => {
@@ -148,6 +149,7 @@ add.addEventListener("click", () => {
     }
   });
 });
+
 function addProject() {
   let projectId = projects.length + 1;
   let projName = document.getElementById("project-name").value;

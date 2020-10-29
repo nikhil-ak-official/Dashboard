@@ -23,7 +23,9 @@ let getAPI = function (method,url,secretKey,asyncType,callback){
   
 
   
+
   let putAPI = function (method,url,secretKey,body,callback){
+
     let xhrp = new XMLHttpRequest(); 
     xhrp.onload = function () {
           if (this.status === 200) {
@@ -47,5 +49,6 @@ let getAPI = function (method,url,secretKey,asyncType,callback){
     xhrp.send(body);
   }
     
+
     let apis = {putAPI,getAPI}
     export default apis

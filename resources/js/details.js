@@ -1,33 +1,6 @@
 import apis from "./api.js";
 import utils from './utils.js';
 var projects;
-// apis.getAPI(
-//   "get",
-//   "https://api.jsonbin.io/b/5f9aad119291173cbca54ba0",
-//   '$2b$10$ZiLJWecMZrSPnVOa15q2EOuAgE.3G.vauU.jzNyjYWa6KdbI0e6sm',
-//   false,
-//   (obj) => {
-//     // projects = obj;
-//     activeProject(obj);
-//     var cards = document.getElementsByClassName("project-card");
-//     console.log(cards[0]);
-//     for (let card of cards) {
-//       card.addEventListener("click", () => {
-//         apis.getAPI(
-//           "get",
-//           "https://api.jsonbin.io/b/5f9aad119291173cbca54ba0",
-//           '$2b$10$ZiLJWecMZrSPnVOa15q2EOuAgE.3G.vauU.jzNyjYWa6KdbI0e6sm',
-//           false,
-//           (obj) => {
-//             // projects = obj;
-//             activeProject(obj);
-//           }
-//         );
-//       });
-//     }
-//   }
-// );
-
 apis.getAPI(
   "get",
   "https://api.jsonbin.io/b/5f9aad119291173cbca54ba0",
@@ -41,10 +14,12 @@ apis.getAPI(
     for (let card of cards) {
       card.addEventListener("click", () => {
             activeProject();
+
           }
         )
     }
   });
+
 
 var activeObj;
 function activeProject() {
