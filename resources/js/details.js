@@ -3,6 +3,8 @@ import apis from "./api.js";
 apis.getAPI(
   "get",
   "https://api.jsonbin.io/b/5f997bfb30aaa01ce61a108a",
+  '$2b$10$xIEnlbVbLhmfMP16vPF8OOHDlXWhhHBXh8kJXi.zbrHGKsXYlazYO',
+  true,
   (obj) => {
     activeProject(obj);
     let cards = document.getElementsByClassName("project-card");
@@ -11,6 +13,8 @@ apis.getAPI(
         apis.getAPI(
           "get",
           "https://api.jsonbin.io/b/5f997bfb30aaa01ce61a108a",
+          '$2b$10$xIEnlbVbLhmfMP16vPF8OOHDlXWhhHBXh8kJXi.zbrHGKsXYlazYO',
+          true,
           (obj) => {
             activeProject(obj);
           }
