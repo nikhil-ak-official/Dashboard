@@ -2,8 +2,8 @@ import apis from "./api.js";
  
 apis.getAPI(
   "get",
-  "https://api.jsonbin.io/b/5f9a787af0402361dcee3688",
-  "$2b$10$NEmByr.wcR1MzqmA7E5m/eXoUX47ULRuimK6yv/dP.v8o0uHIFtwa",
+  "https://api.jsonbin.io/b/5f9ad093f0402361dcee58b9",
+  "$2b$10$1KZ6VDOn5QBsDQ6Fk2BGdeDrxrbQVt6vqpDTnFlM5xykGvBmx7hkC",
   true,
   (obj) => {
     activeProject(obj);
@@ -12,8 +12,8 @@ apis.getAPI(
       card.addEventListener("click", () => {
         apis.getAPI(
           "get",
-          "https://api.jsonbin.io/b/5f9a787af0402361dcee3688",
-  "$2b$10$NEmByr.wcR1MzqmA7E5m/eXoUX47ULRuimK6yv/dP.v8o0uHIFtwa",
+          "https://api.jsonbin.io/b/5f9ad093f0402361dcee58b9",
+  "$2b$10$1KZ6VDOn5QBsDQ6Fk2BGdeDrxrbQVt6vqpDTnFlM5xykGvBmx7hkC",
           true,
           (obj) => {
             activeProject(obj);

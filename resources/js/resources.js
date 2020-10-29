@@ -81,13 +81,19 @@ updateResourcesBtn.addEventListener('click',()=>{
   updateReference.rate_per_hour = document.querySelector('#edit-rate-add').value 
   console.log(latestOfflineResourceList)
 
-  async function putToServer(){
-    await setTimeout(()=>{
-      console.log('Timeout')
-    },3000)
-    console.log('After timeout')
-  }
-  putToServer()
+  // apis.putAPI(
+  //   "PUT",
+  //   "https://api.jsonbin.io/b/5f9a46df857f4b5f9adf733e/2",
+  //   "$2b$10$1KZ6VDOn5QBsDQ6Fk2BGdeDrxrbQVt6vqpDTnFlM5xykGvBmx7hkC",
+  //   JSON.stringify(latestOfflineResourceList)
+  // );
+
+  apis.putAPI(
+    "PUT",
+    'https://api.jsonbin.io/b/5f9a9eba9291173cbca5476f',
+    '$2b$10$b3HdJLya6P949p.eYlsxQuusyZSqNRrDPHWTobEvW9/c15QlIWZrK',
+    JSON.stringify(latestOfflineResourceList),(resp)=>{location.reload()}
+  );
   console.log(document.querySelector('#edit-billable-add').checked)
 })
 
@@ -105,8 +111,8 @@ cards.forEach((card) => {
 })
 
 function resourceCall(card) {
-  apis.getAPI('get', 'https://api.jsonbin.io/b/5f9a46df857f4b5f9adf733e/2',
-    '$2b$10$1KZ6VDOn5QBsDQ6Fk2BGdeDrxrbQVt6vqpDTnFlM5xykGvBmx7hkC', true, (allResources) => {
+  apis.getAPI('get', 'https://api.jsonbin.io/b/5f9a9eba9291173cbca5476f',
+    '$2b$10$b3HdJLya6P949p.eYlsxQuusyZSqNRrDPHWTobEvW9/c15QlIWZrK', true, (allResources) => {
       latestOfflineResourceList = allResources
       let selectedResources = allResources.filter((resources) => resources.project_id == card.dataset.id)
       // console.log(selectedResources)

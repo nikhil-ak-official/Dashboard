@@ -4,8 +4,8 @@ const arrayOfTechnologies = ["HTML", "CSS", "JavaScript"];
 var projects;
 apis.getAPI(
   "get",
-  "https://api.jsonbin.io/b/5f9a787af0402361dcee3688",
-  "$2b$10$NEmByr.wcR1MzqmA7E5m/eXoUX47ULRuimK6yv/dP.v8o0uHIFtwa",
+  "https://api.jsonbin.io/b/5f9ad093f0402361dcee58b9",
+  "$2b$10$1KZ6VDOn5QBsDQ6Fk2BGdeDrxrbQVt6vqpDTnFlM5xykGvBmx7hkC",
   false,
   (obj) => {
     projects = obj;
@@ -171,9 +171,10 @@ function addProject() {
   console.log(projects);
   apis.putAPI(
     "PUT",
-    "https://api.jsonbin.io/b/5f997bfb30aaa01ce61a108a",
-    '$2b$10$xIEnlbVbLhmfMP16vPF8OOHDlXWhhHBXh8kJXi.zbrHGKsXYlazYO',
-    JSON.stringify(projects)
+    "https://api.jsonbin.io/b/5f9ad093f0402361dcee58b9",
+  "$2b$10$1KZ6VDOn5QBsDQ6Fk2BGdeDrxrbQVt6vqpDTnFlM5xykGvBmx7hkC",
+    JSON.stringify(projects),
+    (res)=>{location.reload()}
   );
   removeProjects();
   displayProjects();
