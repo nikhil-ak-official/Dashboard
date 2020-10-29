@@ -18,7 +18,7 @@ cancelAddResourcesBtn.addEventListener("click", () => {
 });
 
 /*---------------- Edit resources form ------------------------*/
-const editResourceBtn = document.querySelectorAll(".edit-resource");
+
 const cancelEditResourceBtn = document.querySelector(
   ".cancel-edit-resources-btn"
 );
@@ -26,11 +26,7 @@ const allEditResourcesFields = document.querySelectorAll(
   ".edit-resources-validate"
 );
 
-editResourceBtn.forEach((btn) => {
-  btn.addEventListener("click", () => {
-    utils.popup("EditResources");
-  });
-});
+
 
 cancelEditResourceBtn.addEventListener("click", () => {
   utils.popup("EditResources");
@@ -50,8 +46,54 @@ allEditResourcesFields.forEach((field) => {
   });
 });
 
+/*---------------- Edit Resource in server ------------------------*/
+let currentEditingId 
+function activateEdit() {
+  const editResourceBtn = document.querySelectorAll(".edit-resource");
+  editResourceBtn.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      let resourceToEdit = latestOfflineResourceList.find((resource)=> resource.id == btn.dataset.id)
+      
+      // Set default values for input fields in popup
+      document.querySelector('#edit-name-add').value = resourceToEdit.name
+      document.querySelector('#edit-email-add').value = resourceToEdit.email
+      document.querySelector('#edit-rate-add').value = resourceToEdit.rate_per_hour
+
+      if(resourceToEdit.billable){
+        document.querySelector('#edit-billable-add').checked = true
+      }
+
+      currentEditingId = resourceToEdit.id
+      utils.popup("EditResources"); 
+    });
+  });
+}
+
+const updateResourcesBtn = document.querySelector('.edit-resources-popup-btn')
+
+updateResourcesBtn.addEventListener('click',()=>{
+  let updateReference = latestOfflineResourceList.find((resource)=> resource.id == currentEditingId)
+
+  // The original list (latestOfflineResourceList) is getting updated as this is a call by reference
+  updateReference.name = document.querySelector('#edit-name-add').value 
+  updateReference.email = document.querySelector('#edit-email-add').value 
+  updateReference.billable = document.querySelector('#edit-billable-add').checked 
+  updateReference.rate_per_hour = document.querySelector('#edit-rate-add').value 
+  console.log(latestOfflineResourceList)
+
+  async function putToServer(){
+    await setTimeout(()=>{
+      console.log('Timeout')
+    },3000)
+    console.log('After timeout')
+  }
+  putToServer()
+  console.log(document.querySelector('#edit-billable-add').checked)
+})
+
 
 /*---------------- Dynamic Resource table ------------------------*/
+let latestOfflineResourceList
 const cards = document.querySelectorAll('.project-card')
 const firstSelectedCard = document.querySelector('.active-card')
 resourceCall(firstSelectedCard)
@@ -63,9 +105,11 @@ cards.forEach((card) => {
 })
 
 function resourceCall(card) {
-  apis.getAPI('get', 'https://api.jsonbin.io/b/5f9a46df857f4b5f9adf733e',
+  apis.getAPI('get', 'https://api.jsonbin.io/b/5f9a46df857f4b5f9adf733e/2',
     '$2b$10$1KZ6VDOn5QBsDQ6Fk2BGdeDrxrbQVt6vqpDTnFlM5xykGvBmx7hkC', true, (allResources) => {
+      latestOfflineResourceList = allResources
       let selectedResources = allResources.filter((resources) => resources.project_id == card.dataset.id)
+      // console.log(selectedResources)
       tableMaker(selectedResources)
     })
 }
@@ -91,8 +135,12 @@ function tableMaker(resourceList) {
       tableBody.appendChild(row)
     })
     table.appendChild(tableBody)
+
+    activateEdit()
+    // activateDelete()
   }
   else {
     console.log('No resource available')
   }
 }
+

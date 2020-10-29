@@ -16,17 +16,17 @@
         "rate_per_hour":100
     },
     {
-        "id": 2,
+        "id": 3,
         "project_id":2,
-        "name":"Boogieman",
+        "name":"tetrapod",
         "email":"boogiemans@qburst.com",
         "billable":true,
         "rate_per_hour":100
     },
     {
-        "id": 2,
+        "id": 4,
         "project_id":3,
-        "name":"Boogieman",
+        "name":"nova",
         "email":"boogiemans@qburst.com",
         "billable":true,
         "rate_per_hour":100
