@@ -1,5 +1,5 @@
 import apis from "./api.js";
-
+ 
 apis.getAPI(
   "get",
   "https://api.jsonbin.io/b/5f9a787af0402361dcee3688",
@@ -7,8 +7,7 @@ apis.getAPI(
   true,
   (obj) => {
     activeProject(obj);
-    var cards = document.getElementsByClassName("project-card");
-    console.log(cards[0]);
+    let cards = document.getElementsByClassName("project-card");
     for (let card of cards) {
       card.addEventListener("click", () => {
         apis.getAPI(
@@ -26,7 +25,6 @@ apis.getAPI(
 );
 
 function activeProject(obj) {
-  console.log("success!!!!");
   let activeProjectCard = document.querySelector(".active-card p").textContent;
   obj.forEach((project) => {
     if (project.project_name === activeProjectCard) {

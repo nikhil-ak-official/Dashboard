@@ -23,6 +23,7 @@ let getAPI = function (method,url,secretKey,asyncType,callback){
   
 
   
+
   let putAPI = function (method,url,secretKey,body){
     let xhrp = new XMLHttpRequest(); 
     xhrp.onload = function () {
@@ -46,5 +47,6 @@ let getAPI = function (method,url,secretKey,asyncType,callback){
     xhrp.send(body);
   }
     
+
     let apis = {putAPI,getAPI}
     export default apis

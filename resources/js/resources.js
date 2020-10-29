@@ -1,4 +1,5 @@
 import utils from './utils.js'
+import apis from './api.js'
 /*---------------- Add resources form ------------------------*/
 const addResourceBtn = document.querySelector(".add-resources-btn");
 const cancelAddResourcesBtn = document.querySelector(
@@ -48,3 +49,48 @@ allEditResourcesFields.forEach((field) => {
     utils.validate(e.target);
   });
 });
+
+
+/*---------------- Edit resources form ------------------------*/
+const cards = document.querySelectorAll('.project-card')
+cards.forEach((card) => {
+  card.addEventListener('click', (e) => {
+    let cardDiv = e.target.closest('div')
+
+    apis.getAPI('get', 'https://api.jsonbin.io/b/5f9a46df857f4b5f9adf733e',
+      '$2b$10$1KZ6VDOn5QBsDQ6Fk2BGdeDrxrbQVt6vqpDTnFlM5xykGvBmx7hkC', true, (allResources) => {
+        let selectedResources = allResources.filter((resources) => resources.project_id == cardDiv.dataset.id)
+        tableMaker(selectedResources)
+      })
+
+  })
+})
+
+function tableMaker(resourceList) {
+  if (resourceList) {
+    console.log(resourceList)
+    let table = document.querySelector('.resource-table')
+    table.innerHTML = `<thead>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Billable</th>
+              <th>Rate per hour</th>         
+            </thead>`
+    let tableBody = document.createElement('tbody')
+    resourceList.forEach((resource)=>{
+      let row = document.createElement('tr')
+      row.innerHTML =`<td>${resource.name}</td>
+                <td>${resource.email}</td>
+                <td>${resource.billable}</td>
+                <td>${resource.rate_per_hour}</td>
+                <td class="edit-resource" data-id=${resource.id}><ion-icon name="create-outline"></ion-icon></td>
+                <td class="delete-resource" data-id=${resource.id}>Del</td>`
+      tableBody.appendChild(row)
+      console.log(resource)
+    })
+    table.appendChild(tableBody)
+  }
+  else {
+    console.log('No resource available')
+  }
+}
