@@ -14,7 +14,6 @@ apis.getAPI(
     for (let card of cards) {
       card.addEventListener("click", () => {
             activeProject();
-
           }
         )
     }
