@@ -62,10 +62,33 @@ let getAPI = function (method,url,callback){
       }
     }
   
-    req.open(method, url, true);
+    req.open(method, url, false);
     req.setRequestHeader("secret-key", '$2b$10$xIEnlbVbLhmfMP16vPF8OOHDlXWhhHBXh8kJXi.zbrHGKsXYlazYO')
     req.send();
   }
+
+  let getResources = function(method,url,callback){
+  let req = new XMLHttpRequest();
+
+    req.onload = function () {
+      if (this.status === 200 && req.readyState == XMLHttpRequest.DONE) {
+        try {
+          let responseObj = JSON.parse(this.responseText)
+          callback(responseObj)
+        }
+        catch {
+          console.warn('JSON not parsed')
+        }
+      }
+      else {
+        console.warn('JSON not found')
+      }
+    }
+
+  req.open(method, url, false);
+  req.setRequestHeader("secret-key", '$2b$10$1KZ6VDOn5QBsDQ6Fk2BGdeDrxrbQVt6vqpDTnFlM5xykGvBmx7hkC')
+  req.send();
+}
   
   let putAPI = function (method,url,body){
     let xhrp = new XMLHttpRequest(); 
@@ -90,5 +113,5 @@ let getAPI = function (method,url,callback){
     xhrp.send(body);
   }
     
-    let apis = { test,putAPI,getAPI}
+    let apis = { test,putAPI,getAPI, getResources}
     export default apis

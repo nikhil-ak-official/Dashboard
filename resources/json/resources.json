@@ -1,7 +1,7 @@
-{
-    "resources":[
-      {
+[
+    {
         "id": 1,
+        "project_id":1,
         "name":"Blachin Skilbadu",
         "email":"skilbadublachins@qburst.com",
         "billable":true,
@@ -9,10 +9,27 @@
     },
     {
         "id": 2,
+        "project_id":1,
+        "name":"Boogieman",
+        "email":"boogiemans@qburst.com",
+        "billable":true,
+        "rate_per_hour":100
+    },
+    {
+        "id": 2,
+        "project_id":2,
+        "name":"Boogieman",
+        "email":"boogiemans@qburst.com",
+        "billable":true,
+        "rate_per_hour":100
+    },
+    {
+        "id": 2,
+        "project_id":3,
         "name":"Boogieman",
         "email":"boogiemans@qburst.com",
         "billable":true,
         "rate_per_hour":100
     }
-    ]
-}
+]
+
