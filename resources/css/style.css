@@ -436,7 +436,7 @@ footer {
 td,
 th {
   padding: 8px 5px !important; /* Required to overwrite bootstrap*/
-  border: 1px solid #464648;
+  border: 1px solid #e7e7e7;
   -webkit-transition: all 0.2s ease;
   transition: all 0.2s ease;
 }
