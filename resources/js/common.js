@@ -56,7 +56,7 @@ function displayProjects() {
     projects.forEach((project) => {
       let projectCard = document.createElement("div");
       projectCard.classList.add("project-card", "flex-box");
-      projectCard.setAttribute('data-id',`${project.id}`)
+      projectCard.setAttribute('data-id', `${project.id}`)
       document.getElementById("projectList").appendChild(projectCard);
       let para = document.createElement("p");
       para.innerHTML = project.project_name;
@@ -135,6 +135,18 @@ cancelAddProjectsBtn.addEventListener("click", () => {
   utils.popup("AddProject");
 });
 
+var input = document.querySelector('#project-technologies'),
+  tagify = new Tagify(input, {
+    whitelist: ['aaa', 'aaab', 'aaabb', 'aaabc', 'aaabd', 'aaabe', 'aaac', 'aaacc'],
+    dropdown: {
+      classname: "color-blue",
+      enabled: 0,              // show the dropdown immediately on focus
+      maxItems: 5,
+      position: "text",         // place the dropdown near the typed text
+      closeOnSelect: false,          // keep the dropdown open after selecting a suggestion
+      highlightFirst: true
+    }
+  });
 
 /*------------------------add projects to server-----------------------------*/
 const add = document.querySelector(".add-project-popup-btn");
@@ -172,9 +184,9 @@ function addProject() {
   apis.putAPI(
     "PUT",
     "https://api.jsonbin.io/b/5f9aad119291173cbca54ba0",
-  '$2b$10$ZiLJWecMZrSPnVOa15q2EOuAgE.3G.vauU.jzNyjYWa6KdbI0e6sm',
+    '$2b$10$ZiLJWecMZrSPnVOa15q2EOuAgE.3G.vauU.jzNyjYWa6KdbI0e6sm',
     JSON.stringify(projects),
-    (res) => {location.reload();}
+    (res) => { location.reload(); }
   );
   removeProjects();
   displayProjects();

@@ -556,17 +556,24 @@ th {
 }
 
 .popup h3{
-  margin-top: 0 !important;  /* The stupid thing gets styled by bootstrap. we don't want that*/
+  margin-top: 0; 
+}
+
+.popup p{
+  font-size: 90%;
+  font-weight: 500;
+  margin-left: 5px;
 }
 
 .popup label{
-  margin-bottom: 0 !important;  /* The stupid thing gets styled by bootstrap. we don't want that*/
+  margin-top: 10px;
+  font-weight: 500;
 }
 .popup input,
 .popup label,
 .popup textarea {
   padding: 5px;
-  border-radius: 5px;
+  border-radius: 2px;
 }
 
 .project-technologies-group {
@@ -575,7 +582,7 @@ th {
 
 .popup input,
 .popup textarea {
-  border: 1px solid #c7c7c7;
+  border: 1px solid #dedbdb;
 }
 
 .group {
@@ -642,27 +649,6 @@ th {
   box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.3);
 }
 
-/* .autocomplete{
-  background-color: #49d8a0;
-  position: absolute;
-  padding: 5px;
-  top: 90%;
-  max-height: 150%;
-  overflow: scroll;
-  display: none;
-}
-
-.autocomplete p{
-  width: 100%;
-}
-
-.autocomplete-hr{
-  margin: 2px 0;
-}
-
-.autocomplete-active{
-  display: block;
-} */
 
 .checkbox-container {
   flex-direction: row;
