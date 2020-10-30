@@ -4,7 +4,7 @@ const arrayOfTechnologies = ["HTML", "CSS", "JavaScript"];
 var projects;
 apis.getAPI(
   "get",
-  "https://api.jsonbin.io/b/5f9aad119291173cbca54ba0",
+  "https://api.jsonbin.io/b/5f9bb434f0402361dceeb6f1",
   '$2b$10$ZiLJWecMZrSPnVOa15q2EOuAgE.3G.vauU.jzNyjYWa6KdbI0e6sm',
   false,
   (obj) => {
@@ -171,7 +171,7 @@ function addProject() {
   console.log(projects);
   apis.putAPI(
     "PUT",
-    "https://api.jsonbin.io/b/5f9aad119291173cbca54ba0",
+    "https://api.jsonbin.io/b/5f9bb434f0402361dceeb6f1",
   '$2b$10$ZiLJWecMZrSPnVOa15q2EOuAgE.3G.vauU.jzNyjYWa6KdbI0e6sm',
     JSON.stringify(projects),
     (res) => {location.reload();}
