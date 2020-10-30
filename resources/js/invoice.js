@@ -13,8 +13,8 @@ cards.forEach((card) => {
 })
 
 function resourceCall(card) {
-  apis.getAPI('get', 'https://api.jsonbin.io/b/5f9bb506f0402361dceeb75f',
-  '$2b$10$ZiLJWecMZrSPnVOa15q2EOuAgE.3G.vauU.jzNyjYWa6KdbI0e6sm', true, (allResources) => {
+  apis.getAPI('get', utils.resourceAPI,
+  utils.secretKey, true, (allResources) => {
       let selectedResources = allResources.filter((resources) => resources.project_id == card.dataset.id)
       console.log(selectedResources)
       tableMaker(selectedResources);

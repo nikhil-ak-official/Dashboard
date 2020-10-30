@@ -4,15 +4,14 @@ const arrayOfTechnologies = ["HTML", "CSS", "JavaScript"];
 var projects;
 apis.getAPI(
   "get",
-  "https://api.jsonbin.io/b/5f9bb434f0402361dceeb6f1",
-  '$2b$10$ZiLJWecMZrSPnVOa15q2EOuAgE.3G.vauU.jzNyjYWa6KdbI0e6sm',
+  utils.projectAPI,
+  utils.secretKey,
   false,
   (obj) => {
     projects = obj;
     displayProjects();
   }
 );
-
 
 /*---------------- Tab view setup ------------------------*/
 
@@ -185,8 +184,8 @@ function addProject() {
   console.log(projects);
   apis.putAPI(
     "PUT",
-    "https://api.jsonbin.io/b/5f9bb434f0402361dceeb6f1",
-  '$2b$10$ZiLJWecMZrSPnVOa15q2EOuAgE.3G.vauU.jzNyjYWa6KdbI0e6sm',
+    utils.projectAPI,
+    utils.secretKey,
     JSON.stringify(projects),
     (res) => { location.reload(); }
   );
@@ -198,38 +197,11 @@ function removeProjects() {
   document.getElementById("projectList").innerHTML = "";
 }
 
-/*---------------- Edit projects form ------------------------*/
-// const cancelEditProjectsBtn = document.querySelector(".cancel-edit-btn");
-// const allEditProjectFields = document.querySelectorAll(
-//   ".edit-project-validate"
-// );
-
-// editButton.addEventListener("click", () => {
-//   popup("EditProject");
-// });
-
-// cancelEditProjectsBtn.addEventListener("click", () => {
-//   popup("EditProject");
-// });
-
-
-
 // /*---------------- Field validation ------------------------*/
 
 // Validate on blur (Add projects)
 allAddProjectFields.forEach((field) => {
   field.addEventListener("blur", (e) => {
-    console.log("hel");
     utils.validate(e.target);
   });
 });
-
-// // Validate on blur (Edit projects)
-// allEditProjectFields.forEach((field) => {
-//   field.addEventListener("blur", (e) => {
-//     utils.validate(e.target);
-//   });
-// });
-
-
-

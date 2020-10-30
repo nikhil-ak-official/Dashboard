@@ -57,5 +57,10 @@ function clearError(input) {
   fieldError.textContent = '';
 }
 
-let utils = { popup, validateFields, validate };
+
+let resourceAPI = 'https://api.jsonbin.io/b/5f9be80f857f4b5f9ae01e91';
+let projectAPI = 'https://api.jsonbin.io/b/5f9bb434f0402361dceeb6f1';
+let secretKey = '$2b$10$ZiLJWecMZrSPnVOa15q2EOuAgE.3G.vauU.jzNyjYWa6KdbI0e6sm';
+
+let utils = { popup, validateFields, validate, resourceAPI, projectAPI, secretKey };
 export default utils;

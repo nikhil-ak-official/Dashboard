@@ -3,8 +3,8 @@ import utils from './utils.js';
 var projects;
 apis.getAPI(
   "get",
-  "https://api.jsonbin.io/b/5f9bb434f0402361dceeb6f1",
-  '$2b$10$ZiLJWecMZrSPnVOa15q2EOuAgE.3G.vauU.jzNyjYWa6KdbI0e6sm',
+  utils.projectAPI,
+  utils.secretKey,
   true,
   (obj) => {
     projects = obj;
@@ -19,10 +19,8 @@ apis.getAPI(
     }
   });
 
-
 var activeObj;
 function activeProject() {
-  console.log("success!!!!");
   let activeProjectCard = document.querySelector(".active-card").dataset.id;
   projects.forEach((project) => {
     if (project.id == activeProjectCard) {
@@ -142,13 +140,12 @@ function getEdited() {
   projects[projectId - 1].start_date = start;
   projects[projectId - 1].end_date = end;
 
-  console.log(projects);
   apis.putAPI(
     "PUT",
-    "https://api.jsonbin.io/b/5f9bb434f0402361dceeb6f1",
-    '$2b$10$ZiLJWecMZrSPnVOa15q2EOuAgE.3G.vauU.jzNyjYWa6KdbI0e6sm',
+    utils.projectAPI,
+    utils.secretKey,
     JSON.stringify(projects),
-    (res) => { location.reload(); }
+    (res) => { location.reload() }
   );
   removeProject();
   activeProject();
@@ -158,16 +155,6 @@ function removeProject() {
   document.querySelector(".tab-container").innerHTML == "";
 
 }
-
-
-/*---------------- Field validation ------------------------*/
-
-// Validate on blur (Add projects)
-// allAddProjectFields.forEach((field) => {
-//   field.addEventListener("blur", (e) => {
-//     utils.validate(e.target);
-//   });
-// });
 
 // Validate on blur (Edit projects)
 allEditProjectFields.forEach((field) => {

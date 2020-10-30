@@ -23,8 +23,7 @@ document.querySelector('.add-resources-popup-btn').addEventListener("click", () 
 
   const allAddResourceFields = document.querySelectorAll(".add-resources-validate");
   var isAddResourceValid = true;
-  apis.getAPI('get', 'https://api.jsonbin.io/b/5f9bb506f0402361dceeb75f',
-    '$2b$10$ZiLJWecMZrSPnVOa15q2EOuAgE.3G.vauU.jzNyjYWa6KdbI0e6sm', true, (obj) => {
+  apis.getAPI('get', utils.resourceAPI,utils.secretKey, true, (obj) => {
       utils.validateFields(allAddResourceFields, isAddResourceValid, (valid) => {
         if (valid === true) {
           console.log("validated");
@@ -56,13 +55,12 @@ function AddResources(resources) {
   console.log(resources);
   apis.putAPI(
     "PUT",
-    'https://api.jsonbin.io/b/5f9bb506f0402361dceeb75f',
-    '$2b$10$ZiLJWecMZrSPnVOa15q2EOuAgE.3G.vauU.jzNyjYWa6KdbI0e6sm',
-    JSON.stringify(resources), (obj)=>{location.reload()}
+    utils.resourceAPI,
+    utils.secretKey,
+    JSON.stringify(resources), (obj)=>{resourceCall(document.querySelector('.active-card'))}
   );
   utils.popup("AddResources")
 }
-
 
 /*---------------- Edit resources form ------------------------*/
 
@@ -126,19 +124,10 @@ updateResourcesBtn.addEventListener('click',()=>{
   updateReference.email = document.querySelector('#edit-email-add').value 
   updateReference.billable = document.querySelector('#edit-billable-add').checked 
   updateReference.rate_per_hour = document.querySelector('#edit-rate-add').value 
-  console.log(latestOfflineResourceList)
-
-  // apis.putAPI(
-  //   "PUT",
-  //   "https://api.jsonbin.io/b/5f9a46df857f4b5f9adf733e/2",
-  //   "$2b$10$1KZ6VDOn5QBsDQ6Fk2BGdeDrxrbQVt6vqpDTnFlM5xykGvBmx7hkC",
-  //   JSON.stringify(latestOfflineResourceList)
-  // );
 
   apis.putAPI(
     "PUT",
-    'https://api.jsonbin.io/b/5f9bb506f0402361dceeb75f',
-    '$2b$10$ZiLJWecMZrSPnVOa15q2EOuAgE.3G.vauU.jzNyjYWa6KdbI0e6sm',
+    utils.resourceAPI,utils.secretKey,
     JSON.stringify(latestOfflineResourceList),(resp)=>{resourceCall(document.querySelector('.active-card'))}
   );
   console.log(document.querySelector('#edit-billable-add').checked)
@@ -152,8 +141,7 @@ function activateDelete(){
       let updatedOfflineResourceList = latestOfflineResourceList.filter((a)=>a.id != btn.dataset.id);
       apis.putAPI(
         "PUT",
-        'https://api.jsonbin.io/b/5f9bb506f0402361dceeb75f',
-    '$2b$10$ZiLJWecMZrSPnVOa15q2EOuAgE.3G.vauU.jzNyjYWa6KdbI0e6sm',
+        utils.resourceAPI,utils.secretKey,
         JSON.stringify(updatedOfflineResourceList),(docu)=>{resourceCall(document.querySelector('.active-card'))}
       )
     })})
@@ -172,8 +160,7 @@ cards.forEach((card) => {
 })
 
 function resourceCall(card) {
-  apis.getAPI('get', 'https://api.jsonbin.io/b/5f9bb506f0402361dceeb75f',
-  '$2b$10$ZiLJWecMZrSPnVOa15q2EOuAgE.3G.vauU.jzNyjYWa6KdbI0e6sm', true, (allResources) => {
+  apis.getAPI('get', utils.resourceAPI, utils.secretKey, true, (allResources) => {
       latestOfflineResourceList = allResources
       let selectedResources = allResources.filter((resources) => resources.project_id == card.dataset.id)
       // console.log(selectedResources)
