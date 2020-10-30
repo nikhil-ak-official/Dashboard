@@ -543,6 +543,14 @@ th {
 .popup div {
   width: 100%;
 }
+
+.popup h3{
+  margin-top: 0 !important;  /* The stupid thing gets styled by bootstrap. we don't want that*/
+}
+
+.popup label{
+  margin-bottom: 0 !important;  /* The stupid thing gets styled by bootstrap. we don't want that*/
+}
 .popup input,
 .popup label,
 .popup textarea {
@@ -561,7 +569,7 @@ th {
 
 .group {
   flex-direction: column;
-  margin: 5px 0;
+  /* margin: 5px 0; */
 }
 
 .date-set-box div {
@@ -609,7 +617,7 @@ th {
 .cancel-add-resources-btn,
 .cancel-edit-resources-btn {
   background-color: #fff;
-  border:1px solid #d84981;
+  border:1px solid #d84981 !important;
   transition: all 0.2s ease;
 }
 
