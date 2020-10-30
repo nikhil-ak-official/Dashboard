@@ -1,6 +1,6 @@
 import utils from './utils.js'
 import apis from './api.js'
-
+let calcResource;
 const cards = document.querySelectorAll('.project-card')
 const firstSelectedCard = document.querySelector('.active-card')
 resourceCall(firstSelectedCard)
@@ -13,11 +13,12 @@ cards.forEach((card) => {
 })
 
 function resourceCall(card) {
-  apis.getAPI('get', 'https://api.jsonbin.io/b/5f9a9eba9291173cbca5476f',
-    '$2b$10$b3HdJLya6P949p.eYlsxQuusyZSqNRrDPHWTobEvW9/c15QlIWZrK', true, (allResources) => {
+  apis.getAPI('get', 'https://api.jsonbin.io/b/5f9bb506f0402361dceeb75f',
+  '$2b$10$ZiLJWecMZrSPnVOa15q2EOuAgE.3G.vauU.jzNyjYWa6KdbI0e6sm', true, (allResources) => {
       let selectedResources = allResources.filter((resources) => resources.project_id == card.dataset.id)
-      // console.log(selectedResources)
-      tableMaker(selectedResources)
+      console.log(selectedResources)
+      tableMaker(selectedResources);
+      remove();
     })
 }
 
@@ -41,4 +42,29 @@ function tableMaker(resourceList) {
   else {
     console.log('No resource available')
   }
+  calcResource = resourceList
+}
+
+/*-----------------------------------Invoice calculation---------------------------------------------- */
+
+let generateInvoice = document.querySelector(".generate-invoice-btn");
+generateInvoice.addEventListener("click",calculation);
+
+function calculation() {
+  let workingDays = document.getElementById("working-days").value;
+  if(workingDays) {
+    console.log(calcResource);
+    let rateList = calcResource.map(e => e.rate_per_hour);
+    console.log(rateList);
+    let total = 0;
+    rateList.forEach(rate => 
+      {total = total + rate*8*workingDays;})
+    console.log(total);
+    document.querySelector(".total-amount").innerHTML = total;
+  }
+}
+
+function remove() {
+  document.getElementById("working-days").value = "";
+  document.querySelector(".total-amount").innerHTML = "";
 }

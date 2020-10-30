@@ -23,8 +23,8 @@ document.querySelector('.add-resources-popup-btn').addEventListener("click", () 
 
   const allAddResourceFields = document.querySelectorAll(".add-resources-validate");
   var isAddResourceValid = true;
-  apis.getAPI('get', 'https://api.jsonbin.io/b/5f9a9eba9291173cbca5476f',
-    '$2b$10$b3HdJLya6P949p.eYlsxQuusyZSqNRrDPHWTobEvW9/c15QlIWZrK', true, (obj) => {
+  apis.getAPI('get', 'https://api.jsonbin.io/b/5f9bb506f0402361dceeb75f',
+    '$2b$10$ZiLJWecMZrSPnVOa15q2EOuAgE.3G.vauU.jzNyjYWa6KdbI0e6sm', true, (obj) => {
       utils.validateFields(allAddResourceFields, isAddResourceValid, (valid) => {
         if (valid === true) {
           console.log("validated");
@@ -55,8 +55,8 @@ function AddResources(resources) {
   console.log(resources);
   apis.putAPI(
     "PUT",
-    'https://api.jsonbin.io/b/5f9a9eba9291173cbca5476f',
-    '$2b$10$b3HdJLya6P949p.eYlsxQuusyZSqNRrDPHWTobEvW9/c15QlIWZrK',
+    'https://api.jsonbin.io/b/5f9bb506f0402361dceeb75f',
+    '$2b$10$ZiLJWecMZrSPnVOa15q2EOuAgE.3G.vauU.jzNyjYWa6KdbI0e6sm',
     JSON.stringify(resources), (obj)=>{location.reload()}
   );
   utils.popup("AddResources")
@@ -136,8 +136,8 @@ updateResourcesBtn.addEventListener('click',()=>{
 
   apis.putAPI(
     "PUT",
-    'https://api.jsonbin.io/b/5f9a9eba9291173cbca5476f',
-    '$2b$10$b3HdJLya6P949p.eYlsxQuusyZSqNRrDPHWTobEvW9/c15QlIWZrK',
+    'https://api.jsonbin.io/b/5f9bb506f0402361dceeb75f',
+    '$2b$10$ZiLJWecMZrSPnVOa15q2EOuAgE.3G.vauU.jzNyjYWa6KdbI0e6sm',
     JSON.stringify(latestOfflineResourceList),(resp)=>{resourceCall(document.querySelector('.active-card'))}
   );
   console.log(document.querySelector('#edit-billable-add').checked)
@@ -171,8 +171,8 @@ cards.forEach((card) => {
 })
 
 function resourceCall(card) {
-  apis.getAPI('get', 'https://api.jsonbin.io/b/5f9a9eba9291173cbca5476f',
-    '$2b$10$b3HdJLya6P949p.eYlsxQuusyZSqNRrDPHWTobEvW9/c15QlIWZrK', true, (allResources) => {
+  apis.getAPI('get', 'https://api.jsonbin.io/b/5f9bb506f0402361dceeb75f',
+  '$2b$10$ZiLJWecMZrSPnVOa15q2EOuAgE.3G.vauU.jzNyjYWa6KdbI0e6sm', true, (allResources) => {
       latestOfflineResourceList = allResources
       let selectedResources = allResources.filter((resources) => resources.project_id == card.dataset.id)
       // console.log(selectedResources)
