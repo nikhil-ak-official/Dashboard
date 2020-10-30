@@ -1,6 +1,6 @@
 import apis from "./api.js";
 import utils from "./utils.js";
-const arrayOfTechnologies = ["HTML", "CSS", "JavaScript"];
+
 var projects;
 apis.getAPI(
   "get",
@@ -138,7 +138,7 @@ cancelAddProjectsBtn.addEventListener("click", () => {
 var input = document.querySelector('#project-technologies'),
   // init Tagify script on the above inputs
   tagify = new Tagify(input, {
-    whitelist: arrayOfTechnologies,
+    whitelist: utils.arrayOfTechnologies,
     maxTags: 10,
     dropdown: {
       maxItems: 20,           // <- mixumum allowed rendered suggestions

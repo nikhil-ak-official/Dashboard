@@ -85,6 +85,7 @@ function clearError(input) {
 let resourceAPI = 'https://api.jsonbin.io/b/5f9befdc9291173cbca5d666';
 let projectAPI = 'https://api.jsonbin.io/b/5f9bef8f857f4b5f9ae02225';
 let secretKey = '$2b$10$1KZ6VDOn5QBsDQ6Fk2BGdeDrxrbQVt6vqpDTnFlM5xykGvBmx7hkC';
+let arrayOfTechnologies = ["HTML","CSS","JavaScript","Flutter","Swift","Java","C++","C#","Python"]
 
-let utils = { popup, validateFields, validate, resourceAPI, projectAPI, secretKey };
+let utils = { popup, validateFields, validate, resourceAPI, projectAPI, secretKey, arrayOfTechnologies };
 export default utils;

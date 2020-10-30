@@ -71,14 +71,13 @@ function activeProject() {
 /*---------------- Edit projects form ------------------------*/
 const cancelEditProjectsBtn = document.querySelector(".cancel-edit-btn");
 const editButton = document.querySelector(".edit-details-btn");
-const arrayOfTechnologies = ["HTML", "CSS", "JavaScript"];
 // const allAddProjectFields = document.querySelectorAll(".add-project-validate");
 const allEditProjectFields = document.querySelectorAll(".edit-project-validate");
 
 // Tag view in technologies input field
 var input = document.querySelector('#project-technologies-edit'),
   tagify = new Tagify(input, {
-    whitelist: arrayOfTechnologies,
+    whitelist: utils.arrayOfTechnologies,
     maxTags: 10,
     dropdown: {
       maxItems: 20,           // <- mixumum allowed rendered suggestions
