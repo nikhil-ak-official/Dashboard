@@ -14,7 +14,7 @@ html {
   color: #464648;
   font-family: "Manrope", sans-serif;
   font-weight: 300;
-  font-size: 15px;
+  font-size: 16px;
   text-rendering: optimizeLegibility;
 }
 
@@ -90,7 +90,7 @@ button {
 }
 
 .head-text-logo p {
-  font-size: 110%;
+  font-size: 120%;
   font-weight: 500;
   margin-left: 20px;
 }
@@ -224,7 +224,8 @@ header div {
 }
 
 h1 {
-  margin-top: 10px;
+  /* margin-top: 10px; */
+  font-size: 150%;
 }
 
 .slice-two {
