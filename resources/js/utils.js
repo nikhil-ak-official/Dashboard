@@ -8,8 +8,8 @@ let popup = function (typeOfPopup) {
   else if (typeOfPopup == "AddResources") {
     var popupCard = document.querySelector('.add-resources-popup')
   }
-  else if(typeOfPopup == "EditResources"){
-    
+  else if (typeOfPopup == "EditResources") {
+
     var popupCard = document.querySelector('.edit-resources-popup')
     console.log('popup')
     console.log(popupCard)
@@ -20,7 +20,7 @@ let popup = function (typeOfPopup) {
 
   leftSection.classList.toggle('blur')
   rightSection.classList.toggle('blur')
-  
+
   popupCard.classList.toggle('active')
 }
 
@@ -40,10 +40,27 @@ let validate = function (field) {
       setError(field, `${field.name} cannot be blank.`)
     }
     else {
-      clearError(field);
+      if (field.name == "Email") {
+        validateEmail(field)
+      }
+      else{
+        clearError(field);
+      }
     }
   }
 }
+
+// Email validation
+function validateEmail(input){
+  if (!isEmail(input.value)) {
+    setError(input,"Email is invalid!");
+  } 
+}
+
+function isEmail(email){
+  return /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(email)
+}
+
 
 // Setting the error
 function setError(input, msg) {
