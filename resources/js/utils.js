@@ -55,6 +55,9 @@ function validateEmail(input){
   if (!isEmail(input.value)) {
     setError(input,"Email is invalid!");
   } 
+  else{
+    clearError(input)
+  }
 }
 
 function isEmail(email){
