@@ -107,7 +107,6 @@ function activateEdit() {
       if(resourceToEdit.billable){
         document.querySelector('#edit-billable-add').checked = true
       }
-
       currentEditingId = resourceToEdit.id
       utils.popup("EditResources"); 
     });
@@ -130,7 +129,7 @@ updateResourcesBtn.addEventListener('click',()=>{
     utils.resourceAPI,utils.secretKey,
     JSON.stringify(latestOfflineResourceList),(resp)=>{resourceCall(document.querySelector('.active-card'))}
   );
-  console.log(document.querySelector('#edit-billable-add').checked)
+  utils.popup("EditResources")
 })
 
 /*---------------- Delete Resource in server ------------------------*/

@@ -8,8 +8,11 @@ let popup = function (typeOfPopup) {
   else if (typeOfPopup == "AddResources") {
     var popupCard = document.querySelector('.add-resources-popup')
   }
-  else {
+  else if(typeOfPopup == "EditResources"){
+    
     var popupCard = document.querySelector('.edit-resources-popup')
+    console.log('popup')
+    console.log(popupCard)
   }
   const leftSection = document.querySelector('.side-panel')
   const rightSection = document.querySelector('.main-panel')
@@ -17,6 +20,7 @@ let popup = function (typeOfPopup) {
 
   leftSection.classList.toggle('blur')
   rightSection.classList.toggle('blur')
+  
   popupCard.classList.toggle('active')
 }
 
