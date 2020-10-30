@@ -147,6 +147,7 @@ button {
 .project-card p {
   font-size: 110%;
   font-weight: 500;
+  width: 60%;
 }
 .active-card,
 .project-card:hover {
