@@ -139,7 +139,7 @@ updateResourcesBtn.addEventListener('click',()=>{
     "PUT",
     'https://api.jsonbin.io/b/5f9bb506f0402361dceeb75f',
     '$2b$10$ZiLJWecMZrSPnVOa15q2EOuAgE.3G.vauU.jzNyjYWa6KdbI0e6sm',
-    JSON.stringify(latestOfflineResourceList),(resp)=>{location.reload()}
+    JSON.stringify(latestOfflineResourceList),(resp)=>{resourceCall(document.querySelector('.active-card'))}
   );
   console.log(document.querySelector('#edit-billable-add').checked)
 })

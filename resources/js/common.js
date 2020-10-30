@@ -56,7 +56,7 @@ function displayProjects() {
     projects.forEach((project) => {
       let projectCard = document.createElement("div");
       projectCard.classList.add("project-card", "flex-box");
-      projectCard.setAttribute('data-id',`${project.id}`)
+      projectCard.setAttribute('data-id', `${project.id}`)
       document.getElementById("projectList").appendChild(projectCard);
       let para = document.createElement("p");
       para.innerHTML = project.project_name;
@@ -135,7 +135,19 @@ cancelAddProjectsBtn.addEventListener("click", () => {
   utils.popup("AddProject");
 });
 
-
+// Tag view in technologies input field
+var input = document.querySelector('#project-technologies'),
+  // init Tagify script on the above inputs
+  tagify = new Tagify(input, {
+    whitelist: arrayOfTechnologies,
+    maxTags: 10,
+    dropdown: {
+      maxItems: 20,           // <- mixumum allowed rendered suggestions
+      classname: "tags-look", // <- custom classname for this dropdown, so it could be targeted
+      enabled: 0,             // <- show suggestions on focus
+      closeOnSelect: false    // <- do not hide the suggestions dropdown once an item has been selected
+    }
+  })
 /*------------------------add projects to server-----------------------------*/
 const add = document.querySelector(".add-project-popup-btn");
 var isAddProjectValid = true;
@@ -174,7 +186,7 @@ function addProject() {
     "https://api.jsonbin.io/b/5f9bb434f0402361dceeb6f1",
   '$2b$10$ZiLJWecMZrSPnVOa15q2EOuAgE.3G.vauU.jzNyjYWa6KdbI0e6sm',
     JSON.stringify(projects),
-    (res) => {location.reload();}
+    (res) => { location.reload(); }
   );
   removeProjects();
   displayProjects();

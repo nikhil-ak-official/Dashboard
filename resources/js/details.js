@@ -13,9 +13,9 @@ apis.getAPI(
     console.log(cards[0]);
     for (let card of cards) {
       card.addEventListener("click", () => {
-            activeProject();
-          }
-        )
+        activeProject();
+      }
+      )
     }
   });
 
@@ -64,7 +64,7 @@ function activeProject() {
       ).style.strokeDashoffset =
         410 - (410 * `${project.percentage_complete}`) / 100;
 
-        activeObj = project;
+      activeObj = project;
     }
   });
 }
@@ -73,8 +73,22 @@ function activeProject() {
 /*---------------- Edit projects form ------------------------*/
 const cancelEditProjectsBtn = document.querySelector(".cancel-edit-btn");
 const editButton = document.querySelector(".edit-details-btn");
+const arrayOfTechnologies = ["HTML", "CSS", "JavaScript"];
 // const allAddProjectFields = document.querySelectorAll(".add-project-validate");
 const allEditProjectFields = document.querySelectorAll(".edit-project-validate");
+
+// Tag view in technologies input field
+var input = document.querySelector('#project-technologies-edit'),
+  tagify = new Tagify(input, {
+    whitelist: arrayOfTechnologies,
+    maxTags: 10,
+    dropdown: {
+      maxItems: 20,           // <- mixumum allowed rendered suggestions
+      classname: "tags-look", // <- custom classname for this dropdown, so it could be targeted
+      enabled: 0,             // <- show suggestions on focus
+      closeOnSelect: false    // <- do not hide the suggestions dropdown once an item has been selected
+    }
+  })
 
 editButton.addEventListener("click", () => {
   utils.popup("EditProject");
@@ -87,14 +101,14 @@ cancelEditProjectsBtn.addEventListener("click", () => {
 });
 
 function editProject() {
-  document.getElementById("project-name-edit" ).value = activeObj.project_name; ;
+  document.getElementById("project-name-edit").value = activeObj.project_name;;
   document.getElementById("project-description-edit").value = activeObj.project_desc;
   console.log(activeObj.tech_used);
   document.getElementById("project-technologies-edit").value = activeObj.tech_used;
   console.log(document.getElementById("project-technologies-edit"));
   document.getElementById("project-percentage-edit").value = activeObj.percentage_complete;
   document.getElementById("project-startDate-edit").value = activeObj.start_date;
-  document.getElementById("project-endDate-edit").value  = activeObj.end_date;
+  document.getElementById("project-endDate-edit").value = activeObj.end_date;
 }
 
 const edit = document.querySelector(".edit-project-popup-btn");
@@ -113,27 +127,27 @@ edit.addEventListener("click", () => {
 
 function getEdited() {
   let projectId = activeObj.id;
-  let projName = document.getElementById("project-name-edit" ).value;
+  let projName = document.getElementById("project-name-edit").value;
   let projDesc = document.getElementById("project-description-edit").value;
   let techs = document.getElementById("project-technologies-edit").value;
   let percent = document.getElementById("project-percentage-edit").value;
   let start = document.getElementById("project-startDate-edit").value;
   let end = document.getElementById("project-endDate-edit").value;
-  projects[projectId-1].id = projectId;
-  projects[projectId-1].project_name = projName;
-  projects[projectId-1].project_desc = projDesc;
-  projects[projectId-1].tech_used = techs;
-  projects[projectId-1].percentage_complete = percent;
-  projects[projectId-1].start_date = start;
-  projects[projectId-1].end_date = end;
-  
+  projects[projectId - 1].id = projectId;
+  projects[projectId - 1].project_name = projName;
+  projects[projectId - 1].project_desc = projDesc;
+  projects[projectId - 1].tech_used = techs;
+  projects[projectId - 1].percentage_complete = percent;
+  projects[projectId - 1].start_date = start;
+  projects[projectId - 1].end_date = end;
+
   console.log(projects);
   apis.putAPI(
     "PUT",
     "https://api.jsonbin.io/b/5f9bb434f0402361dceeb6f1",
     '$2b$10$ZiLJWecMZrSPnVOa15q2EOuAgE.3G.vauU.jzNyjYWa6KdbI0e6sm',
     JSON.stringify(projects),
-    (res) => {location.reload();}
+    (res) => { location.reload(); }
   );
   removeProject();
   activeProject();
