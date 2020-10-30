@@ -104,8 +104,7 @@ function editProject() {
   document.getElementById("project-name-edit").value = activeObj.project_name;;
   document.getElementById("project-description-edit").value = activeObj.project_desc;
   console.log(activeObj.tech_used);
-  document.getElementById("project-technologies-edit").value = activeObj.tech_used;
-  console.log(document.getElementById("project-technologies-edit"));
+  document.getElementById("project-technologies-edit").value = activeObj.tech_used;;
   document.getElementById("project-percentage-edit").value = activeObj.percentage_complete;
   document.getElementById("project-startDate-edit").value = activeObj.start_date;
   document.getElementById("project-endDate-edit").value = activeObj.end_date;
@@ -129,7 +128,9 @@ function getEdited() {
   let projectId = activeObj.id;
   let projName = document.getElementById("project-name-edit").value;
   let projDesc = document.getElementById("project-description-edit").value;
-  let techs = document.getElementById("project-technologies-edit").value;
+  let techsArray= document.getElementById("project-technologies-edit").value;
+  let techs = JSON.parse(techsArray).map(tech => tech.value);
+
   let percent = document.getElementById("project-percentage-edit").value;
   let start = document.getElementById("project-startDate-edit").value;
   let end = document.getElementById("project-endDate-edit").value;
@@ -142,13 +143,13 @@ function getEdited() {
   projects[projectId - 1].end_date = end;
 
   console.log(projects);
-  // apis.putAPI(
-  //   "PUT",
-  //   "https://api.jsonbin.io/b/5f9bb434f0402361dceeb6f1",
-  //   '$2b$10$ZiLJWecMZrSPnVOa15q2EOuAgE.3G.vauU.jzNyjYWa6KdbI0e6sm',
-  //   JSON.stringify(projects),
-  //   (res) => { location.reload(); }
-  // );
+  apis.putAPI(
+    "PUT",
+    "https://api.jsonbin.io/b/5f9bb434f0402361dceeb6f1",
+    '$2b$10$ZiLJWecMZrSPnVOa15q2EOuAgE.3G.vauU.jzNyjYWa6KdbI0e6sm',
+    JSON.stringify(projects),
+    (res) => { location.reload(); }
+  );
   removeProject();
   activeProject();
 }

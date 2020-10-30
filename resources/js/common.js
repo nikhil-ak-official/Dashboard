@@ -166,7 +166,9 @@ function addProject() {
   let projectId = projects.length + 1;
   let projName = document.getElementById("project-name").value;
   let projDesc = document.getElementById("project-description").value;
-  let techs = document.getElementById("project-technologies").value;
+  let techsArray = document.getElementById("project-technologies").value;
+  let techs = JSON.parse(techsArray).map(tech => tech.value);
+
   let percent = document.getElementById("project-percentage").value;
   let start = document.getElementById("project-startDate").value;
   let end = document.getElementById("project-endDate").value;
