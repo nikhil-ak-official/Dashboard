@@ -277,6 +277,8 @@ h1 {
 .tab-buttons button:hover {
   -webkit-transform: scale(1.01);
   transform: scale(1.01);
+  background-color: #49d8a0 !important;  /* To overwrite 'button-box buttons' color*/
+  color: #fff;
   -webkit-box-shadow: 1px -1px 8px rgba(0, 0, 0, 0.3);
   box-shadow: 1px -1px 8px rgba(0, 0, 0, 0.3);
 }
