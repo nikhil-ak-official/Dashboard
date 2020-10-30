@@ -183,7 +183,7 @@ function tableMaker(resourceList) {
                 <td>${resource.billable}</td>
                 <td>${resource.rate_per_hour}</td>
                 <td class="edit-resource" data-id=${resource.id}><ion-icon name="create-outline"></ion-icon></td>
-                <td class="delete-resource" data-id=${resource.id}>Del</td>`
+                <td class="delete-resource" data-id=${resource.id}><ion-icon name="trash-outline"></ion-icon></td>`
       tableBody.appendChild(row)
     })
     table.appendChild(tableBody)
