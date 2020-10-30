@@ -249,7 +249,7 @@ h1 {
 .middle-tabs {
   margin-top: 20px;
   width: 100%;
-  height: 55%;
+  height: 65%;
 }
 
 .tab-buttons {
@@ -310,7 +310,7 @@ footer {
   margin-bottom: 20px;
   position: fixed;
   width: 72.1%;
-  height: 17%;
+  height: 8%;
   background-color: #49d8a0;
   border-radius: 5px;
   -webkit-box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);

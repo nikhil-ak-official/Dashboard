@@ -181,9 +181,9 @@ function tableMaker(resourceList) {
       row.innerHTML = `<td>${resource.name}</td>
                 <td>${resource.email}</td>
                 <td>${resource.billable}</td>
-                <td>${resource.rate_per_hour}</td>
-                <td class="edit-resource" data-id=${resource.id}><ion-icon name="create-outline"></ion-icon></td>
-                <td class="delete-resource" data-id=${resource.id}><ion-icon name="trash-outline"></ion-icon></td>`
+                <td style="text-align: right;">${resource.rate_per_hour}</td>
+                <td class="edit-resource" data-id=${resource.id} style="text-align: center;"><ion-icon name="create-outline"></ion-icon></td>
+                <td class="delete-resource" data-id=${resource.id} style="text-align: center;"><ion-icon name="trash-outline"></ion-icon></td>`
       tableBody.appendChild(row)
     })
     table.appendChild(tableBody)
