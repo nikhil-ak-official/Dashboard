@@ -143,6 +143,20 @@ updateResourcesBtn.addEventListener('click',()=>{
   console.log(document.querySelector('#edit-billable-add').checked)
 })
 
+/*---------------- Delete Resource in server ------------------------*/
+function activateDelete(){
+  const delResourceBtn = document.querySelectorAll(".delete-resource");
+  delResourceBtn.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      let updatedOfflineResourceList = latestOfflineResourceList.filter((a)=>a.id != btn.dataset.id);
+      apis.putAPI(
+        "PUT",
+        'https://api.jsonbin.io/b/5f9a9eba9291173cbca5476f',
+        '$2b$10$b3HdJLya6P949p.eYlsxQuusyZSqNRrDPHWTobEvW9/c15QlIWZrK',
+        JSON.stringify(updatedOfflineResourceList),(docu)=>{resourceCall(document.querySelector('.active-card'))}
+      )
+    })})
+}
 
 /*---------------- Dynamic Resource table ------------------------*/
 let latestOfflineResourceList
@@ -189,7 +203,7 @@ function tableMaker(resourceList) {
     table.appendChild(tableBody)
 
     activateEdit()
-    // activateDelete()
+    activateDelete()
   }
   else {
     console.log('No resource available')
