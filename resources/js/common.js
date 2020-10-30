@@ -135,19 +135,19 @@ cancelAddProjectsBtn.addEventListener("click", () => {
   utils.popup("AddProject");
 });
 
+// Tag view in technologies input field
 var input = document.querySelector('#project-technologies'),
+  // init Tagify script on the above inputs
   tagify = new Tagify(input, {
-    whitelist: ['aaa', 'aaab', 'aaabb', 'aaabc', 'aaabd', 'aaabe', 'aaac', 'aaacc'],
+    whitelist: arrayOfTechnologies,
+    maxTags: 10,
     dropdown: {
-      classname: "color-blue",
-      enabled: 0,              // show the dropdown immediately on focus
-      maxItems: 5,
-      position: "text",         // place the dropdown near the typed text
-      closeOnSelect: false,          // keep the dropdown open after selecting a suggestion
-      highlightFirst: true
+      maxItems: 20,           // <- mixumum allowed rendered suggestions
+      classname: "tags-look", // <- custom classname for this dropdown, so it could be targeted
+      enabled: 0,             // <- show suggestions on focus
+      closeOnSelect: false    // <- do not hide the suggestions dropdown once an item has been selected
     }
-  });
-
+  })
 /*------------------------add projects to server-----------------------------*/
 const add = document.querySelector(".add-project-popup-btn");
 var isAddProjectValid = true;

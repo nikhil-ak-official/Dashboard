@@ -24,6 +24,8 @@ html {
   height: 0px;
   background: transparent;
 }
+
+
 /* -------------------------------- */
 /* REUSABLE */
 /* -------------------------------- */
@@ -45,6 +47,7 @@ html {
   height: 100vh;
   width: 75%;
   background-color: #f6f7fb;
+  /* z-index: -2; */
 }
 
 .btn-red {
@@ -548,8 +551,8 @@ th {
   transform: translate(-50%, -50%);
   background-color: #fff;
   border-radius: 5px;
-  z-index: 99999;
   overflow: scroll;
+  z-index: 9999;
 }
 .popup div {
   width: 100%;
@@ -574,10 +577,6 @@ th {
 .popup textarea {
   padding: 5px;
   border-radius: 2px;
-}
-
-.project-technologies-group {
-  position: relative;
 }
 
 .popup input,
@@ -658,4 +657,31 @@ th {
 .checkbox-container label,
 .checkbox-container input{
   margin: 0;
+}
+
+.resource-buttons{
+  margin-top: 25px;
+  margin-bottom: 5px;
+}
+
+.tags-look .tagify__dropdown__item{
+  display: inline-block;
+  border-radius: 3px;
+  padding: .3em .5em;
+  border: 1px solid #CCC;
+  background: #F3F3F3;
+  margin: .2em;
+  font-size: .85em;
+  color: black;
+  transition: 0s;
+  z-index: 999999999;
+}
+
+.tags-look .tagify__dropdown__item--active{
+  color: black;
+}
+
+.tags-look .tagify__dropdown__item:hover{
+  background: lightyellow;
+  border-color: gold;
 }
