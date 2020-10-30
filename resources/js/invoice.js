@@ -27,8 +27,8 @@ function tableMaker(resourceList) {
   if (resourceList) {
     let table = document.querySelector('.invoice-details')
     table.innerHTML = `<thead>
-              <th>Name</th>
-              <th>Rate per hour</th>         
+              <th style="color: #fff;">Name</th>
+              <th style="color: #fff;">Rate per hour</th>         
             </thead>`
     let tableBody = document.createElement('tbody')
     resourceList.forEach((resource) => {
