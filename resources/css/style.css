@@ -374,8 +374,8 @@ footer {
   stroke: #000;
   -webkit-transform: translate(5px, 5px);
   transform: translate(5px, 5px);
-  stroke-dasharray: 440;
-  stroke-dashoffset: 440;
+  stroke-dasharray: 410;
+  stroke-dashoffset: 410;
   -webkit-transform: translate(10px, 10px);
   transform: translate(10px, 10px);
 }
@@ -385,7 +385,7 @@ footer {
   stroke: #f3f3f3;
 }
 .right-side-details .detail-circle circle:nth-child(2) {
-  stroke-dashoffset: calc(440 - ((440 * 75) / 100));
+  stroke-dashoffset: calc(410 - ((410 * 75) / 100));
   stroke: #49d8a0;
 }
 

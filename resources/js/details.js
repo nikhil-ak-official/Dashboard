@@ -62,7 +62,7 @@ function activeProject() {
       document.querySelector(
         ".detail-circle :nth-child(2)"
       ).style.strokeDashoffset =
-        440 - (440 * `${project.percentage_complete}`) / 100;
+        410 - (410 * `${project.percentage_complete}`) / 100;
 
         activeObj = project;
     }
