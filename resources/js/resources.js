@@ -36,7 +36,8 @@ document.querySelector('.add-resources-popup-btn').addEventListener("click", () 
 })
 
 function AddResources(resources) {
-  let resourceId = resources.length + 1;
+  let copyResource = [...resources]
+  let resourceId = copyResource.pop().id + 1;
   let resourceName = document.getElementById('name-add').value;
   let resourceEmail = document.getElementById('email-add').value;
   let resourceBillable = document.getElementById('billable-add').checked;
@@ -151,8 +152,8 @@ function activateDelete(){
       let updatedOfflineResourceList = latestOfflineResourceList.filter((a)=>a.id != btn.dataset.id);
       apis.putAPI(
         "PUT",
-        'https://api.jsonbin.io/b/5f9a9eba9291173cbca5476f',
-        '$2b$10$b3HdJLya6P949p.eYlsxQuusyZSqNRrDPHWTobEvW9/c15QlIWZrK',
+        'https://api.jsonbin.io/b/5f9bb506f0402361dceeb75f',
+    '$2b$10$ZiLJWecMZrSPnVOa15q2EOuAgE.3G.vauU.jzNyjYWa6KdbI0e6sm',
         JSON.stringify(updatedOfflineResourceList),(docu)=>{resourceCall(document.querySelector('.active-card'))}
       )
     })})

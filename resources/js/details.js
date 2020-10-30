@@ -23,9 +23,9 @@ apis.getAPI(
 var activeObj;
 function activeProject() {
   console.log("success!!!!");
-  let activeProjectCard = document.querySelector(".active-card p").textContent;
+  let activeProjectCard = document.querySelector(".active-card").dataset.id;
   projects.forEach((project) => {
-    if (project.project_name === activeProjectCard) {
+    if (project.id == activeProjectCard) {
       document.querySelector(
         ".tab-container"
       ).innerHTML = `<div class="left-side-details">
