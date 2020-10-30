@@ -593,6 +593,7 @@ th {
 .edit-resources-popup-btn {
   background-color: #49d8a0;
   transition: all 0.2s ease;
+  color: #fff;
 }
 
 .add-project-popup-btn:hover,
@@ -607,7 +608,8 @@ th {
 .cancel-edit-btn,
 .cancel-add-resources-btn,
 .cancel-edit-resources-btn {
-  background-color: #d84981;
+  background-color: #fff;
+  border:1px solid #d84981;
   transition: all 0.2s ease;
 }
 
@@ -615,6 +617,8 @@ th {
 .cancel-edit-btn:hover,
 .cancel-add-resources-btn:hover,
 .cancel-edit-resources-btn:hover {
+  background-color: #d84981;
+  color: #fff;
   transform: scale(1.01);
   box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.3);
 }
