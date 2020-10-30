@@ -115,7 +115,7 @@ const edit = document.querySelector(".edit-project-popup-btn");
 var isEditProjectValid = true;
 edit.addEventListener("click", () => {
   const allEditProjectFields = document.querySelectorAll(".edit-project-validate");
-  console.log("edit");
+  console.log(allEditProjectFields);
   utils.validateFields(allEditProjectFields, isEditProjectValid, (valid) => {
     if (valid === true) {
       console.log("validated");
@@ -142,13 +142,13 @@ function getEdited() {
   projects[projectId - 1].end_date = end;
 
   console.log(projects);
-  apis.putAPI(
-    "PUT",
-    "https://api.jsonbin.io/b/5f9bb434f0402361dceeb6f1",
-    '$2b$10$ZiLJWecMZrSPnVOa15q2EOuAgE.3G.vauU.jzNyjYWa6KdbI0e6sm',
-    JSON.stringify(projects),
-    (res) => { location.reload(); }
-  );
+  // apis.putAPI(
+  //   "PUT",
+  //   "https://api.jsonbin.io/b/5f9bb434f0402361dceeb6f1",
+  //   '$2b$10$ZiLJWecMZrSPnVOa15q2EOuAgE.3G.vauU.jzNyjYWa6KdbI0e6sm',
+  //   JSON.stringify(projects),
+  //   (res) => { location.reload(); }
+  // );
   removeProject();
   activeProject();
 }
