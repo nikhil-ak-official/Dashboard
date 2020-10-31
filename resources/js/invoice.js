@@ -27,7 +27,6 @@ cards.forEach((card) => {
 function resourceCall(card) {
   apis.getAPI('get', utils.resourceAPI, utils.secretKey, true, (allResources) => {
     let selectedResources = allResources.filter((resources) => resources.project_id == card.dataset.id)
-    console.log(selectedResources)
     tableMaker(selectedResources);
     remove();
   })

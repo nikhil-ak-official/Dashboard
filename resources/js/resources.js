@@ -98,29 +98,34 @@ function resourceCall(card) {
 }
 
 function tableMaker(resourceList) {
+  let table = document.querySelector('.resource-table')
   if (resourceList) {
-    let table = document.querySelector('.resource-table')
-    table.innerHTML = `<thead>
+    if (resourceList.length <= 0) {
+      table.innerHTML = 'No resource available'
+    }
+    else {
+      table.innerHTML = `<thead>
               <th>Name</th>
               <th>Email</th>
               <th>Billable</th>
               <th>Rate per hour</th>         
             </thead>`
-    let tableBody = document.createElement('tbody')
-    resourceList.forEach((resource) => {
-      let row = document.createElement('tr')
-      row.innerHTML = `<td>${resource.name}</td>
+      let tableBody = document.createElement('tbody')
+      resourceList.forEach((resource) => {
+        let row = document.createElement('tr')
+        row.innerHTML = `<td>${resource.name}</td>
                 <td>${resource.email}</td>
                 <td>${resource.billable}</td>
                 <td style="text-align: right;">${resource.rate_per_hour}</td>
                 <td class="edit-resource" data-id=${resource.id} style="text-align: center;"><ion-icon name="create-outline"></ion-icon></td>
                 <td class="delete-resource" data-id=${resource.id} style="text-align: center;"><ion-icon name="trash-outline"></ion-icon></td>`
-      tableBody.appendChild(row)
-    })
-    table.appendChild(tableBody)
+        tableBody.appendChild(row)
+      })
+      table.appendChild(tableBody)
 
-    activateEdit()
-    activateDelete()
+      activateEdit()
+      activateDelete()
+    }
   }
   else {
     console.log('No resource available')

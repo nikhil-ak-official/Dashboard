@@ -44,7 +44,6 @@ function setTabs(index) {
   });
 
   tabs[index].style.display = "block";
-  console.log(tabs[index]);
   if (tabs[index].dataset.editable == "true") {
     editButton.style.display = "block";
     editButton.textContent = `Edit ${buttons[index].textContent}`;
