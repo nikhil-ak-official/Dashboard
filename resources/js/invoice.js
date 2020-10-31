@@ -36,18 +36,23 @@ function resourceCall(card) {
 function tableMaker(resourceList) {
   if (resourceList) {
     let table = document.querySelector('.invoice-details')
-    table.innerHTML = `<thead>
+    if (resourceList.length <= 0) {
+      table.innerHTML = 'No resource available'
+    }
+    else {
+      table.innerHTML = `<thead>
               <th style="color: #fff;">Name</th>
               <th style="color: #fff;">Rate per hour</th>         
             </thead>`
-    let tableBody = document.createElement('tbody')
-    resourceList.forEach((resource) => {
-      let row = document.createElement('tr')
-      row.innerHTML = `<td>${resource.name}</td>
+      let tableBody = document.createElement('tbody')
+      resourceList.forEach((resource) => {
+        let row = document.createElement('tr')
+        row.innerHTML = `<td>${resource.name}</td>
                 <td class= "invoice-rate" style="text-align: right;">${resource.rate_per_hour}</td>`
-      tableBody.appendChild(row)
-    })
-    table.appendChild(tableBody)
+        tableBody.appendChild(row)
+      })
+      table.appendChild(tableBody)
+    }
   }
   else {
     console.log('No resource available')

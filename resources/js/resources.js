@@ -15,12 +15,15 @@ import utils from './utils.js'
 import apis from './api.js'
 
 /*-------------- Add resources form popup ----------------------*/
+let availableResource = false
 const addResourceBtn = document.querySelector(".add-resources-btn");
 const cancelAddResourcesBtn = document.querySelector(".cancel-add-resources-btn");
 const allAddResourcesFields = document.querySelectorAll(".add-resources-validate");
 
 addResourceBtn.addEventListener("click", () => {
-  utils.popup("AddResources");
+  if (availableResource) {
+    utils.popup("AddResources");
+  }
 });
 
 cancelAddResourcesBtn.addEventListener("click", () => {
@@ -31,15 +34,17 @@ cancelAddResourcesBtn.addEventListener("click", () => {
 document.querySelector('.add-resources-popup-btn').addEventListener("click", () => {
   const allAddResourceFields = document.querySelectorAll(".add-resources-validate");
   var isAddResourceValid = true;
-  apis.getAPI('get', utils.resourceAPI, utils.secretKey, true, (obj) => {
-    utils.validateFields(allAddResourceFields, isAddResourceValid, (valid) => {
-      if (valid === true) {
-        console.log("validated");
+  utils.validateFields(allAddResourceFields, isAddResourceValid, (valid) => {
+    if (valid === true) {
+      console.log("validated");
+      apis.getAPI('get', utils.resourceAPI, utils.secretKey, true, (obj) => {
         AddResources(obj)
-      }
-    })
 
+      })
+
+    }
   })
+
 })
 
 function AddResources(resources) {
@@ -61,6 +66,7 @@ function AddResources(resources) {
   }
   resources.push(newResource);
   console.log(resources);
+
   apis.putAPI("PUT", utils.resourceAPI, utils.secretKey, JSON.stringify(resources), (obj) => {
     resourceCall(document.querySelector('.active-card'))
   });
@@ -92,6 +98,11 @@ cards.forEach((card) => {
 function resourceCall(card) {
   apis.getAPI('get', utils.resourceAPI, utils.secretKey, true, (allResources) => {
     latestOfflineResourceList = allResources
+    if (allResources && allResources.length > 0) {
+      // Clear the 'No data available' message
+      document.querySelector('.no-data-div-resource').style.display = 'none'
+      availableResource = true
+    }
     let selectedResources = allResources.filter((resources) => resources.project_id == card.dataset.id)
     tableMaker(selectedResources)
   })
@@ -100,10 +111,7 @@ function resourceCall(card) {
 function tableMaker(resourceList) {
   let table = document.querySelector('.resource-table')
   if (resourceList) {
-    if (resourceList.length <= 0) {
-      table.innerHTML = 'No resource available'
-    }
-    else {
+    if (resourceList.length > 0) {
       table.innerHTML = `<thead>
               <th>Name</th>
               <th>Email</th>
@@ -126,9 +134,12 @@ function tableMaker(resourceList) {
       activateEdit()
       activateDelete()
     }
-  }
-  else {
-    console.log('No resource available')
+    else {
+      console.log('No resource available')
+      // Display the 'No data available' message
+      table.innerHTML = ' '
+      document.querySelector('.no-data-div-resource').style.display = 'block'
+    }
   }
 }
 
@@ -200,6 +211,4 @@ allEditResourcesFields.forEach((field) => {
   field.addEventListener("blur", (e) => {
     utils.validate(e.target);
   });
-});
-
-
+})

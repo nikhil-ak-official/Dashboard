@@ -3,8 +3,8 @@
  - This js file contains logics common to dashboard menu.
 
  >> CONTENTS
-    1. API call to receive projects data from server
-    2. Create tab view im main content area.
+    1. Create tab view im main content area.
+    2. API call to receive projects data from server.
     3. Dynamic project list making (Cards).
     4. Hamburger menu setup.
     5. 'Add projects' form and its tag view.
@@ -15,12 +15,6 @@ import apis from "./api.js";
 import utils from "./utils.js";
 
 var projects;  // Variable to store projects data obtained via API call
-
-/*----- API call to receive projects data from server ----*/
-apis.getAPI("get", utils.projectAPI, utils.secretKey, false, (obj) => {
-  projects = obj;
-  displayProjects();
-});
 
 /*---------------- Tab view setup ------------------------*/
 const buttons = document.querySelectorAll(".button-box button");
@@ -53,6 +47,12 @@ function setTabs(index) {
 }
 
 setTabs(0);
+
+/*----- API call to receive projects data from server ----*/
+apis.getAPI("get", utils.projectAPI, utils.secretKey, false, (obj) => {
+  projects = obj;
+  displayProjects();
+});
 
 /*------------ Dynamic project list (Cards) --------------*/
 function displayProjects() {
