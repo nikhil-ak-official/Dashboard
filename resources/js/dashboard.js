@@ -16,8 +16,6 @@ import utils from "./utils.js";
 
 var projects;  // Variable to store projects data obtained via API call
 
-
-
 /*---------------- Tab view setup ------------------------*/
 const buttons = document.querySelectorAll(".button-box button");
 const tabs = document.querySelectorAll(".tab-content");

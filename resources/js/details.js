@@ -20,7 +20,6 @@ apis.getAPI("get", utils.projectAPI, utils.secretKey, true, (obj) => {
   projects = obj;
   if (projects && projects.length > 0) {
     // Clear the 'No data available' message
-    console.log(document.querySelector('.no-data-div-details'))
     document.querySelector('.no-data-div-details').style.display = 'none'
   }
   activeProject();

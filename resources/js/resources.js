@@ -21,7 +21,7 @@ const cancelAddResourcesBtn = document.querySelector(".cancel-add-resources-btn"
 const allAddResourcesFields = document.querySelectorAll(".add-resources-validate");
 
 addResourceBtn.addEventListener("click", () => {
-  if(availableResource){
+  if (availableResource) {
     utils.popup("AddResources");
   }
 });
@@ -34,15 +34,17 @@ cancelAddResourcesBtn.addEventListener("click", () => {
 document.querySelector('.add-resources-popup-btn').addEventListener("click", () => {
   const allAddResourceFields = document.querySelectorAll(".add-resources-validate");
   var isAddResourceValid = true;
-  apis.getAPI('get', utils.resourceAPI, utils.secretKey, true, (obj) => {
-    utils.validateFields(allAddResourceFields, isAddResourceValid, (valid) => {
-      if (valid === true) {
-        console.log("validated");
+  utils.validateFields(allAddResourceFields, isAddResourceValid, (valid) => {
+    if (valid === true) {
+      console.log("validated");
+      apis.getAPI('get', utils.resourceAPI, utils.secretKey, true, (obj) => {
         AddResources(obj)
-      }
-    })
 
+      })
+
+    }
   })
+
 })
 
 function AddResources(resources) {
