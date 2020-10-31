@@ -1,8 +1,15 @@
 /*---------------------------------------------------------------
+ >> UTILS.JS
  - This js file is a common collection of all utility functions
    used in this project.
  - All business logics in one place to be reused throughout 
    project.
+
+ >> CONTENTS
+    1. Pop up display function.
+    2. Field validation function.
+    3. Common variables for API calls
+    4. Common array of all approved list of technologies.
 ----------------------------------------------------------------*/
 
 /*----------- Show popup on call -------------------------------*/
