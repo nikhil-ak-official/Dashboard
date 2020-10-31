@@ -16,7 +16,7 @@ import utils from "./utils.js";
 
 var projects;  // Variable to store projects data obtained via API call
 
-/*-------- API call to receive table data from server ----*/
+/*----- API call to receive projects data from server ----*/
 apis.getAPI("get", utils.projectAPI, utils.secretKey, false, (obj) => {
   projects = obj;
   displayProjects();

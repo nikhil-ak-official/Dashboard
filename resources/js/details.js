@@ -1,25 +1,35 @@
+/*---------------------------------------------------------------
+ >> DETAILS.JS
+ - This js file includes all features for the details tab.
+
+ >> CONTENTS
+    1. API call to receive projects data from server.
+    2. Dynamic creation of details of selected project.
+    3. Edit projects form.
+    4. Display edit project popup with setting default value.
+    5. Upload the edited project details to server.
+    6. Validation on blur for 'Edit project' form.
+----------------------------------------------------------------*/
 import apis from "./api.js";
 import utils from './utils.js';
-var projects;
-apis.getAPI(
-  "get",
-  utils.projectAPI,
-  utils.secretKey,
-  true,
-  (obj) => {
-    projects = obj;
-    activeProject();
-    var cards = document.getElementsByClassName("project-card");
-    console.log(cards[0]);
-    for (let card of cards) {
-      card.addEventListener("click", () => {
-        activeProject();
-      }
-      )
-    }
-  });
+
+var projects; // Variable to store projects data obtained via API call
+
+/*----- API call to receive projects data from server ----*/
+apis.getAPI("get", utils.projectAPI, utils.secretKey, true, (obj) => {
+  projects = obj;
+  activeProject();
+  var cards = document.getElementsByClassName("project-card");
+  for (let card of cards) {
+    card.addEventListener("click", () => {
+      activeProject();
+    })
+  }
+});
 
 var activeObj;
+
+/*---- Dynamic creation of details of selected project ---*/
 function activeProject() {
   let activeProjectCard = document.querySelector(".active-card").dataset.id;
   projects.forEach((project) => {
@@ -71,10 +81,9 @@ function activeProject() {
 /*---------------- Edit projects form ------------------------*/
 const cancelEditProjectsBtn = document.querySelector(".cancel-edit-btn");
 const editButton = document.querySelector(".edit-details-btn");
-// const allAddProjectFields = document.querySelectorAll(".add-project-validate");
 const allEditProjectFields = document.querySelectorAll(".edit-project-validate");
 
-// Tag view in technologies input field
+/*--- Tag view in technologies input field: Edit projects ---*/
 var input = document.querySelector('#project-technologies-edit'),
   tagify = new Tagify(input, {
     whitelist: utils.arrayOfTechnologies,
@@ -97,10 +106,11 @@ cancelEditProjectsBtn.addEventListener("click", () => {
 
 });
 
+/*-- Display edit project popup with setting default value --*/
 function editProject() {
   document.getElementById("project-name-edit").value = activeObj.project_name;;
   document.getElementById("project-description-edit").value = activeObj.project_desc;
-  let existingTechs = activeObj.tech_used.reduce((acc,curr) => [...acc,{value:curr}],[])
+  let existingTechs = activeObj.tech_used.reduce((acc, curr) => [...acc, { value: curr }], [])
   document.getElementById("project-technologies-edit").value = JSON.stringify(existingTechs);
   document.getElementById("project-percentage-edit").value = activeObj.percentage_complete;
   document.getElementById("project-startDate-edit").value = activeObj.start_date;
@@ -121,11 +131,12 @@ edit.addEventListener("click", () => {
   });
 });
 
+/*------- Upload the edited project details to server ------*/
 function getEdited() {
   let projectId = activeObj.id;
   let projName = document.getElementById("project-name-edit").value;
   let projDesc = document.getElementById("project-description-edit").value;
-  let techsArray= document.getElementById("project-technologies-edit").value;
+  let techsArray = document.getElementById("project-technologies-edit").value;
   let techs = JSON.parse(techsArray).map(tech => tech.value);
 
   let percent = document.getElementById("project-percentage-edit").value;
@@ -139,13 +150,7 @@ function getEdited() {
   projects[projectId - 1].start_date = start;
   projects[projectId - 1].end_date = end;
 
-  apis.putAPI(
-    "PUT",
-    utils.projectAPI,
-    utils.secretKey,
-    JSON.stringify(projects),
-    (res) => { location.reload() }
-  );
+  apis.putAPI("PUT", utils.projectAPI, utils.secretKey, JSON.stringify(projects), (res) => { location.reload() });
   removeProject();
   activeProject();
 }
