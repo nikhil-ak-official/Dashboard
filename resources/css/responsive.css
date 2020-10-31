@@ -35,7 +35,7 @@
     height: 90%;
   }
 
-  .total-amount-label{
+  .total-amount-label {
     margin-top: 20px;
   }
 
@@ -94,7 +94,7 @@
 /*-----------------------------------*/
 /*------ TAB VIEW: INTERMEDIATE -----*/
 /*-----------------------------------*/
-@media only screen and (max-width: 540px){
+@media only screen and (max-width: 540px) {
   .tab-container {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -114,7 +114,7 @@
     padding: 0px 5px;
   }
 
-    .date-box {
+  .date-box {
     margin-top: 0px;
     -webkit-box-pack: end;
     -ms-flex-pack: end;
@@ -133,12 +133,10 @@
   }
 }
 
-
 /*-----------------------------------*/
 /*------ MOBILE VIEW: LARGE ---------*/
 /*-----------------------------------*/
 @media only screen and (max-width: 420px) {
-
   .main-panel {
     height: 90vh;
     width: 100vw;
@@ -267,8 +265,8 @@
     padding: 8px 8px;
   }
 
-  .resource-table-scroll{
-    height: 75% !important;  /* Override default scroll box height*/
+  .resource-table-scroll {
+    height: 75% !important; /* Override default scroll box height*/
   }
 
   /*-------------- Invoice tab ---------------*/
@@ -301,7 +299,7 @@
     height: 5%;
     width: 96% !important;
   }
-  
+
   /*-------------- Add projects popup -----*/
   .popup {
     padding: 10px;
@@ -347,4 +345,3 @@
     width: 95% !important;
   }
 }
-
