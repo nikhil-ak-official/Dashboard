@@ -1,4 +1,14 @@
+/*---------------------------------------------------------------
+ - This js file is a common collection of all utility functions
+   used in this project.
+ - All business logics in one place to be reused throughout 
+   project.
+----------------------------------------------------------------*/
+
+/*----------- Show popup on call -------------------------------*/
 let popup = function (typeOfPopup) {
+
+  // Find out which popup was called.
   if (typeOfPopup == 'AddProject') {
     var popupCard = document.querySelector('.add-project-popup')
   }
@@ -9,22 +19,21 @@ let popup = function (typeOfPopup) {
     var popupCard = document.querySelector('.add-resources-popup')
   }
   else if (typeOfPopup == "EditResources") {
-
     var popupCard = document.querySelector('.edit-resources-popup')
-    console.log('popup')
-    console.log(popupCard)
   }
+
   const leftSection = document.querySelector('.side-panel')
   const rightSection = document.querySelector('.main-panel')
 
-
-  leftSection.classList.toggle('blur')
+  leftSection.classList.toggle('blur')   // Blur out main content.
   rightSection.classList.toggle('blur')
 
   popupCard.classList.toggle('active')
 }
 
-let isValid = true;
+let isValid = true;  // Variable to check is all validations are satisfied: Returns 'false' in gets error at least once.
+
+/*----------- field list validation ------------------------------*/
 let validateFields = function (fields, valid, callback) {
   isValid = valid;
   console.log(fields);
@@ -32,7 +41,7 @@ let validateFields = function (fields, valid, callback) {
   callback(isValid);
 }
 
-// Validation for 'Add projects' and 'Edit projects'
+/*----------- Individual field validation -------------------------*/
 let validate = function (field) {
   console.log(field.tagName)
   if (field.tagName != 'TAGS') {
@@ -43,7 +52,7 @@ let validate = function (field) {
       if (field.name == "Email") {
         validateEmail(field)
       }
-      else{
+      else {
         clearError(field);
       }
     }
@@ -51,16 +60,16 @@ let validate = function (field) {
 }
 
 // Email validation
-function validateEmail(input){
+function validateEmail(input) {
   if (!isEmail(input.value)) {
-    setError(input,"Email is invalid!");
-  } 
-  else{
+    setError(input, "Email is invalid!");
+  }
+  else {
     clearError(input)
   }
 }
 
-function isEmail(email){
+function isEmail(email) {
   return /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(email)
 }
 
@@ -81,11 +90,14 @@ function clearError(input) {
   fieldError.textContent = '';
 }
 
-
+/*----------- Common variables and values -------------------------*/
+// APIs
 let resourceAPI = 'https://api.jsonbin.io/b/5f9befdc9291173cbca5d666';
 let projectAPI = 'https://api.jsonbin.io/b/5f9bef8f857f4b5f9ae02225';
 let secretKey = '$2b$10$1KZ6VDOn5QBsDQ6Fk2BGdeDrxrbQVt6vqpDTnFlM5xykGvBmx7hkC';
-let arrayOfTechnologies = ["HTML","CSS","JavaScript","Flutter","Swift","Java","C++","C#","Python"]
+
+// List of technologies for popup input field.
+let arrayOfTechnologies = ["HTML", "CSS", "JavaScript", "Flutter", "Swift", "Java", "C++", "C#", "Python"]
 
 let utils = { popup, validateFields, validate, resourceAPI, projectAPI, secretKey, arrayOfTechnologies };
 export default utils;
