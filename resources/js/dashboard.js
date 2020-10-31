@@ -1,20 +1,28 @@
+/*---------------------------------------------------------------
+ >> DASHBOARD.JS
+ - This js file contains logics common to dashboard menu.
+
+ >> CONTENTS
+    1. API call to receive projects data from server
+    2. Create tab view im main content area.
+    3. Dynamic project list making (Cards).
+    4. Hamburger menu setup.
+    5. 'Add projects' form and its tag view.
+    6. PUT projects to server (Adding new project).
+    7. Validation on blur for 'Add project' form.
+----------------------------------------------------------------*/
 import apis from "./api.js";
 import utils from "./utils.js";
 
-var projects;
-apis.getAPI(
-  "get",
-  utils.projectAPI,
-  utils.secretKey,
-  false,
-  (obj) => {
-    projects = obj;
-    displayProjects();
-  }
-);
+var projects;  // Variable to store projects data obtained via API call
+
+/*-------- API call to receive table data from server ----*/
+apis.getAPI("get", utils.projectAPI, utils.secretKey, false, (obj) => {
+  projects = obj;
+  displayProjects();
+});
 
 /*---------------- Tab view setup ------------------------*/
-
 const buttons = document.querySelectorAll(".button-box button");
 const tabs = document.querySelectorAll(".tab-content");
 const editButton = document.querySelector(".edit-details-btn");
@@ -29,11 +37,9 @@ function setTabs(index) {
   buttons.forEach((button) => {
     button.className = "";
   });
-
   buttons[index].className = "active-tab";
 
   tabs.forEach((tab) => {
-
     tab.style.display = "none";
   });
 
@@ -49,7 +55,7 @@ function setTabs(index) {
 
 setTabs(0);
 
-/*---------------- Dynamic project list ------------------------*/
+/*------------ Dynamic project list (Cards) --------------*/
 function displayProjects() {
   if (projects) {
     projects.forEach((project) => {
@@ -134,9 +140,8 @@ cancelAddProjectsBtn.addEventListener("click", () => {
   utils.popup("AddProject");
 });
 
-// Tag view in technologies input field
+/*--- Tag view in technologies input field: Add projects ---*/
 var input = document.querySelector('#project-technologies'),
-  // init Tagify script on the above inputs
   tagify = new Tagify(input, {
     whitelist: utils.arrayOfTechnologies,
     maxTags: 10,
@@ -147,7 +152,8 @@ var input = document.querySelector('#project-technologies'),
       closeOnSelect: false    // <- do not hide the suggestions dropdown once an item has been selected
     }
   })
-/*------------------------add projects to server-----------------------------*/
+
+/*------- Add projects to server----------------------------*/
 const add = document.querySelector(".add-project-popup-btn");
 var isAddProjectValid = true;
 add.addEventListener("click", () => {
@@ -182,13 +188,7 @@ function addProject() {
   };
   projects.push(projectObj);
   console.log(projects);
-  apis.putAPI(
-    "PUT",
-    utils.projectAPI,
-    utils.secretKey,
-    JSON.stringify(projects),
-    (res) => { location.reload(); }
-  );
+  apis.putAPI("PUT", utils.projectAPI, utils.secretKey, JSON.stringify(projects), (res) => { location.reload(); });
   removeProjects();
   displayProjects();
 }
