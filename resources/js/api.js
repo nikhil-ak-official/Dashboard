@@ -29,6 +29,7 @@ let getAPI = function (method, url, secretKey, asyncType, callback) {
   xhr.open(method, url, asyncType)
   xhr.setRequestHeader("secret-key", secretKey)
   xhr.send()
+
 }
 
 /*-------------- API Call to PUT items to server ----------------*/
