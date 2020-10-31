@@ -1,4 +1,6 @@
-/*---------- Tab view ----------------*/
+/*-----------------------------------*/
+/*------ TAB VIEW -------------------*/
+/*-----------------------------------*/
 @media only screen and (max-width: 768px) {
   .main-panel {
     height: 100vh;
@@ -89,7 +91,9 @@
   }
 }
 
-/*---------- Mobile view ----------------*/
+/*-----------------------------------*/
+/*------ TAB VIEW: INTERMEDIATE -----*/
+/*-----------------------------------*/
 @media only screen and (max-width: 540px){
   .tab-container {
     -webkit-box-orient: vertical;
@@ -130,7 +134,9 @@
 }
 
 
-/*---------- Mobile view ----------------*/
+/*-----------------------------------*/
+/*------ MOBILE VIEW: LARGE ---------*/
+/*-----------------------------------*/
 @media only screen and (max-width: 420px) {
 
   .main-panel {
@@ -304,7 +310,9 @@
   }
 }
 
-/*---------- Mobile view ----------------*/
+/*-----------------------------------*/
+/*------ MOBILE VIEW: SMALL ---------*/
+/*-----------------------------------*/
 @media only screen and (max-width: 360px) {
   .main-panel {
     height: -webkit-fit-content;
