@@ -1,6 +1,11 @@
 /*---------------------------------------------------------------
+ >> UTILS.JS
  - This js file is a common collection of all api calls used in 
   this webpage.
+
+ >> CONTENTS
+    1. API call to get items from server
+    2. API call to put items to server
 ----------------------------------------------------------------*/
 
 /*-------------- API Call to GET items from server --------------*/
