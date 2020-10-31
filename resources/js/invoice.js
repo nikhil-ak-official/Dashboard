@@ -1,6 +1,17 @@
+/*---------------------------------------------------------------
+ >> INVOICE.JS
+ - This js file includes all features for the invoice tab.
+
+ >> CONTENTS
+    1. Dynamic invoice table.
+    2. Invoice calculation.
+----------------------------------------------------------------*/
 import utils from './utils.js'
 import apis from './api.js'
-let calcResource;
+
+let calcResource; // variable to store all resource list.
+
+/*---------------- Dynamic invoice table ------------------------*/
 const cards = document.querySelectorAll('.project-card')
 const firstSelectedCard = document.querySelector('.active-card')
 resourceCall(firstSelectedCard)
@@ -12,14 +23,14 @@ cards.forEach((card) => {
   })
 })
 
+// API call and table making
 function resourceCall(card) {
-  apis.getAPI('get', utils.resourceAPI,
-  utils.secretKey, true, (allResources) => {
-      let selectedResources = allResources.filter((resources) => resources.project_id == card.dataset.id)
-      console.log(selectedResources)
-      tableMaker(selectedResources);
-      remove();
-    })
+  apis.getAPI('get', utils.resourceAPI, utils.secretKey, true, (allResources) => {
+    let selectedResources = allResources.filter((resources) => resources.project_id == card.dataset.id)
+    console.log(selectedResources)
+    tableMaker(selectedResources);
+    remove();
+  })
 }
 
 
@@ -45,25 +56,24 @@ function tableMaker(resourceList) {
   calcResource = resourceList
 }
 
-/*-----------------------------------Invoice calculation---------------------------------------------- */
-
+/*----------------- Invoice calculation-------------------------- */
 let generateInvoice = document.querySelector(".generate-invoice-btn");
-generateInvoice.addEventListener("click",calculation);
+generateInvoice.addEventListener("click", calculation);
 
 function calculation() {
   let workingDays = document.getElementById("working-days").value;
-  if(workingDays) {
+  if (workingDays) {
     console.log(calcResource);
     let rateList = calcResource.map(e => e.rate_per_hour);
     console.log(rateList);
     let total = 0;
-    rateList.forEach(rate => 
-      {total = total + rate*8*workingDays;})
+    rateList.forEach(rate => { total = total + rate * 8 * workingDays; })
     console.log(total);
     document.querySelector(".total-amount").innerHTML = total;
   }
 }
 
+// Clear input field and total amount.
 function remove() {
   document.getElementById("working-days").value = "";
   document.querySelector(".total-amount").innerHTML = "";
