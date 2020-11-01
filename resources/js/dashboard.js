@@ -57,6 +57,7 @@ apis.getAPI("get", utils.projectAPI, utils.secretKey, false, (obj) => {
 /*------------ Dynamic project list (Cards) --------------*/
 function displayProjects() {
   if (projects) {
+    document.querySelector('.no-data-div-project').style.display='none'
     projects.forEach((project) => {
       let projectCard = document.createElement("div");
       projectCard.classList.add("project-card", "flex-box");

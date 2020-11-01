@@ -37,9 +37,11 @@ function tableMaker(resourceList) {
   if (resourceList) {
     let table = document.querySelector('.invoice-details')
     if (resourceList.length <= 0) {
-      table.innerHTML = 'No resource available'
+      table.innerHTML = ''
+      document.querySelector('.no-data-div-invoice').style.display = 'block'
     }
     else {
+      document.querySelector('.no-data-div-invoice').style.display = 'none'
       table.innerHTML = `<thead>
               <th style="color: #fff;">Name</th>
               <th style="color: #fff;">Rate per hour</th>         

@@ -700,19 +700,25 @@ th {
 /* ----- 9. SERVER ERROR MESSAGES --*/
 /* -------------------------------- */
 .no-data-div-resource,
-.no-data-div-details {
+.no-data-div-details,
+.no-data-div-project,
+.no-data-div-invoice {
   width: 100%;
   text-align: center;
 }
 
 .no-data-div-resource img,
-.no-data-div-details img {
+.no-data-div-details img,
+.no-data-div-project img,
+.no-data-div-invoice img {
   height: 150px;
   width: auto;
 }
 
 .no-data-div-resource p,
-.no-data-div-details p {
+.no-data-div-details p,
+.no-data-div-project p,
+.no-data-div-invoice p {
   color: #464648;
   font-weight: 500;
 }
