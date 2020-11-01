@@ -129,20 +129,23 @@ button {
 .add-project-btn:hover,
 .project-card:hover {
   -webkit-transform: translateY(-5px) scale(1.01);
-  transform: translateY(-5px) scale(1.01);
+  transform: scale(1.01);
   -webkit-box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.3);
   box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.3);
 }
 
+
 .card-holder {
   height: 70%;
-  padding: 5px;
+  padding: 0 15px;
+  padding-top: 20px;
   overflow: scroll;
+  flex-direction: column;
 }
 
 .project-card {
-  margin: 20px 0;
-  padding: 10px 20px;
+  margin-bottom: 18px;
+  padding: 10px 10px;
   height: 100px;
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
@@ -158,10 +161,14 @@ button {
   transition: all 0.2s ease;
   cursor: pointer;
 }
+
 .project-card p {
+  height: 100%;
   font-size: 110%;
   font-weight: 500;
   width: 60%;
+  overflow: scroll;
+  align-items: center;
 }
 .active-card,
 .project-card:hover {
@@ -461,6 +468,7 @@ th {
 .edit-resource:hover,
 .delete-resource:hover {
   background-color: #49d8a0;
+  color: #fff;
   cursor: pointer;
 }
 

@@ -50,7 +50,7 @@ setTabs(0);
 
 /*----- API call to receive projects data from server ----*/
 apis.getAPI("get", utils.projectAPI, utils.secretKey, false, (obj) => {
-  projects = obj;
+  projects = obj.reverse();
   displayProjects();
 });
 
