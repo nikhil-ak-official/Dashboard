@@ -99,21 +99,16 @@ function displayProjects() {
   for (var i = 0; i < cards.length; i++) {
     let card = cards[i];
     cards[i].addEventListener("click", function () {
-      addClass(card, cards);
+      addClass(card);
     });
   }
 }
 
-function addClass(card, cards) {
-  removeClass(cards);
+function addClass(card) {
+  document.querySelector(".active-card").classList.remove("active-card");
   card.classList.add("active-card");
 }
 
-function removeClass(cards) {
-  for (var i = 0; i < cards.length; i++) {
-    cards[i].classList.remove("active-card");
-  }
-}
 
 /*---------------- Hamburger menu setup -------------------*/
 const hamburger = document.querySelector(".mobile-hamburger");
