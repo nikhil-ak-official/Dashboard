@@ -89,7 +89,8 @@ function displayProjects() {
       circle2.setAttribute("r", "30px");
       let percentage = project.percentage_complete;
 
-      let cal = 190 - (190 * `${percentage}`) / 100;
+      const circleStrokeOffset = 190
+      let cal = circleStrokeOffset - (circleStrokeOffset * `${percentage}`) / 100;
       circle2.style.strokeDashoffset = cal;
       progressBar.appendChild(circle2);
     });

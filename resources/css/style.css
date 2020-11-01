@@ -134,7 +134,6 @@ button {
   box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.3);
 }
 
-
 .card-holder {
   height: 70%;
   padding: 0 15px;
@@ -701,19 +700,19 @@ th {
 /* ----- 9. SERVER ERROR MESSAGES --*/
 /* -------------------------------- */
 .no-data-div-resource,
-.no-data-div-details{
+.no-data-div-details {
   width: 100%;
   text-align: center;
 }
 
 .no-data-div-resource img,
-.no-data-div-details img{
+.no-data-div-details img {
   height: 150px;
   width: auto;
 }
 
 .no-data-div-resource p,
-.no-data-div-details p{
+.no-data-div-details p {
   color: #464648;
   font-weight: 500;
 }

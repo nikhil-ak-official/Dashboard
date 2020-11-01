@@ -71,10 +71,11 @@ function activeProject() {
     </div>
     </div>
     </div >`;
+      const circleStokeOffset = 410
       document.querySelector(
         ".detail-circle :nth-child(2)"
       ).style.strokeDashoffset =
-        410 - (410 * `${project.percentage_complete}`) / 100;
+        circleStokeOffset - (circleStokeOffset * `${project.percentage_complete}`) / 100;
 
       activeObj = project;
     }

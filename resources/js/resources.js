@@ -176,11 +176,9 @@ updateResourcesBtn.addEventListener('click', () => {
   updateReference.billable = document.querySelector('#edit-billable-add').checked
   updateReference.rate_per_hour = document.querySelector('#edit-rate-add').value
 
-  apis.putAPI(
-    "PUT",
-    utils.resourceAPI, utils.secretKey,
-    JSON.stringify(latestOfflineResourceList), (resp) => { resourceCall(document.querySelector('.active-card')) }
-  );
+  apis.putAPI("PUT", utils.resourceAPI, utils.secretKey, JSON.stringify(latestOfflineResourceList), (resp) => {
+    resourceCall(document.querySelector('.active-card'))
+  });
   utils.popup("EditResources")
 })
 

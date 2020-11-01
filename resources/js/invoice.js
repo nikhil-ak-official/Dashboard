@@ -71,7 +71,8 @@ function calculation() {
     let rateList = calcResource.map(e => e.rate_per_hour);
     console.log(rateList);
     let total = 0;
-    rateList.forEach(rate => { total = total + rate * 8 * workingDays; })
+    const workingHours = 8
+    rateList.forEach(rate => { total = total + rate * workingHours * workingDays; })
     console.log(total);
     document.querySelector(".total-amount").innerHTML = total;
   }
