@@ -10,11 +10,14 @@ import utils from './utils.js'
 import apis from './api.js'
 
 let calcResource; // variable to store all resource list.
-
+apis.getAPI('get', utils.resourceAPI, utils.secretKey, true, (allResources) => {
+  utils.latestOfflineResourceList = allResources
+  resourceCall(firstSelectedCard)
+})
 /*---------------- Dynamic invoice table ------------------------*/
 const cards = document.querySelectorAll('.project-card')
 const firstSelectedCard = document.querySelector('.active-card')
-resourceCall(firstSelectedCard)
+
 
 cards.forEach((card) => {
   card.addEventListener('click', (e) => {
@@ -25,11 +28,10 @@ cards.forEach((card) => {
 
 // API call and table making
 function resourceCall(card) {
-  apis.getAPI('get', utils.resourceAPI, utils.secretKey, true, (allResources) => {
-    let selectedResources = allResources.filter((resources) => resources.project_id == card.dataset.id)
-    tableMaker(selectedResources);
-    remove();
-  })
+  let allResources = utils.latestOfflineResourceList
+  let selectedResources = allResources.filter((resources) => resources.project_id == card.dataset.id)
+  tableMaker(selectedResources);
+  remove();
 }
 
 

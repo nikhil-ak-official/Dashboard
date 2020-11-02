@@ -44,14 +44,12 @@ let isValid = true;  // Variable to check is all validations are satisfied: Retu
 /*----------- field list validation ------------------------------*/
 let validateFields = function (fields, valid, callback) {
   isValid = valid;
-  console.log(fields);
   fields.forEach((field) => { validate(field) });
   callback(isValid);
 }
 
 /*----------- Individual field validation -------------------------*/
 let validate = function (field) {
-  console.log(field.tagName)
   if (field.tagName != 'TAGS') {
     if (field.required && field.value.length == 0) {
       setError(field, `${field.name} cannot be blank.`)
@@ -99,7 +97,7 @@ function clearError(input) {
 }
 
 /*----------- SVG Circle maker ------------------------------------*/
-let svgCircleMaker = function (classForSvg, size, radius, percentage, strokeOffset,callback) {
+let svgCircleMaker = function (classForSvg, size, radius, percentage, strokeOffset, callback) {
   let progressBar = document.createElementNS("http://www.w3.org/2000/svg", "svg");
   progressBar.classList.add(classForSvg);
 
@@ -131,5 +129,5 @@ let latestOfflineResourceList
 // List of technologies for popup input field.
 let arrayOfTechnologies = ["HTML", "CSS", "JavaScript", "Flutter", "Swift", "Java", "C++", "C#", "Python"]
 
-let utils = { popup, validateFields, validate,svgCircleMaker, resourceAPI, projectAPI, secretKey, arrayOfTechnologies, latestOfflineResourceList };
+let utils = { popup, validateFields, validate, svgCircleMaker, resourceAPI, projectAPI, secretKey, arrayOfTechnologies, latestOfflineResourceList };
 export default utils;

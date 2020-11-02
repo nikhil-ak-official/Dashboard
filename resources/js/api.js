@@ -39,7 +39,6 @@ let putAPI = function (method, url, secretKey, body, callback) {
     if (this.status === 200) {
       try {
         let responseArray = JSON.parse(this.responseText);
-        console.log(responseArray);
         callback(responseArray)
       }
       catch {

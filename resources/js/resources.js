@@ -3,7 +3,7 @@
  - This js file includes all features for the details tab.
 
  >> CONTENTS
-    1. API call and global resource variable setup
+    1. API call and global resource variable setup.
     2. Add resources form popup.
     3. Add resource to server.
     4. Edit resources form popup.
@@ -42,7 +42,6 @@ document.querySelector('.add-resources-popup-btn').addEventListener("click", () 
   var isAddResourceValid = true;
   utils.validateFields(allAddResourceFields, isAddResourceValid, (valid) => {
     if (valid === true) {
-      console.log("validated");
       let resourceList = utils.latestOfflineResourceList
       AddResources(resourceList)
     }
@@ -68,7 +67,7 @@ function AddResources(resources) {
     rate_per_hour: Number(resourceRate)
   }
   resources.push(newResource);
-  
+
   apis.putAPI("PUT", utils.resourceAPI, utils.secretKey, JSON.stringify(resources), (obj) => {
     utils.latestOfflineResourceList = resources
     resourceCall(document.querySelector('.active-card'))
