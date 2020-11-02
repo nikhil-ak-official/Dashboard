@@ -3,22 +3,21 @@
  - This js file includes all features for the details tab.
 
  >> CONTENTS
-    1. Add resources form popup.
-    2. Add resource to server.
-    3. Edit resources form popup.
-    4. Dynamic Resource table loading.
-    5. Edit Resource in server.
-    6. Delete Resource in server.
-    7. Validation on blur for 'Add resources' and 'Edit resources' form.
+    1. API call and global resource variable setup
+    2. Add resources form popup.
+    3. Add resource to server.
+    4. Edit resources form popup.
+    5. Dynamic Resource table loading.
+    6. Edit Resource in server.
+    7. Delete Resource in server.
+    8. Validation on blur for 'Add resources' and 'Edit resources' form.
 ----------------------------------------------------------------*/
 import utils from './utils.js'
 import apis from './api.js'
 
 /*-------------- API call and global resource variable setup ---*/
-let latestOfflineResourceList
 apis.getAPI('get', utils.resourceAPI, utils.secretKey, true, (allResources) => {
   utils.latestOfflineResourceList = allResources
-  latestOfflineResourceList = utils.latestOfflineResourceList
 })
 
 /*-------------- Add resources form popup ----------------------*/
@@ -69,8 +68,7 @@ function AddResources(resources) {
     rate_per_hour: Number(resourceRate)
   }
   resources.push(newResource);
-  console.log(resources);
-
+  
   apis.putAPI("PUT", utils.resourceAPI, utils.secretKey, JSON.stringify(resources), (obj) => {
     utils.latestOfflineResourceList = resources
     resourceCall(document.querySelector('.active-card'))
