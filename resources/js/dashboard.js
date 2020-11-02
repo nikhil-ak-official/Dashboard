@@ -50,7 +50,7 @@ setTabs(0);
 
 /*----- API call to receive projects data from server ----*/
 apis.getAPI("get", utils.projectAPI, utils.secretKey, false, (obj) => {
-  projects = obj.reverse();
+  projects = obj
   displayProjects();
 });
 
@@ -58,7 +58,8 @@ apis.getAPI("get", utils.projectAPI, utils.secretKey, false, (obj) => {
 function displayProjects() {
   if (projects) {
     document.querySelector('.no-data-div-project').style.display='none'
-    projects.forEach((project) => {
+    let reversedProjects = projects.reverse();
+    reversedProjects.forEach((project) => {
       let projectCard = document.createElement("div");
       projectCard.classList.add("project-card", "flex-box");
       projectCard.setAttribute('data-id', `${project.id}`)
@@ -190,8 +191,8 @@ function addProject() {
   projects.push(projectObj);
   console.log(projects);
   apis.putAPI("PUT", utils.projectAPI, utils.secretKey, JSON.stringify(projects), (res) => { location.reload(); });
-  removeProjects();
-  displayProjects();
+  // removeProjects();
+  // displayProjects();
 }
 
 function removeProjects() {
