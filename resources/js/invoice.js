@@ -26,7 +26,7 @@ cards.forEach((card) => {
   })
 })
 
-// API call and table making
+// table making
 function resourceCall(card) {
   let allResources = utils.latestOfflineResourceList
   let selectedResources = allResources.filter((resources) => resources.project_id == card.dataset.id)
@@ -64,26 +64,30 @@ function tableMaker(resourceList) {
   calcResource = resourceList
 }
 
-/*----------------- Invoice calculation-------------------------- */
-let generateInvoice = document.querySelector(".generate-invoice-btn");
-generateInvoice.addEventListener("click", calculation);
 
-function calculation() {
-  let workingDays = document.getElementById("working-days").value;
-  if (workingDays) {
-    let updateCalcResource = utils.latestOfflineResourceList.filter((res) => res.project_id == calcResource[0].project_id)
-    tableMaker(updateCalcResource)  // Update table with latest value and then perform calculation
+ 
+  /*----------------- Invoice calculation-------------------------- */
+  // Update table if any change occurs in resource.
+  document.querySelector('#invoice-btn').addEventListener('click',()=>{
+   resourceCall(document.querySelector('.active-card'))
+ })
 
-    let rateList = calcResource.map(e => e.rate_per_hour);
-    let total = 0;
-    const workingHours = 8
-    rateList.forEach(rate => { total = total + rate * workingHours * workingDays; })
-    document.querySelector(".total-amount").innerHTML = total;
+  let generateInvoice = document.querySelector(".generate-invoice-btn");
+  generateInvoice.addEventListener("click", calculation);
+
+  function calculation() {
+    let workingDays = document.getElementById("working-days").value;
+    if (workingDays) {
+      let rateList = calcResource.map(e => e.rate_per_hour);
+      let total = 0;
+      const workingHours = 8
+      rateList.forEach(rate => { total = total + rate * workingHours * workingDays; })
+      document.querySelector(".total-amount").innerHTML = total;
+    }
   }
-}
 
-// Clear input field and total amount.
-function remove() {
-  document.getElementById("working-days").value = "";
-  document.querySelector(".total-amount").innerHTML = "";
-}
+  // Clear input field and total amount.
+  function remove() {
+    document.getElementById("working-days").value = "";
+    document.querySelector(".total-amount").innerHTML = "";
+  }

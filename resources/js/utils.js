@@ -121,8 +121,8 @@ let svgCircleMaker = function (classForSvg, size, radius, percentage, strokeOffs
 
 /*----------- Common variables and values -------------------------*/
 // APIs
-let resourceAPI = 'https://api.jsonbin.io/b/5f9e670ece4aa2289553f8dd';
-let projectAPI = 'https://api.jsonbin.io/b/5f9e6692f5fc4329bb4193f9';
+let resourceAPI = 'https://api.jsonbin.io/b/5f9f7845a03d4a3bab0b52a5';
+let projectAPI = 'https://api.jsonbin.io/b/5f9f780147077d298f5b8a09';
 let secretKey = '$2b$10$1KZ6VDOn5QBsDQ6Fk2BGdeDrxrbQVt6vqpDTnFlM5xykGvBmx7hkC';
 let latestOfflineResourceList
 
