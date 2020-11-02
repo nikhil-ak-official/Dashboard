@@ -50,14 +50,16 @@ setTabs(0);
 
 /*----- API call to receive projects data from server ----*/
 apis.getAPI("get", utils.projectAPI, utils.secretKey, false, (obj) => {
-  projects = obj;
+  projects = obj
   displayProjects();
 });
 
 /*------------ Dynamic project list (Cards) --------------*/
 function displayProjects() {
   if (projects) {
-    projects.forEach((project) => {
+    document.querySelector('.no-data-div-project').style.display='none'
+    let reversedProjects = projects.reverse();
+    reversedProjects.forEach((project) => {
       let projectCard = document.createElement("div");
       projectCard.classList.add("project-card", "flex-box");
       projectCard.setAttribute('data-id', `${project.id}`)
@@ -89,7 +91,8 @@ function displayProjects() {
       circle2.setAttribute("r", "30px");
       let percentage = project.percentage_complete;
 
-      let cal = 190 - (190 * `${percentage}`) / 100;
+      const circleStrokeOffset = 190
+      let cal = circleStrokeOffset - (circleStrokeOffset * `${percentage}`) / 100;
       circle2.style.strokeDashoffset = cal;
       progressBar.appendChild(circle2);
     });
@@ -183,8 +186,8 @@ function addProject() {
   projects.push(projectObj);
   console.log(projects);
   apis.putAPI("PUT", utils.projectAPI, utils.secretKey, JSON.stringify(projects), (res) => { location.reload(); });
-  removeProjects();
-  displayProjects();
+  // removeProjects();
+  // displayProjects();
 }
 
 function removeProjects() {

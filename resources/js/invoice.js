@@ -37,9 +37,11 @@ function tableMaker(resourceList) {
   if (resourceList) {
     let table = document.querySelector('.invoice-details')
     if (resourceList.length <= 0) {
-      table.innerHTML = 'No resource available'
+      table.innerHTML = ''
+      document.querySelector('.no-data-div-invoice').style.display = 'block'
     }
     else {
+      document.querySelector('.no-data-div-invoice').style.display = 'none'
       table.innerHTML = `<thead>
               <th style="color: #fff;">Name</th>
               <th style="color: #fff;">Rate per hour</th>         
@@ -71,7 +73,8 @@ function calculation() {
     let rateList = calcResource.map(e => e.rate_per_hour);
     console.log(rateList);
     let total = 0;
-    rateList.forEach(rate => { total = total + rate * 8 * workingDays; })
+    const workingHours = 8
+    rateList.forEach(rate => { total = total + rate * workingHours * workingDays; })
     console.log(total);
     document.querySelector(".total-amount").innerHTML = total;
   }

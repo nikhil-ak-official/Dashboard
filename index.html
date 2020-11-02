@@ -28,11 +28,16 @@
     </div>
     <span class="add-projects-label"><button class="add-project-btn">+</button>Add Projects</span>
     <hr id="outline">
-    <div class="card-holder" id="projectList">
+    <div class="card-holder flex-box" id="projectList">
 
       <!--  -->
       <!-- Dynamic list of projects as cards using JavaScript -->
       <!--  -->
+
+      <div class="no-data-div-project">
+        <img src="resources/imgs/error-img.png" alt="No Data available image">
+        <p>No Data Available</p>
+      </div>
 
     </div>
 
@@ -104,7 +109,7 @@
               <!--  -->
             </table>
           </div>
-          
+
           <div class="no-data-div-resource">
             <img src="resources/imgs/error-img.png" alt="No Data available image">
             <p>No Data Available</p>
@@ -126,6 +131,10 @@
             <!--  -->
             <!-- Dynamic Table with JavaScript -->
             <!--  -->
+            <div class="no-data-div-invoice">
+              <img src="resources/imgs/error-img.png" alt="No Data available image">
+              <p>No Data Available</p>
+            </div>
           </table>
         </div>
         <p class="total-amount-label">Total: <span class="total-amount"></span></p>

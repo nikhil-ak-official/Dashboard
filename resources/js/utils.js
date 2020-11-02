@@ -99,8 +99,8 @@ function clearError(input) {
 
 /*----------- Common variables and values -------------------------*/
 // APIs
-let resourceAPI = 'https://api.jsonbin.io/b/5f9befdc9291173cbca5d666';
-let projectAPI = 'https://api.jsonbin.io/b/5f9bef8f857f4b5f9ae02225';
+let resourceAPI = 'https://api.jsonbin.io/b/5f9e670ece4aa2289553f8dd';
+let projectAPI = 'https://api.jsonbin.io/b/5f9e6692f5fc4329bb4193f9';
 let secretKey = '$2b$10$1KZ6VDOn5QBsDQ6Fk2BGdeDrxrbQVt6vqpDTnFlM5xykGvBmx7hkC';
 
 // List of technologies for popup input field.
