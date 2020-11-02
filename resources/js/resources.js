@@ -14,6 +14,12 @@
 import utils from './utils.js'
 import apis from './api.js'
 
+let latestOfflineResourceList
+apis.getAPI('get', utils.resourceAPI, utils.secretKey, true, (allResources) => {
+  utils.latestOfflineResourceList = allResources
+  latestOfflineResourceList = utils.latestOfflineResourceList
+})
+
 /*-------------- Add resources form popup ----------------------*/
 let availableResource = false
 const addResourceBtn = document.querySelector(".add-resources-btn");
@@ -68,6 +74,8 @@ function AddResources(resources) {
   console.log(resources);
 
   apis.putAPI("PUT", utils.resourceAPI, utils.secretKey, JSON.stringify(resources), (obj) => {
+    latestOfflineResourceList = resources
+    utils.latestOfflineResourceList = latestOfflineResourceList
     resourceCall(document.querySelector('.active-card'))
   });
 
@@ -84,7 +92,6 @@ cancelEditResourceBtn.addEventListener("click", () => {
 });
 
 /*---------------- Dynamic Resource table ------------------------*/
-let latestOfflineResourceList
 const cards = document.querySelectorAll('.project-card')
 const firstSelectedCard = document.querySelector('.active-card')
 resourceCall(firstSelectedCard)
@@ -96,16 +103,19 @@ cards.forEach((card) => {
 })
 
 function resourceCall(card) {
-  apis.getAPI('get', utils.resourceAPI, utils.secretKey, true, (allResources) => {
-    latestOfflineResourceList = allResources
-    if (allResources && allResources.length > 0) {
-      // Clear the 'No data available' message
-      document.querySelector('.no-data-div-resource').style.display = 'none'
-      availableResource = true
-    }
-    let selectedResources = allResources.filter((resources) => resources.project_id == card.dataset.id)
+  if (latestOfflineResourceList && latestOfflineResourceList.length > 0) {
+    // Clear the 'No data available' message
+    document.querySelector('.no-data-div-resource').style.display = 'none'
+    availableResource = true
+
+    let selectedResources = latestOfflineResourceList.filter((resources) => resources.project_id == card.dataset.id)
     tableMaker(selectedResources)
-  })
+  }
+  else {
+    document.querySelector('.no-data-div-resource').style.display = 'block'
+    availableResource = false
+  }
+
 }
 
 function tableMaker(resourceList) {
@@ -177,6 +187,7 @@ updateResourcesBtn.addEventListener('click', () => {
   updateReference.rate_per_hour = document.querySelector('#edit-rate-add').value
 
   apis.putAPI("PUT", utils.resourceAPI, utils.secretKey, JSON.stringify(latestOfflineResourceList), (resp) => {
+    utils.latestOfflineResourceList = latestOfflineResourceList
     resourceCall(document.querySelector('.active-card'))
   });
   utils.popup("EditResources")
@@ -191,7 +202,11 @@ function activateDelete() {
       apis.putAPI(
         "PUT",
         utils.resourceAPI, utils.secretKey,
-        JSON.stringify(updatedOfflineResourceList), (docu) => { resourceCall(document.querySelector('.active-card')) }
+        JSON.stringify(updatedOfflineResourceList), (docu) => {
+          latestOfflineResourceList = updatedOfflineResourceList
+          utils.latestOfflineResourceList = latestOfflineResourceList
+          resourceCall(document.querySelector('.active-card'))
+        }
       )
     })
   })

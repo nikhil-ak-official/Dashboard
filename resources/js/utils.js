@@ -126,9 +126,10 @@ let svgCircleMaker = function (classForSvg, size, radius, percentage, strokeOffs
 let resourceAPI = 'https://api.jsonbin.io/b/5f9e670ece4aa2289553f8dd';
 let projectAPI = 'https://api.jsonbin.io/b/5f9e6692f5fc4329bb4193f9';
 let secretKey = '$2b$10$1KZ6VDOn5QBsDQ6Fk2BGdeDrxrbQVt6vqpDTnFlM5xykGvBmx7hkC';
+let latestOfflineResourceList
 
 // List of technologies for popup input field.
 let arrayOfTechnologies = ["HTML", "CSS", "JavaScript", "Flutter", "Swift", "Java", "C++", "C#", "Python"]
 
-let utils = { popup, validateFields, validate,svgCircleMaker, resourceAPI, projectAPI, secretKey, arrayOfTechnologies };
+let utils = { popup, validateFields, validate,svgCircleMaker, resourceAPI, projectAPI, secretKey, arrayOfTechnologies, latestOfflineResourceList };
 export default utils;
