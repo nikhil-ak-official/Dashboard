@@ -67,34 +67,10 @@ function displayProjects() {
       let para = document.createElement("p");
       para.innerHTML = project.project_name;
       projectCard.appendChild(para);
-      let progressBar = document.createElementNS(
-        "http://www.w3.org/2000/svg",
-        "svg"
-      );
-      progressBar.classList.add("card-circle");
-      projectCard.appendChild(progressBar);
-      let circle1 = document.createElementNS(
-        "http://www.w3.org/2000/svg",
-        "circle"
-      );
-      circle1.setAttribute("cx", "30px");
-      circle1.setAttribute("cy", "30px");
-      circle1.setAttribute("r", "30px");
-      progressBar.appendChild(circle1);
-
-      let circle2 = document.createElementNS(
-        "http://www.w3.org/2000/svg",
-        "circle"
-      );
-      circle2.setAttribute("cx", "30px");
-      circle2.setAttribute("cy", "30px");
-      circle2.setAttribute("r", "30px");
-      let percentage = project.percentage_complete;
-
-      const circleStrokeOffset = 190
-      let cal = circleStrokeOffset - (circleStrokeOffset * `${percentage}`) / 100;
-      circle2.style.strokeDashoffset = cal;
-      progressBar.appendChild(circle2);
+      
+      utils.svgCircleMaker("card-circle",30,30,30,project.percentage_complete,190,(progressBar)=>{
+        projectCard.appendChild(progressBar)
+      })
     });
   }
   var cards = document.getElementsByClassName("project-card");
