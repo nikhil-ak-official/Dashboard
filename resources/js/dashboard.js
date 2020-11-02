@@ -58,7 +58,7 @@ apis.getAPI("get", utils.projectAPI, utils.secretKey, false, (obj) => {
 function displayProjects() {
   if (projects) {
     document.querySelector('.no-data-div-project').style.display='none'
-    let reversedProjects = projects.reverse();
+    let reversedProjects = [...projects].reverse();
     reversedProjects.forEach((project) => {
       let projectCard = document.createElement("div");
       projectCard.classList.add("project-card", "flex-box");
