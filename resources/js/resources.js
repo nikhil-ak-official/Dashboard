@@ -18,6 +18,7 @@ import apis from './api.js'
 /*-------------- API call and global resource variable setup ---*/
 apis.getAPI('get', utils.resourceAPI, utils.secretKey, true, (allResources) => {
   utils.latestOfflineResourceList = allResources
+  resourceCall(firstSelectedCard)
 })
 
 /*-------------- Add resources form popup ----------------------*/
@@ -88,7 +89,6 @@ cancelEditResourceBtn.addEventListener("click", () => {
 /*---------------- Dynamic Resource table ------------------------*/
 const cards = document.querySelectorAll('.project-card')
 const firstSelectedCard = document.querySelector('.active-card')
-resourceCall(firstSelectedCard)
 cards.forEach((card) => {
   card.addEventListener('click', (e) => {
     let cardDiv = e.target.closest('div')

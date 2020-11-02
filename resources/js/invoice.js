@@ -71,13 +71,13 @@ generateInvoice.addEventListener("click", calculation);
 function calculation() {
   let workingDays = document.getElementById("working-days").value;
   if (workingDays) {
-    console.log(calcResource);
+    let updateCalcResource = utils.latestOfflineResourceList.filter((res) => res.project_id == calcResource[0].project_id)
+    tableMaker(updateCalcResource)  // Update table with latest value and then perform calculation
+
     let rateList = calcResource.map(e => e.rate_per_hour);
-    console.log(rateList);
     let total = 0;
     const workingHours = 8
     rateList.forEach(rate => { total = total + rate * workingHours * workingDays; })
-    console.log(total);
     document.querySelector(".total-amount").innerHTML = total;
   }
 }
