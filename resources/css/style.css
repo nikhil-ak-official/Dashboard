@@ -596,6 +596,10 @@ th {
   border: 1px solid #dedbdb;
 }
 
+.popup textarea {
+  font-family: "Manrope", sans-serif;  /* Remove default textarea font family*/
+}
+
 .group {
   flex-direction: column;
 }
