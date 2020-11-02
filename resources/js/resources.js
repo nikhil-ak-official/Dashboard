@@ -3,16 +3,23 @@
  - This js file includes all features for the details tab.
 
  >> CONTENTS
-    1. Add resources form popup.
-    2. Add resource to server.
-    3. Edit resources form popup.
-    4. Dynamic Resource table loading.
-    5. Edit Resource in server.
-    6. Delete Resource in server.
-    7. Validation on blur for 'Add resources' and 'Edit resources' form.
+    1. API call and global resource variable setup.
+    2. Add resources form popup.
+    3. Add resource to server.
+    4. Edit resources form popup.
+    5. Dynamic Resource table loading.
+    6. Edit Resource in server.
+    7. Delete Resource in server.
+    8. Validation on blur for 'Add resources' and 'Edit resources' form.
 ----------------------------------------------------------------*/
 import utils from './utils.js'
 import apis from './api.js'
+
+/*-------------- API call and global resource variable setup ---*/
+apis.getAPI('get', utils.resourceAPI, utils.secretKey, true, (allResources) => {
+  utils.latestOfflineResourceList = allResources
+  resourceCall(firstSelectedCard)
+})
 
 /*-------------- Add resources form popup ----------------------*/
 let availableResource = false
@@ -36,12 +43,8 @@ document.querySelector('.add-resources-popup-btn').addEventListener("click", () 
   var isAddResourceValid = true;
   utils.validateFields(allAddResourceFields, isAddResourceValid, (valid) => {
     if (valid === true) {
-      console.log("validated");
-      apis.getAPI('get', utils.resourceAPI, utils.secretKey, true, (obj) => {
-        AddResources(obj)
-
-      })
-
+      let resourceList = utils.latestOfflineResourceList
+      AddResources(resourceList)
     }
   })
 
@@ -65,9 +68,9 @@ function AddResources(resources) {
     rate_per_hour: Number(resourceRate)
   }
   resources.push(newResource);
-  console.log(resources);
 
   apis.putAPI("PUT", utils.resourceAPI, utils.secretKey, JSON.stringify(resources), (obj) => {
+    utils.latestOfflineResourceList = resources
     resourceCall(document.querySelector('.active-card'))
   });
 
@@ -84,10 +87,8 @@ cancelEditResourceBtn.addEventListener("click", () => {
 });
 
 /*---------------- Dynamic Resource table ------------------------*/
-let latestOfflineResourceList
 const cards = document.querySelectorAll('.project-card')
 const firstSelectedCard = document.querySelector('.active-card')
-resourceCall(firstSelectedCard)
 cards.forEach((card) => {
   card.addEventListener('click', (e) => {
     let cardDiv = e.target.closest('div')
@@ -96,16 +97,20 @@ cards.forEach((card) => {
 })
 
 function resourceCall(card) {
-  apis.getAPI('get', utils.resourceAPI, utils.secretKey, true, (allResources) => {
-    latestOfflineResourceList = allResources
-    if (allResources && allResources.length > 0) {
-      // Clear the 'No data available' message
-      document.querySelector('.no-data-div-resource').style.display = 'none'
-      availableResource = true
-    }
-    let selectedResources = allResources.filter((resources) => resources.project_id == card.dataset.id)
+  let resourceList = utils.latestOfflineResourceList
+  if (resourceList && resourceList.length > 0) {
+    // Clear the 'No data available' message
+    document.querySelector('.no-data-div-resource').style.display = 'none'
+    availableResource = true
+
+    let selectedResources = resourceList.filter((resources) => resources.project_id == card.dataset.id)
     tableMaker(selectedResources)
-  })
+  }
+  else {
+    document.querySelector('.no-data-div-resource').style.display = 'block'
+    availableResource = false
+  }
+
 }
 
 function tableMaker(resourceList) {
@@ -146,10 +151,11 @@ function tableMaker(resourceList) {
 /*---------------- Edit Resource in server ------------------------*/
 let currentEditingId
 function activateEdit() {
+  let resourceList = utils.latestOfflineResourceList
   const editResourceBtn = document.querySelectorAll(".edit-resource");
   editResourceBtn.forEach((btn) => {
     btn.addEventListener("click", () => {
-      let resourceToEdit = latestOfflineResourceList.find((resource) => resource.id == btn.dataset.id)
+      let resourceToEdit = resourceList.find((resource) => resource.id == btn.dataset.id)
 
       // Set default values for input fields in popup
       document.querySelector('#edit-name-add').value = resourceToEdit.name
@@ -168,7 +174,8 @@ function activateEdit() {
 const updateResourcesBtn = document.querySelector('.edit-resources-popup-btn')
 
 updateResourcesBtn.addEventListener('click', () => {
-  let updateReference = latestOfflineResourceList.find((resource) => resource.id == currentEditingId)
+  let resourceList = utils.latestOfflineResourceList
+  let updateReference = resourceList.find((resource) => resource.id == currentEditingId)
 
   // The original list (latestOfflineResourceList) is getting updated as this is a call by reference
   updateReference.name = document.querySelector('#edit-name-add').value
@@ -176,7 +183,8 @@ updateResourcesBtn.addEventListener('click', () => {
   updateReference.billable = document.querySelector('#edit-billable-add').checked
   updateReference.rate_per_hour = document.querySelector('#edit-rate-add').value
 
-  apis.putAPI("PUT", utils.resourceAPI, utils.secretKey, JSON.stringify(latestOfflineResourceList), (resp) => {
+  apis.putAPI("PUT", utils.resourceAPI, utils.secretKey, JSON.stringify(resourceList), (resp) => {
+    utils.latestOfflineResourceList = resourceList
     resourceCall(document.querySelector('.active-card'))
   });
   utils.popup("EditResources")
@@ -187,11 +195,15 @@ function activateDelete() {
   const delResourceBtn = document.querySelectorAll(".delete-resource");
   delResourceBtn.forEach((btn) => {
     btn.addEventListener("click", () => {
-      let updatedOfflineResourceList = latestOfflineResourceList.filter((a) => a.id != btn.dataset.id);
+      let resourceList = utils.latestOfflineResourceList
+      let updatedOfflineResourceList = resourceList.filter((a) => a.id != btn.dataset.id);
       apis.putAPI(
         "PUT",
         utils.resourceAPI, utils.secretKey,
-        JSON.stringify(updatedOfflineResourceList), (docu) => { resourceCall(document.querySelector('.active-card')) }
+        JSON.stringify(updatedOfflineResourceList), (docu) => {
+          utils.latestOfflineResourceList = updatedOfflineResourceList
+          resourceCall(document.querySelector('.active-card'))
+        }
       )
     })
   })

@@ -9,7 +9,8 @@
     1. Pop up display function.
     2. Field validation function.
     3. Common variables for API calls
-    4. Common array of all approved list of technologies.
+    4. Function to create svg progress circles.
+    5. Common array of all approved list of technologies.
 ----------------------------------------------------------------*/
 
 /*----------- Show popup on call -------------------------------*/
@@ -43,14 +44,12 @@ let isValid = true;  // Variable to check is all validations are satisfied: Retu
 /*----------- field list validation ------------------------------*/
 let validateFields = function (fields, valid, callback) {
   isValid = valid;
-  console.log(fields);
   fields.forEach((field) => { validate(field) });
   callback(isValid);
 }
 
 /*----------- Individual field validation -------------------------*/
 let validate = function (field) {
-  console.log(field.tagName)
   if (field.tagName != 'TAGS') {
     if (field.required && field.value.length == 0) {
       setError(field, `${field.name} cannot be blank.`)
@@ -97,14 +96,38 @@ function clearError(input) {
   fieldError.textContent = '';
 }
 
+/*----------- SVG Circle maker ------------------------------------*/
+let svgCircleMaker = function (classForSvg, size, radius, percentage, strokeOffset, callback) {
+  let progressBar = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+  progressBar.classList.add(classForSvg);
+
+  let circle1 = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+  circle1.setAttribute("cx", size);
+  circle1.setAttribute("cy", size);
+  circle1.setAttribute("r", radius);
+  progressBar.appendChild(circle1);
+
+  let circle2 = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+  circle2.setAttribute("cx", size);
+  circle2.setAttribute("cy", size);
+  circle2.setAttribute("r", radius);
+
+  let cal = strokeOffset - (strokeOffset * percentage) / 100;
+  circle2.style.strokeDashoffset = cal;
+  progressBar.appendChild(circle2);
+
+  callback(progressBar)
+}
+
 /*----------- Common variables and values -------------------------*/
 // APIs
-let resourceAPI = 'https://api.jsonbin.io/b/5f9e670ece4aa2289553f8dd';
-let projectAPI = 'https://api.jsonbin.io/b/5f9e6692f5fc4329bb4193f9';
+let resourceAPI = 'https://api.jsonbin.io/b/5f9f7845a03d4a3bab0b52a5';
+let projectAPI = 'https://api.jsonbin.io/b/5f9f780147077d298f5b8a09';
 let secretKey = '$2b$10$1KZ6VDOn5QBsDQ6Fk2BGdeDrxrbQVt6vqpDTnFlM5xykGvBmx7hkC';
+let latestOfflineResourceList
 
 // List of technologies for popup input field.
 let arrayOfTechnologies = ["HTML", "CSS", "JavaScript", "Flutter", "Swift", "Java", "C++", "C#", "Python"]
 
-let utils = { popup, validateFields, validate, resourceAPI, projectAPI, secretKey, arrayOfTechnologies };
+let utils = { popup, validateFields, validate, svgCircleMaker, resourceAPI, projectAPI, secretKey, arrayOfTechnologies, latestOfflineResourceList };
 export default utils;

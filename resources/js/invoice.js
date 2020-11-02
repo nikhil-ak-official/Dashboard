@@ -10,11 +10,14 @@ import utils from './utils.js'
 import apis from './api.js'
 
 let calcResource; // variable to store all resource list.
-
+apis.getAPI('get', utils.resourceAPI, utils.secretKey, true, (allResources) => {
+  utils.latestOfflineResourceList = allResources
+  resourceCall(firstSelectedCard)
+})
 /*---------------- Dynamic invoice table ------------------------*/
 const cards = document.querySelectorAll('.project-card')
 const firstSelectedCard = document.querySelector('.active-card')
-resourceCall(firstSelectedCard)
+
 
 cards.forEach((card) => {
   card.addEventListener('click', (e) => {
@@ -23,13 +26,12 @@ cards.forEach((card) => {
   })
 })
 
-// API call and table making
+// table making
 function resourceCall(card) {
-  apis.getAPI('get', utils.resourceAPI, utils.secretKey, true, (allResources) => {
-    let selectedResources = allResources.filter((resources) => resources.project_id == card.dataset.id)
-    tableMaker(selectedResources);
-    remove();
-  })
+  let allResources = utils.latestOfflineResourceList
+  let selectedResources = allResources.filter((resources) => resources.project_id == card.dataset.id)
+  tableMaker(selectedResources);
+  remove();
 }
 
 
@@ -62,26 +64,30 @@ function tableMaker(resourceList) {
   calcResource = resourceList
 }
 
-/*----------------- Invoice calculation-------------------------- */
-let generateInvoice = document.querySelector(".generate-invoice-btn");
-generateInvoice.addEventListener("click", calculation);
 
-function calculation() {
-  let workingDays = document.getElementById("working-days").value;
-  if (workingDays) {
-    console.log(calcResource);
-    let rateList = calcResource.map(e => e.rate_per_hour);
-    console.log(rateList);
-    let total = 0;
-    const workingHours = 8
-    rateList.forEach(rate => { total = total + rate * workingHours * workingDays; })
-    console.log(total);
-    document.querySelector(".total-amount").innerHTML = total;
+ 
+  /*----------------- Invoice calculation-------------------------- */
+  // Update table if any change occurs in resource.
+  document.querySelector('#invoice-btn').addEventListener('click',()=>{
+   resourceCall(document.querySelector('.active-card'))
+ })
+
+  let generateInvoice = document.querySelector(".generate-invoice-btn");
+  generateInvoice.addEventListener("click", calculation);
+
+  function calculation() {
+    let workingDays = document.getElementById("working-days").value;
+    if (workingDays) {
+      let rateList = calcResource.map(e => e.rate_per_hour);
+      let total = 0;
+      const workingHours = 8
+      rateList.forEach(rate => { total = total + rate * workingHours * workingDays; })
+      document.querySelector(".total-amount").innerHTML = total;
+    }
   }
-}
 
-// Clear input field and total amount.
-function remove() {
-  document.getElementById("working-days").value = "";
-  document.querySelector(".total-amount").innerHTML = "";
-}
+  // Clear input field and total amount.
+  function remove() {
+    document.getElementById("working-days").value = "";
+    document.querySelector(".total-amount").innerHTML = "";
+  }
