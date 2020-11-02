@@ -97,20 +97,21 @@ function clearError(input) {
   fieldError.style.color = '#2ecc71'
   fieldError.textContent = '';
 }
+
 /*----------- SVG Circle maker ------------------------------------*/
-let svgCircleMaker = function (classForSvg, cx, cy, radius, percentage, strokeOffset,callback) {
+let svgCircleMaker = function (classForSvg, size, radius, percentage, strokeOffset,callback) {
   let progressBar = document.createElementNS("http://www.w3.org/2000/svg", "svg");
   progressBar.classList.add(classForSvg);
 
   let circle1 = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-  circle1.setAttribute("cx", cx);
-  circle1.setAttribute("cy", cy);
+  circle1.setAttribute("cx", size);
+  circle1.setAttribute("cy", size);
   circle1.setAttribute("r", radius);
   progressBar.appendChild(circle1);
 
   let circle2 = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-  circle2.setAttribute("cx", cx);
-  circle2.setAttribute("cy", cy);
+  circle2.setAttribute("cx", size);
+  circle2.setAttribute("cy", size);
   circle2.setAttribute("r", radius);
 
   let cal = strokeOffset - (strokeOffset * percentage) / 100;

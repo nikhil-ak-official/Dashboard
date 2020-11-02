@@ -67,8 +67,12 @@ function displayProjects() {
       let para = document.createElement("p");
       para.innerHTML = project.project_name;
       projectCard.appendChild(para);
+
+      // Details for the percentage circle
+      let size = 30, radius = 30, percentage = project.percentage_complete
+      let circleStrokeOffset = 190
       
-      utils.svgCircleMaker("card-circle",30,30,30,project.percentage_complete,190,(progressBar)=>{
+      utils.svgCircleMaker("card-circle",size,radius,percentage,circleStrokeOffset,(progressBar)=>{
         projectCard.appendChild(progressBar)
       })
     });
