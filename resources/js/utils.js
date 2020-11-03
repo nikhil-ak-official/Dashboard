@@ -45,6 +45,19 @@ let isValid = true;  // Variable to check is all validations are satisfied: Retu
 let validateFields = function (fields, valid, callback) {
   isValid = valid;
   fields.forEach((field) => { validate(field) });
+
+  if (fields[0].className == 'add-project-validate') {
+    let start = new Date(document.querySelector('#project-startDate').value)
+    let end = new Date(document.querySelector('#project-endDate').value)
+    let errorField = document.querySelector('#project-add-date-error')
+    dateComparison(start,end,errorField)
+  }
+  else if (fields[0].className == 'edit-project-validate') {
+    let start = new Date(document.querySelector('#project-startDate-edit').value)
+    let end = new Date(document.querySelector('#project-endDate-edit').value)
+    let errorField = document.querySelector('#project-edit-date-error')
+    dateComparison(start,end,errorField)
+  }
   callback(isValid);
 }
 
@@ -57,6 +70,9 @@ let validate = function (field) {
     else {
       if (field.name == "Email") {
         validateEmail(field)
+      }
+      else if (field.name == 'Percentage') {
+        validatePercentage(field)
       }
       else {
         clearError(field);
@@ -77,6 +93,28 @@ function validateEmail(input) {
 
 function isEmail(email) {
   return /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(email)
+}
+
+// Percentage limit validation
+function validatePercentage(input) {
+  if (parseInt(input.value) > 100 || parseInt(input.value) < 0) {
+    setError(input, "Incorrect percentage value")
+  }
+  else {
+    clearError(input)
+  }
+}
+
+// Date comparison and validation
+function dateComparison(start,end,errorField) {
+  if (start > end) {
+    errorField.style.color = '#ff0033'
+    errorField.textContent = 'Your project is ending before it begins. Please check the dates'
+    isValid = false
+  }
+  else {
+    errorField.innerHTML = ''
+  }
 }
 
 
