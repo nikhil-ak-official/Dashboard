@@ -184,6 +184,8 @@ button {
   width: 60%;
   overflow: scroll;
   align-items: center;
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;  /* Firefox */
 }
 .active-card,
 .project-card:hover {
