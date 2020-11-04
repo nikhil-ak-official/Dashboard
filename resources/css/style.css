@@ -31,26 +31,14 @@ html {
   font-weight: 300;
   font-size: 16px;
   text-rendering: optimizeLegibility;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
 }
 
-/* Hide scrollbar
+/* Hide scrollbar */
 ::-webkit-scrollbar {
   width: 0px;
   height: 0px;
   background: transparent;
-} */
-
-::-webkit-scrollbar {
-    width: 0px;  /* Remove scrollbar space */
-    background: transparent;  /* Optional: just make scrollbar invisible */
 }
-/* Optional: show position indicator in red */
-::-webkit-scrollbar-thumb {
-    background: #FF0000;
-}
-
 
 /* -------------------------------- */
 /* ----- 2. REUSED ITEMS -----------*/
@@ -115,7 +103,7 @@ button {
   border-radius: 50px;
 }
 
-.logo img{
+.logo img {
   width: 50px;
   height: 50px;
 }
@@ -156,6 +144,8 @@ button {
   padding-top: 20px;
   overflow: scroll;
   flex-direction: column;
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none; /* Firefox */
 }
 
 .project-card {
@@ -184,8 +174,8 @@ button {
   width: 60%;
   overflow: scroll;
   align-items: center;
-  -ms-overflow-style: none;  /* Internet Explorer 10+ */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none; /* Firefox */
 }
 .active-card,
 .project-card:hover {
@@ -302,6 +292,8 @@ h1 {
 .button-box {
   width: 70%;
   overflow: scroll;
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none; /* Firefox */
 }
 
 .button-box button {
@@ -482,6 +474,7 @@ th {
   transition: all 0.2s ease;
 }
 
+
 .edit-resource:hover,
 .delete-resource:hover {
   background-color: #49d8a0;
@@ -539,6 +532,8 @@ th {
   margin-top: 20px;
   height: 70%;
   overflow: scroll;
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none; /* Firefox */
 }
 
 .total-amount-label {
@@ -615,7 +610,7 @@ th {
 }
 
 .popup textarea {
-  font-family: "Manrope", sans-serif;  /* Remove default textarea font family*/
+  font-family: "Manrope", sans-serif; /* Remove default textarea font family*/
 }
 
 .group {
