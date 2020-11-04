@@ -29,6 +29,9 @@ let popup = function (typeOfPopup) {
   else if (typeOfPopup == "EditResources") {
     var popupCard = document.querySelector('.edit-resources-popup')
   }
+  else if (typeOfPopup == "DeleteResources") {
+    var popupCard = document.querySelector('.delete-resources-popup')
+  }
 
   const leftSection = document.querySelector('.side-panel')
   const rightSection = document.querySelector('.main-panel')
