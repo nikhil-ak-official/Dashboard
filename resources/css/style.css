@@ -570,6 +570,7 @@ th {
 .total-amount-label {
   margin-top: 15px;
   font-weight: 700;
+  text-align: right;
 }
 .total-amount {
   font-weight: 300;

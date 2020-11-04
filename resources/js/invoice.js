@@ -29,7 +29,7 @@ cards.forEach((card) => {
 // table making
 function resourceCall(card) {
   let allResources = utils.latestOfflineResourceList
-  let selectedResources = allResources.filter((resources) => resources.project_id == card.dataset.id)
+  let selectedResources = allResources.filter((resources) => resources.project_id == card.dataset.id && resources.billable == True)
   tableMaker(selectedResources);
   remove();
 }
@@ -46,13 +46,15 @@ function tableMaker(resourceList) {
       document.querySelector('.no-data-div-invoice').style.display = 'none'
       table.innerHTML = `<thead>
               <th style="color: #fff;">Name</th>
-              <th style="color: #fff;">Rate per hour</th>         
+              <th style="color: #fff;">Rate per hour</th>    
+              <th style="color: #fff;">Total amount</th>  
             </thead>`
       let tableBody = document.createElement('tbody')
       resourceList.forEach((resource) => {
         let row = document.createElement('tr')
         row.innerHTML = `<td>${resource.name}</td>
-                <td class= "invoice-rate" style="text-align: right;">${resource.rate_per_hour}</td>`
+                <td class= "invoice-rate" style="text-align: right;">${resource.rate_per_hour}</td>
+                <td class= "total-amount-per-person" data-id = ${resource.id} style="text-align: right;">---</td>`
         tableBody.appendChild(row)
       })
       table.appendChild(tableBody)
@@ -78,16 +80,29 @@ function tableMaker(resourceList) {
   function calculation() {
     let workingDays = document.getElementById("working-days").value;
     if (workingDays) {
-      let rateList = calcResource.map(e => e.rate_per_hour);
-      let total = 0;
-      const workingHours = 8
-      rateList.forEach(rate => { total = total + rate * workingHours * workingDays; })
+      let amountPerPerson = document.querySelectorAll(".total-amount-per-person");
+      const workingHours = 8;
+      let total =0;
+      amountPerPerson.forEach(e=>{
+        calcResource.forEach(r => { if(r.id == e.dataset.id) {
+          e.innerHTML = r.rate_per_hour * workingHours * workingDays;
+          total += Number(e.innerHTML);
+        };
+       
+      })
+    })
+
+      // let rateList = calcResource.map(e => e.rate_per_hour);
+      // let total = 0;
+      // const workingHours = 8;
+      // rateList.forEach(rate => { total = total + rate * workingHours * workingDays; })
       document.querySelector(".total-amount").innerHTML = total;
     }
-  }
+}
 
   // Clear input field and total amount.
   function remove() {
     document.getElementById("working-days").value = "";
     document.querySelector(".total-amount").innerHTML = "";
+    document.querySelectorAll(".total-amount-per-person").innerHTML = "---"
   }
