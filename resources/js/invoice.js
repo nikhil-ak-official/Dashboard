@@ -29,7 +29,7 @@ cards.forEach((card) => {
 // table making
 function resourceCall(card) {
   let allResources = utils.latestOfflineResourceList
-  let selectedResources = allResources.filter((resources) => resources.project_id == card.dataset.id && resources.billable == True)
+  let selectedResources = allResources.filter((resources) => resources.project_id == card.dataset.id && resources.billable == "True")
   tableMaker(selectedResources);
   remove();
 }
