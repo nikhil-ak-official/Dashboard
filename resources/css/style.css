@@ -31,14 +31,26 @@ html {
   font-weight: 300;
   font-size: 16px;
   text-rendering: optimizeLegibility;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
-/* Hide scrollbar */
+/* Hide scrollbar
 ::-webkit-scrollbar {
   width: 0px;
   height: 0px;
   background: transparent;
+} */
+
+::-webkit-scrollbar {
+    width: 0px;  /* Remove scrollbar space */
+    background: transparent;  /* Optional: just make scrollbar invisible */
 }
+/* Optional: show position indicator in red */
+::-webkit-scrollbar-thumb {
+    background: #FF0000;
+}
+
 
 /* -------------------------------- */
 /* ----- 2. REUSED ITEMS -----------*/
