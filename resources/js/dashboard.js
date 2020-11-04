@@ -40,7 +40,6 @@ function setTabs(index) {
   tabs[index].style.display = "block";
   if (tabs[index].dataset.editable == "true") {
     editButton.style.display = "block";
-    editButton.textContent = `Edit ${buttons[index].textContent}`;
   } else {
     editButton.style.display = "none";
   }

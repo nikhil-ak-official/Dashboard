@@ -235,7 +235,7 @@ header div {
 }
 
 .slice-one {
-  padding: 20px 50px;
+  padding: 10px 30px;
   background-color: #49d8a0;
   width: 75%;
   height: 100%;
@@ -244,6 +244,26 @@ header div {
   align-items: center;
   border-radius: 5px;
   color: #fff;
+}
+
+.menu-and-title{
+  box-shadow: none;
+  flex-direction: column;
+}
+
+.nav-links{
+  margin-bottom: 12px;
+  list-style: none;
+}
+
+.nav-links a{
+  text-decoration: none;
+  color: #fff;
+  transition: all 0.2s ease;
+}
+
+.nav-links a:hover{
+  color: #d84981;
 }
 
 h1 {
@@ -299,6 +319,7 @@ h1 {
 .button-box button {
   margin-right: 5px;
   background-color: #fff;
+  cursor: pointer;
 }
 
 .active-tab,
@@ -326,6 +347,10 @@ h1 {
   -webkit-box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.3);
   box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.3);
   z-index: 999;
+}
+
+#edit-icon{
+  color: #fff;
 }
 
 /* -------------------------------- */
@@ -417,6 +442,7 @@ footer {
 .edit-details-btn {
   background-color: #49d8a0;
   color: #fff;
+  cursor: pointer;
 }
 
 .percentage-completed {
