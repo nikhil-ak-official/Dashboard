@@ -181,3 +181,8 @@ allAddProjectFields.forEach((field) => {
     utils.validate(e.target);
   });
 });
+
+
+document.querySelector('.btn-red').addEventListener('click',()=>{
+  apis.preLoader()
+})

@@ -765,3 +765,42 @@ th {
   color: #464648;
   font-weight: 500;
 }
+
+/* -------------------------------- */
+/* ----- 10. PRELOADER ------------ */
+/* -------------------------------- */
+.active-loader{visibility: visible !important;}
+.preloader-box{
+  position: fixed;
+  top: 30%;
+  left: 50%;
+  z-index: 999999;
+  text-align: center;
+  flex-direction: column;
+  align-items: center;
+  visibility: hidden;
+}
+
+.preloader{
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 8px solid #49d8a0;
+  border-top: 8px solid #d84981;
+  visibility: hidden;
+  animation: rotate 1s ease-in-out infinite;
+}
+
+.loading-text{
+  margin-top: 10px;
+  font-weight: 500;
+}
+
+@keyframes rotate{
+  from{
+    transform: rotate(0deg);
+  }
+  to{
+    transform: rotate(360deg);
+  }
+}
