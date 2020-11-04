@@ -115,9 +115,6 @@ cancelEditProjectsBtn.addEventListener("click", () => {
 function editProject() {
   document.getElementById("project-name-edit").value = activeObj.project_name;;
   document.getElementById("project-description-edit").value = activeObj.project_desc;
-  let existingTechs = activeObj.tech_used.reduce((acc, curr) => [...acc, { value: curr }], [])
-  console.log(activeObj.tech_used)
-  // document.getElementById("project-technologies-edit").value = JSON.stringify(existingTechs);
   tagify.addTags(activeObj.tech_used)
   document.getElementById("project-percentage-edit").value = activeObj.percentage_complete;
   document.getElementById("project-startDate-edit").value = activeObj.start_date;
