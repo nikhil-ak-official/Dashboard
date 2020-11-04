@@ -674,7 +674,8 @@ th {
 .add-project-popup-btn,
 .edit-project-popup-btn,
 .add-resources-popup-btn,
-.edit-resources-popup-btn {
+.edit-resources-popup-btn,
+.delete-resources-popup-btn {
   background-color: #49d8a0;
   transition: all 0.2s ease;
   color: #fff;
@@ -683,7 +684,8 @@ th {
 .add-project-popup-btn:hover,
 .edit-project-popup-btn:hover,
 .add-resources-popup-btn:hover,
-.edit-resources-popup-btn:hover {
+.edit-resources-popup-btn:hover,
+.delete-resources-popup-btn:hover {
   transform: scale(1.01);
   box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.3);
 }
@@ -691,7 +693,8 @@ th {
 .cancel-add-btn,
 .cancel-edit-btn,
 .cancel-add-resources-btn,
-.cancel-edit-resources-btn {
+.cancel-edit-resources-btn,
+.cancel-delete-resources-btn {
   background-color: #fff;
   border: 1px solid #d84981 !important;
   transition: all 0.2s ease;
@@ -700,7 +703,8 @@ th {
 .cancel-add-btn:hover,
 .cancel-edit-btn:hover,
 .cancel-add-resources-btn:hover,
-.cancel-edit-resources-btn:hover {
+.cancel-edit-resources-btn:hover,
+.cancel-delete-resources-btn:hover {
   background-color: #d84981;
   color: #fff;
   transform: scale(1.01);

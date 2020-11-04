@@ -55,7 +55,14 @@ function AddResources(resources) {
   let resourceId = copyResource.pop().id + 1;
   let resourceName = document.getElementById('name-add').value;
   let resourceEmail = document.getElementById('email-add').value;
-  let resourceBillable = document.getElementById('billable-add').checked;
+  let resourceBillableCheck = document.getElementById('billable-add').checked;
+  let resourceBillable;
+  if(resourceBillableCheck == true){
+    resourceBillable = 'True'
+  }
+  else{
+    resourceBillable = 'False'
+  }
   let resourceRate = document.getElementById('rate-add').value;
   let projectId = document.querySelector('.active-card').dataset.id;
 
@@ -180,7 +187,10 @@ updateResourcesBtn.addEventListener('click', () => {
   // The original list (latestOfflineResourceList) is getting updated as this is a call by reference
   updateReference.name = document.querySelector('#edit-name-add').value
   updateReference.email = document.querySelector('#edit-email-add').value
-  updateReference.billable = document.querySelector('#edit-billable-add').checked
+  let updateResourceBillable = document.querySelector('#edit-billable-add').checked
+  let updatedResourceBillableCheck
+  if(updateResourceBillable == true){updatedResourceBillableCheck = 'True'}else{updatedResourceBillableCheck = 'False'}
+  updateReference.billable = updatedResourceBillableCheck
   updateReference.rate_per_hour = document.querySelector('#edit-rate-add').value
 
   apis.putAPI("PUT", utils.resourceAPI, utils.secretKey, JSON.stringify(resourceList), (resp) => {
@@ -195,19 +205,29 @@ function activateDelete() {
   const delResourceBtn = document.querySelectorAll(".delete-resource");
   delResourceBtn.forEach((btn) => {
     btn.addEventListener("click", () => {
-      let resourceList = utils.latestOfflineResourceList
-      let updatedOfflineResourceList = resourceList.filter((a) => a.id != btn.dataset.id);
-      apis.putAPI(
-        "PUT",
-        utils.resourceAPI, utils.secretKey,
-        JSON.stringify(updatedOfflineResourceList), (docu) => {
-          utils.latestOfflineResourceList = updatedOfflineResourceList
-          resourceCall(document.querySelector('.active-card'))
-        }
-      )
+      utils.popup("DeleteResources")
+      const confirmDeleteBtn = document.querySelector(".delete-resources-popup-btn")
+      confirmDeleteBtn.addEventListener("click", ()=>{
+        let resourceList = utils.latestOfflineResourceList
+        let updatedOfflineResourceList = resourceList.filter((a) => a.id != btn.dataset.id);
+        console.log(updatedOfflineResourceList)
+        apis.putAPI(
+          "PUT",
+          utils.resourceAPI, utils.secretKey,
+          JSON.stringify(updatedOfflineResourceList), (docu) => {
+            utils.latestOfflineResourceList = updatedOfflineResourceList
+            resourceCall(document.querySelector('.active-card'))
+          }
+        )
+        utils.popup("DeleteResources")  
+      })
     })
   })
 }
+
+document.querySelector(".cancel-delete-resources-btn").addEventListener("click", () => {
+  utils.popup("DeleteResources")
+})
 
 // Validate on blur (Add resources)
 allAddResourcesFields.forEach((field) => {
