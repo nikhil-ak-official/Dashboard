@@ -25,7 +25,7 @@
   }
   
   html {
-    background-color: #f6f7fb;
+    background-color: white;
     color: #464648;
     font-family: "Manrope", sans-serif;
     font-weight: 300;
@@ -49,13 +49,14 @@
     display: flex;
   }
 
+
   .main-panel {
     padding: 20px;
     height: 1000px;
     width: 100%;
     margin: 0 auto;
     max-width: 95% ;
-    background-color: #f6f7fb;
+    background-color: white;
   }
   
   .btn-red {
@@ -84,47 +85,7 @@
   /* -------------------------------- */
   /* ----- 3. SIDE PANEL -------------*/
   /* -------------------------------- */
-  .head-text-logo {
-    padding: 10px;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    margin-bottom: 30px;
-  }
   
-  .logo {
-    width: 50px;
-    height: 50px;
-    border-radius: 50px;
-  }
-  
-  .logo img {
-    width: 50px;
-    height: 50px;
-  }
-  
-  .head-text-logo p {
-    font-size: 120%;
-    font-weight: 500;
-    margin-left: 20px;
-  }
-  
-  .add-projects-label {
-    width: 100%;
-  }
-  .add-project-btn {
-    margin-bottom: 10px;
-    margin-right: 10px;
-    background-color: #49d8a0;
-    border: none;
-    border-radius: 5px;
-    color: #fff;
-    padding: 5px 12px;
-    cursor: pointer;
-    outline: none;
-    -webkit-transition: all 0.2s ease;
-    transition: all 0.2s ease;
-  }
   .add-project-btn:hover,
   .project-card:hover {
     -webkit-transform: translateY(-5px) scale(1.01);
@@ -178,30 +139,7 @@
     color: #fff;
   }
   
-  .card-circle {
-    height: 70px;
-    width: 70px;
-  }
   
-  .card-circle circle {
-    fill: none;
-    stroke-width: 10;
-    -webkit-transform: translate(5px, 5px);
-    transform: translate(5px, 5px);
-    stroke-dasharray: 190;
-    stroke-dashoffset: 190;
-  }
-  .card-circle circle:nth-child(1) {
-    stroke-dashoffset: 0;
-    stroke: #f3f3f3;
-  }
-  .card-circle circle:nth-child(2) {
-    stroke: #49d8a0;
-  }
-  
-  .active-card .card-circle circle:nth-child(2) {
-    stroke: #d84981;
-  }
   
   .project-card:hover circle:nth-child(2) {
     stroke: #d84981;
@@ -210,8 +148,112 @@
   /* -------------------------------- */
   /* ----- 4. MAIN PANEL -------------*/
   /* ---------------------------------*/
+
+  .graph-container,
+  .counts-container {
+    flex:1;
+    display: flex;
+    flex-basis: 100%;
+    height: 400px;
+      }
+
+  .right-graph-container,
+  .left-graph-container ,
+  .right-counts-container,
+  .left-counts-container {
+    flex:1;
+    flex-basis: 50%;
+    margin: 20px;
+    height: 350px;
+    -webkit-box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-wrap: wrap;
+    background-color: white;
+  }
+
+  .projects-count,
+  .resources-count,
+  .billable-count,
+  .shadow-count {
+    flex:1 35%;
+    margin: 10px;
+    padding: 30px;
+    -webkit-box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
+    color: #fff;
+    border-radius: 10px;
+
+  }
+
+  .projects-count,
+  .shadow-count {
+    background-color: #49d8a0;
+  }
+
+  .resources-count,
+  .billable-count {
+    background-color: #d84981;
+
+  }
+
+  .technologies-count-container {
+    background-color: #15BEBB;
+    width: 100%;
+    /* margin: 10px; */
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    /* height: 330px; */
+    height: 100%;
+    overflow: scroll;
+  }
+
+  .technologies-count {
+    display: flex;
+    color: #fff;
+    margin: 20px 30px;
+  }
+
+  .tech-logo {
+    /* flex: 0.1; */
+    width:10%;
+  }
+  .tech-count {
+    /* flex:1; */
+    width:90%;
+    padding-left: 15px;
+    text-align: left;
+  }
+
+  progress {
+    width: 80%;
+    animation: animateprogressbar 2s;
+  }
+  @keyframes animateprogressbar {
+    from   {width: 0}
+    to  {width: 80%;}
+  }
+
+  .card-icon {
+    width:30px;
+  }
+
+  .graph-technologies,
+  .graph-resources {
+    margin: auto;
+  }
+
   
-  /*----- Header ---------------*/
+
+
+  
+
+
+   
+
+
+     /*----- Header ---------------*/
   .mobile-hamburger {
     display: none;
   }
@@ -295,53 +337,13 @@
 
   }
   
-  .tab-buttons {
-    -webkit-box-pack: justify;
-    -ms-flex-pack: justify;
-    justify-content: space-between;
-  }
-  
-  .tab-buttons button {
-    padding: 8px 10px;
-    outline: none;
-    border: none;
-    border-radius: 5px;
-    -webkit-transition: all 0.2s ease;
-    transition: all 0.2s ease;
-  }
-  
-  .button-box {
-    width: 70%;
-    overflow: scroll;
-    -ms-overflow-style: none; /* Internet Explorer 10+ */
-    scrollbar-width: none; /* Firefox */
-  }
-  
-  .button-box button {
-    margin-right: 5px;
-    background-color: #fff;
-    cursor: pointer;
-  }
-  
-  .active-tab,
-  .tab-buttons button:hover {
-    -webkit-transform: scale(1.01);
-    transform: scale(1.01);
-    background-color: #49d8a0 !important; /* To overwrite 'button-box buttons' color*/
-    color: #fff;
-    -webkit-box-shadow: 1px -1px 8px rgba(0, 0, 0, 0.3);
-    box-shadow: 1px -1px 8px rgba(0, 0, 0, 0.3);
-  }
-  
-  .tab-line {
-    margin: 5px 0;
-  }
+
   
   .tab-content {
     height: 100%;
     width: 95%;
     margin: auto;
-    background-color: #fff;
+    background-color: #f1f1f1;
     text-align: center;
     padding: 30px;
     display: block;
@@ -351,9 +353,6 @@
     z-index: 999;
   }
   
-  #edit-icon{
-    color: #fff;
-  }
   
   /* -------------------------------- */
   /* ----- 5. FOOTER ------------*/
@@ -371,378 +370,9 @@
   /* -------------------------------- */
   /* ----- 6. DETAILS TAB ------------*/
   /* -------------------------------- */
-  .tab-container {
-    text-align: left;
-  }
+
   
-  .left-side-details {
-    padding: 10px;
-    width: 70%;
-  }
-  .left-side-details .content {
-    margin-bottom: 10px;
-  }
-  .left-side-details .heading,
-  .right-side-details .heading {
-    font-weight: 700;
-  }
-  
-  .right-side-details {
-    position: relative;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    padding: 10px;
-    width: 30%;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-  }
-  
-  .date-box {
-    -webkit-box-pack: justify;
-    -ms-flex-pack: justify;
-    justify-content: space-between;
-    width: 75%;
-    margin: 0 auto;
-    margin-top: -20px;
-  }
-  
-  .right-side-details .detail-circle {
-    margin-top: 20px;
-    height: 150px;
-    width: 150px;
-  }
-  
-  .right-side-details .detail-circle circle {
-    fill: none;
-    stroke-width: 15;
-    stroke: #000;
-    -webkit-transform: translate(5px, 5px);
-    transform: translate(5px, 5px);
-    stroke-dasharray: 410;
-    stroke-dashoffset: 410;
-    -webkit-transform: translate(10px, 10px);
-    transform: translate(10px, 10px);
-  }
-  
-  .right-side-details .detail-circle circle:nth-child(1) {
-    stroke-dashoffset: 0;
-    stroke: #f3f3f3;
-  }
-  .right-side-details .detail-circle circle:nth-child(2) {
-    stroke-dashoffset: calc(410 - ((410 * 75) / 100));
-    stroke: #49d8a0;
-  }
-  
-  .edit-details-btn {
-    background-color: #49d8a0;
-    color: #fff;
-    cursor: pointer;
-  }
-  
-  .percentage-completed {
-    position: absolute;
-    top: 52%;
-    font-size: 150%;
-  }
-  
-  /* -------------------------------- */
-  /* ----- 7. RESOURCES TAB ----------*/
-  /* -------------------------------- */
-  .tab-content {
-    text-align: left;
-  }
-  
-  .add-resources-label {
-    width: 25%;
-  }
-  
-  .add-resources-btn {
-    border: 0;
-    padding: 5px 12px;
-    margin-right: 10px;
-    background-color: #49d8a0;
-    outline: none;
-    cursor: pointer;
-    color: #fff;
-    border-radius: 5px;
-    -webkit-transition: all 0.2s ease;
-    transition: all 0.2s ease;
-  }
-  .add-resources-btn:hover {
-    -webkit-transform: scale(1.01);
-    transform: scale(1.01);
-    -webkit-box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.3);
-    box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.3);
-  }
-  
-  .resource-table {
-    margin-top: 10px;
-    width: 100%;
-  }
-  
-  .resource-table th {
-    background-color: #49d8a0;
-    color: #fff;
-    text-align: center;
-  }
-  
-  td,
-  th {
-    padding: 8px 5px !important; /* Required to overwrite bootstrap*/
-    border: 1px solid #e7e7e7;
-    -webkit-transition: all 0.2s ease;
-    transition: all 0.2s ease;
-  }
-  
-  
-  .edit-resource:hover,
-  .delete-resource:hover {
-    background-color: #49d8a0;
-    color: #fff;
-    cursor: pointer;
-  }
-  
-  /* -------------------------------- */
-  /* ----- 8. INVOICE TAB ------------*/
-  /* -------------------------------- */
-  .generate-invoice-box {
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-  }
-  .generate-invoice-box label {
-    font-weight: 700;
-    margin-right: 10px;
-  }
-  .generate-invoice-box input {
-    padding: 5px;
-    margin-right: 10px;
-  }
-  
-  .generate-invoice-btn {
-    background-color: #49d8a0;
-    padding: 10px;
-    width: 25%;
-    border: none;
-    border-radius: 5px;
-    color: #fff;
-    outline: none;
-    cursor: pointer;
-    -webkit-transition: all 0.2s ease;
-    transition: all 0.2s ease;
-  }
-  .generate-invoice-btn:hover {
-    -webkit-transform: scale(1.01);
-    transform: scale(1.01);
-    -webkit-box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.3);
-    box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.3);
-  }
-  
-  .invoice-details {
-    width: 100%;
-  }
-  .invoice-details th {
-    background-color: #49d8a0;
-  }
-  
-  .scroll-box {
-    margin-top: 20px;
-    height: 70%;
-    overflow: scroll;
-    -ms-overflow-style: none; /* Internet Explorer 10+ */
-    scrollbar-width: none; /* Firefox */
-  }
-  
-  .total-amount-label {
-    margin-top: 15px;
-    font-weight: 700;
-    text-align: right;
-  }
-  .total-amount {
-    font-weight: 300;
-    margin-left: 20px;
-  }
-  
-  /* -------------------------------- */
-  /* ----- 9. PROJECT - POPUP --------*/
-  /* -------------------------------- */
-  .add-project-line,
-  .edit-project-line {
-    margin-top: 5px;
-  }
-  
-  .blur {
-    filter: blur(20px);
-    pointer-events: none;
-    user-select: none;
-  }
-  
-  .active {
-    visibility: visible !important;
-    transition: 0.5s;
-  }
-  
-  .popup {
-    flex-direction: column;
-    position: fixed;
-    padding: 20px;
-    top: 50%;
-    visibility: hidden;
-    left: 50%;
-    width: 500px;
-    max-height: 97%;
-    transform: translate(-50%, -50%);
-    background-color: #fff;
-    border-radius: 5px;
-    overflow: scroll;
-    z-index: 9999;
-  }
-  .popup div {
-    width: 100%;
-  }
-  
-  .popup h3 {
-    margin-top: 0;
-  }
-  
-  .popup p {
-    font-size: 90%;
-    font-weight: 500;
-    margin-left: 5px;
-  }
-  
-  .popup label {
-    margin-top: 10px;
-    font-weight: 500;
-  }
-  .popup input,
-  .popup label,
-  .popup textarea {
-    padding: 5px;
-    border-radius: 2px;
-  }
-  
-  .popup input,
-  .popup textarea {
-    border: 1px solid #dedbdb;
-  }
-  
-  .popup textarea {
-    font-family: "Manrope", sans-serif; /* Remove default textarea font family*/
-  }
-  
-  .group {
-    flex-direction: column;
-  }
-  
-  .date-set-box div {
-    flex-direction: column;
-    margin-bottom: 25px;
-  }
-  
-  .date-set-box div,
-  .popup-button-box button {
-    width: 45%;
-  }
-  
-  .date-set-box,
-  .popup-button-box {
-    justify-content: space-between;
-  }
-  
-  .popup-button-box button {
-    padding: 8px;
-    outline: none;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .add-project-popup-btn,
-  .edit-project-popup-btn,
-  .add-resources-popup-btn,
-  .edit-resources-popup-btn,
-  .delete-resources-popup-btn {
-    background-color: #49d8a0;
-    transition: all 0.2s ease;
-    color: #fff;
-  }
-  
-  .add-project-popup-btn:hover,
-  .edit-project-popup-btn:hover,
-  .add-resources-popup-btn:hover,
-  .edit-resources-popup-btn:hover,
-  .delete-resources-popup-btn:hover {
-    transform: scale(1.01);
-    box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.3);
-  }
-  
-  .cancel-add-btn,
-  .cancel-edit-btn,
-  .cancel-add-resources-btn,
-  .cancel-edit-resources-btn,
-  .cancel-delete-resources-btn {
-    background-color: #fff;
-    border: 1px solid #d84981 !important;
-    transition: all 0.2s ease;
-  }
-  
-  .cancel-add-btn:hover,
-  .cancel-edit-btn:hover,
-  .cancel-add-resources-btn:hover,
-  .cancel-edit-resources-btn:hover,
-  .cancel-delete-resources-btn:hover {
-    background-color: #d84981;
-    color: #fff;
-    transform: scale(1.01);
-    box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.3);
-  }
-  
-  .checkbox-container {
-    flex-direction: row;
-    align-items: center;
-  }
-  
-  .checkbox-container label,
-  .checkbox-container input {
-    margin: 0;
-  }
-  
-  .resource-buttons {
-    margin-top: 25px;
-    margin-bottom: 5px;
-  }
-  
-  .tags-look .tagify__dropdown__item {
-    display: inline-block;
-    border-radius: 3px;
-    padding: 0.3em 0.5em;
-    border: 1px solid #ccc;
-    background: #f3f3f3;
-    margin: 0.2em;
-    font-size: 0.85em;
-    color: black;
-    transition: 0s;
-    z-index: 999999999;
-  }
-  
-  .tags-look .tagify__dropdown__item--active {
-    color: black;
-  }
-  
-  .tags-look .tagify__dropdown__item:hover {
-    background: lightyellow;
-    border-color: gold;
-  }
+ 
   
   /* -------------------------------- */
   /* ----- 9. SERVER ERROR MESSAGES --*/
