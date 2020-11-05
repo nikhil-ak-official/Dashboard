@@ -25,7 +25,7 @@
   }
   
   html {
-    background-color: #f6f7fb;
+    background-color: white;
     color: #464648;
     font-family: "Manrope", sans-serif;
     font-weight: 300;
@@ -56,7 +56,7 @@
     width: 100%;
     margin: 0 auto;
     max-width: 95% ;
-    background-color: #f6f7fb;
+    background-color: white;
   }
   
   .btn-red {
@@ -155,7 +155,7 @@
     display: flex;
     flex-basis: 100%;
     height: 400px;
-  }
+      }
 
   .right-graph-container,
   .left-graph-container ,
@@ -169,6 +169,7 @@
     box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
     display: flex;
     flex-wrap: wrap;
+    background-color: white;
   }
 
   .projects-count,
@@ -199,30 +200,41 @@
   .technologies-count-container {
     background-color: #15BEBB;
     width: 100%;
-    margin: 10px;
-    border-radius: 10px;
+    /* margin: 10px; */
+    border-radius: 5px;
     display: flex;
     flex-direction: column;
-    height: 330px;
+    /* height: 330px; */
+    height: 100%;
     overflow: scroll;
   }
 
   .technologies-count {
     display: flex;
     color: #fff;
-    margin: 30px;
+    margin: 20px 30px;
   }
 
+  .tech-logo {
+    /* flex: 0.1; */
+    width:10%;
+  }
   .tech-count {
+    /* flex:1; */
+    width:90%;
     padding-left: 15px;
     text-align: left;
   }
 
   .count-bar {
-    background-color: black;
-    width: 150px;
+    background-color: rgb(41, 38, 38);
+    width: 80%;
     height: 10px;
 
+  }
+
+  .card-icon {
+    width:30px;
   }
 
   .graph-technologies,
@@ -329,7 +341,7 @@
     height: 100%;
     width: 95%;
     margin: auto;
-    background-color: #fff;
+    background-color: #f1f1f1;
     text-align: center;
     padding: 30px;
     display: block;
