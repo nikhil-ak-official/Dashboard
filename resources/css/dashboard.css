@@ -180,8 +180,63 @@
     padding: 30px;
     -webkit-box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
     box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
+    color: #fff;
+    border-radius: 10px;
 
   }
+
+  .projects-count,
+  .shadow-count {
+    background-color: #49d8a0;
+  }
+
+  .resources-count,
+  .billable-count {
+    background-color: #d84981;
+
+  }
+
+  .technologies-count-container {
+    background-color: #15BEBB;
+    width: 100%;
+    margin: 10px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    height: 330px;
+    overflow: scroll;
+  }
+
+  .technologies-count {
+    display: flex;
+    color: #fff;
+    margin: 30px;
+  }
+
+  .tech-count {
+    padding-left: 15px;
+    text-align: left;
+  }
+
+  .count-bar {
+    background-color: black;
+    width: 150px;
+    height: 10px;
+
+  }
+
+  .graph-technologies,
+  .graph-resources {
+    margin: auto;
+  }
+
+  
+
+
+  
+
+
+   
 
 
      /*----- Header ---------------*/
