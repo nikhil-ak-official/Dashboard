@@ -226,13 +226,12 @@
     text-align: left;
   }
 
-  .count-bar {
-    background-color: rgb(41, 38, 38);
-    width: 80%;
-    height: 10px;
-
-  }
-
+progress {
+  width: 80%;
+}
+progress::-webkit-progress-value {
+	transition: width 2.5s ease-in-out;
+}
   .card-icon {
     width:30px;
   }
