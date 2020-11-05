@@ -226,12 +226,15 @@
     text-align: left;
   }
 
-progress {
-  width: 80%;
-}
-progress::-webkit-progress-value {
-	transition: width 2.5s ease-in-out;
-}
+  progress {
+    width: 80%;
+    animation: animateprogressbar 2s;
+  }
+  @keyframes animateprogressbar {
+    from   {width: 0}
+    to  {width: 80%;}
+  }
+
   .card-icon {
     width:30px;
   }
