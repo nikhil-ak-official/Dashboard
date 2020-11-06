@@ -228,15 +228,15 @@
         <div class="graph-container">
           <div class="left-graph-container">
             <div class="graph-resources">
-              <h2>Project Vs Resources</h2>
-              <canvas id="proVsTechChart" style=" width:30%; height: 30%;"></canvas>
+
+              <canvas id="proVsTechChart" ></canvas>
             </div>
 
           </div>
           <div class="right-graph-container">
             <div class="graph-technologies">
-              <h2>Project Vs Technologies</h2>
-              <canvas id="proVsResourcesChart" style=" width:30%; height: 30%;"></canvas>
+      
+              <canvas id="proVsResourcesChart" ></canvas>
             </div>
 
           </div>
@@ -294,6 +294,7 @@
     let technologiesInProject = [7, 2, 3, 4]
 
     let proVsTechChart = document.getElementById('proVsTechChart').getContext('2d');
+    
     let barChart1 = new Chart(proVsTechChart, {
       type: 'bar',
       data: {
@@ -309,6 +310,8 @@
         }]
       },
       options: {
+        responsive: false,
+
         title: {
           display: true,
           text: 'Project Vs Technologies',
@@ -348,13 +351,15 @@
         }]
       },
       options: {
+        responsive: true,
+
         title: {
           display: true,
           text: 'Project Vs Resources',
           fontSize: 18
         },
         legend: {
-          display: true
+          display: false
         },
         tooltips: {
           enabled: true
