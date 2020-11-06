@@ -10,10 +10,10 @@
 
 /*-------------- API Call to GET items from server --------------*/
 let getAPI = function (method, url, secretKey, asyncType, callback) {
-  preLoader()
+
   let xhr = new XMLHttpRequest()
   xhr.onload = function () {
-    preLoader()
+ 
     if (this.status === 200) {
       try {
         let responseArray = JSON.parse(this.responseText)
