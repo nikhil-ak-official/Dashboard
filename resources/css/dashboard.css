@@ -179,8 +179,19 @@
     box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
     color: #fff;
     border-radius: 10px;
+    height: 40%;
 
   }
+  .projects-count,
+  .resources-count {
+    margin-top: 30px;
+  }
+  .billable-count,
+  .shadow-count {
+    margin-bottom: 30px;
+  }
+
+
 
   #all-project-count,
   #all-resource-count,
@@ -249,7 +260,7 @@
   }
 
   .card-icon {
-    width:30px;
+    width:40px;
   }
 
   .graph-technologies,
