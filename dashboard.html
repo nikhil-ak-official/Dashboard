@@ -5,6 +5,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="resources/css/dashboard.css">
+  <link rel="stylesheet" href="resources/css/dashboard_responsive.css">
+
 
   <!-- Favicons for browsers, tabs, mobiles, and windows -->
   <link rel="apple-touch-icon" sizes="57x57" href="resources/favicons/apple-icon-57x57.png">
@@ -86,7 +88,7 @@
     <section class="middle-tabs ">
 
       <!-- main content area  -->
-      <div class="tab-content flex-box" data-editable="true">
+      <div class="tab-content" data-editable="true">
 
         <div class="counts-container">
           <div class="left-counts-container">
@@ -220,21 +222,23 @@
                   </div>
                 </div>
               </div>
+              
 
             </div>
           </div>
         </div>
 
         <div class="graph-container">
-          <div class="left-graph-container">
-            <div class="graph-resources">
+          <div class="left-graph-container" >
+            <div class="graph-technologies" style="position: relative">
 
-              <canvas id="proVsTechChart" width="400" height="350"></canvas>
+
+              <canvas id="proVsTechChart" width="400" height="330"></canvas>
             </div>
 
           </div>
-          <div class="right-graph-container">
-            <div class="graph-technologies">
+          <div class="right-graph-container" >
+            <div class="graph-resources" style="position: relative">
       
               <canvas id="proVsResourcesChart" width="400" height="330"></canvas>
             </div>
@@ -267,6 +271,10 @@
     <!--      Footer ends here-->
   </section>
 
+  <section class="side-panel">
+    <div class="card-holder flex-box"></div>
+  </section>
+
 
   <!-- Preloader -->
   <section class="preloader-box flex-box">
@@ -283,15 +291,20 @@
 
   <!-- ionicons -->
   <script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>
+  <script src="resources/js/dashboard.js"></script>
+
 
   <!-- Tagify. Tag view for input elements -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/tagify/3.20.3/tagify.min.js"
     integrity="sha512-Ok8DfwnjQhVsq3+9ToFXJjkWPL2h99aJWCg4U8w7iWA6i3kf4zgNLd7cLBdWdCqGZArRevXQAr8FGbucnZqrvw=="
     crossorigin="anonymous"></script>
 
+
   <script type="module" src="resources/js/api.js"></script>
   <script type="module" src="resources/js/utils.js"></script>
    <script type="module" src="resources/js/projectDashboard.js"></script>
+
+ 
 </body>
 
 </html>
