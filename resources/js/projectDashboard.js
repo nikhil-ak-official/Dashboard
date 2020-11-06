@@ -62,7 +62,7 @@ function projectVstechChart(projectNames, technologiesInProject){
         datasets: [{
           label: 'Technologies',
           data: technologiesInProject,
-          backgroundColor: ['#49d8a0', '#6ed57c', '#92cf57', '#dbb809','#dbb409','#dbb509','#dbb822'],
+          backgroundColor: ['#3065D0', '#3065D0', '#3065D0', '#3065D0','#3065D0','#3065D0','#3065D0'],
           borderWidth: 1,
           borderColor: '#777',
           hoverBorderWidth: 3,
@@ -106,16 +106,16 @@ let rInProject = [3, 5, 7, 2, 9, 1, 5]
 let projectNames2 = ['Notes App', 'Online Private Tutors Finder System', 'Minecraft', 'Voice based Intelligent Virtual Assistance', 'Online Private Tutors Finder ', 'Minecrat', 'Voice based Intelligent Virtual Assistan']
 
 let proVsResourcesChart = document.getElementById('proVsResourcesChart').getContext('2d');
-let pieChart = new Chart(proVsResourcesChart, {
-  type: 'pie',
+let doughnutChart = new Chart(proVsResourcesChart, {
+  type: 'doughnut',
   data: {
     labels: projectNames2,
     datasets: [{
       label: 'Resources',
       data: rInProject,
-      backgroundColor: ['#49d8a0', '#6ed57c', '#92cf57', '#dbb809','#fbb409','#ebb509','#dbb822'],
-      borderWidth: 1,
-      borderColor: '#777',
+      backgroundColor: ['	#32CD32', '#d84981', '#20c997', '#ff9f00','#00afef','#9c52fd','#3065D0','#FF0000','#F9F931','#F99231'],
+      borderWidth: 3,
+      borderColor: '#fff',
       hoverBorderWidth: 3,
       hoverBorderColor: '#000'
     }]
@@ -129,11 +129,11 @@ let pieChart = new Chart(proVsResourcesChart, {
       fontSize: 18
     },
     legend: {
-      display: true,
-      align:'start'
+      display: false
     },
     tooltips: {
-      enabled: true
+      enabled: true,
+      bodyFontSize: 16
     }
   }
 })
