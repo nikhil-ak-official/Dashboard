@@ -8,7 +8,7 @@ apis.getAPI("get", utils.projectAPI, utils.secretKey, false, (obj) => {
     displayProjectCount(totalProjects)
 
     let projectIdNames = obj.map(project => {
-        return {id:project.id,project_name:project.project_name} 
+        return {project_id:project.id,project_name:project.project_name} 
     })
     projectList = projectIdNames;
 
@@ -28,7 +28,7 @@ apis.getAPI("get", utils.resourceAPI, utils.secretKey, true, (obj) => {
     displayResourcesCount(totalResources)
 
     let resourceIdProjectId = obj.map(resource => {
-        return {id:resource.id,project_id:resource.project_id} 
+        return {resource_id:resource.id,project_id:resource.project_id} 
     })
     console.log(projectList)
     console.log(resourceIdProjectId)
@@ -85,6 +85,11 @@ function projectVstechChart(projectNames, technologiesInProject){
           enabled: true
         },
         scales: {
+            xAxes: [{
+                ticks: {
+                  display:false
+                }
+              }],
           yAxes: [{
             ticks: {
               beginAtZero: true
