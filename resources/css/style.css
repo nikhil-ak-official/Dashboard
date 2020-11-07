@@ -89,8 +89,8 @@ button {
 /* -------------------------------- */
 /* ----- 3. SIDE PANEL -------------*/
 /* -------------------------------- */
-.-text-logo {
-head  padding: 10px;
+.head-text-logo {
+  padding: 10px;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
