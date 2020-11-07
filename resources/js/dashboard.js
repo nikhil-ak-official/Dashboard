@@ -219,8 +219,8 @@ function projectUnderTechs() {
     <div class="progress-bar">
 				<span class="progress-bar-fill" style ="width:${Number(techCount[techs])*10}%" ></span>
     </div>
-    <p style="display:inline-block">${techCount[techs]}<p>
   </div>
+  <div style="margin: auto">${techCount[techs]}</div>
 </div>`;
 
   }
