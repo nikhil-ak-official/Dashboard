@@ -123,7 +123,7 @@ function projectVstechChart(projectNames, technologiesInProject) {
 function projectVsresChart(pVsRprojectNames, pVsRresourceCount) {
   let proVsResourcesChart = document.getElementById('proVsResourcesChart').getContext('2d');
   let doughnutChart = new Chart(proVsResourcesChart, {
-    type: 'doughnut',
+    type: 'horizontalBar',
     data: {
       labels: pVsRprojectNames,
       datasets: [{
@@ -150,6 +150,18 @@ function projectVsresChart(pVsRprojectNames, pVsRresourceCount) {
       tooltips: {
         enabled: true,
         bodyFontSize: 16
+      },
+      scales: {
+        yAxes: [{
+          ticks: {
+            display: false
+          }
+        }],
+        xAxes: [{
+          ticks: {
+            beginAtZero: true
+          }
+        }]
       }
     }
   })
@@ -204,11 +216,10 @@ function projectUnderTechs() {
   </div>
   <div class="tech-count">
     <p>${techs}</p>
-    <div class="count-bar">
-
-      <progress value="${Number(techCount[techs]) * 10}" max="100"></progress> ${techCount[techs]}
-
+    <div class="progress-bar">
+				<span class="progress-bar-fill" style ="width:${Number(techCount[techs])*10}%" ></span>
     </div>
+    <p style="display:inline-block">${techCount[techs]}<p>
   </div>
 </div>`;
 
