@@ -56,6 +56,10 @@
         flex-direction: column;
     }
 
+    .right-graph-container, .left-graph-container, .right-counts-container, .left-counts-container {
+      height: 30%;
+    }
+
     .side-panel {
         display: none;
         position: fixed;
@@ -212,6 +216,11 @@
       flex-direction: column;
       flex-wrap: nowrap;
     }
+    .right-graph-container, .left-graph-container, .right-counts-container, .left-counts-container {
+      height: 25%;
+    }
+
+    
     .projects-count, .resources-count, .billable-count, .shadow-count {
       flex: 1;
       flex-basis: 100%;
