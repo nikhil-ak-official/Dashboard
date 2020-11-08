@@ -7,7 +7,6 @@
   <link rel="stylesheet" href="resources/css/dashboard.css">
   <link rel="stylesheet" href="resources/css/dashboard_responsive.css">
 
-
   <!-- Favicons for browsers, tabs, mobiles, and windows -->
   <link rel="apple-touch-icon" sizes="57x57" href="resources/favicons/apple-icon-57x57.png">
   <link rel="apple-touch-icon" sizes="60x60" href="resources/favicons/apple-icon-60x60.png">
@@ -54,26 +53,11 @@
     
     <div class="card-holder flex-box" id="projectList">
       <ul>
-        <li><a href="index.html">Projects</a></li>
-        <li><a href="dashboard.html">Dashboard</a></li>
+        <a href="index.html"><li><img class="" src="resources/imgs/projects.svg" style="width: 20px; margin-right: 8px;">Projects</li></a>
+        <a href="dashboard.html"><li><img class="" src="resources/imgs/dashboard.svg" style="width: 20px; margin-right: 8px;">Dashboard</li></a>
       </ul>
-
-      <!--  -->
-      <!-- Dynamic list of projects as cards using JavaScript -->
-      <!--  -->
-
-    
-
     </div>
   </section>
-
-
-
-  <!--  -->
-  <!-- Dynamic list of projects as cards using JavaScript -->
-  <!--  -->
-
-
   <!--    Side panel section ends-->
 
   <!-- Main panel starts here -->
@@ -83,9 +67,6 @@
 
       <div class="slice-one flex-box">
         <div class="menu-and-title flex-box">
-          <ul class="nav-links">
-            <li> <a href="index.html">Projects</a> </li>
-          </ul>
           <h1>DASHBOARD</h1>
         </div>
 
@@ -134,8 +115,6 @@
               <p>Shadows</p>
               <img class="card-icon" src="resources/imgs/shadow-icon.svg">
             </div>
-
-
           </div>
           <div class="right-counts-container">
             <div class="technologies-count-container">
@@ -146,47 +125,24 @@
         <div class="graph-container">
           <div class="left-graph-container" >
             <div class="graph-technologies" style="position: relative">
-
-
               <canvas id="proVsTechChart" width="400" height="330"></canvas>
             </div>
-
           </div>
           <div class="right-graph-container" >
             <div class="graph-resources" style="position: relative">
       
               <canvas id="proVsResourcesChart" width="400" height="330"></canvas>
             </div>
-
           </div>
-
         </div>
-
-        <!--  -->
-        <!-- Details list of project. Dynamic using JavaScript -->
-        <!--  -->
-
-        <!-- <div class="no-data-div-details">
-            <img src="resources/imgs/error-img.png" alt="No Data available image">
-            <p>No Data Available</p>
-          </div> -->
-
       </div>
     </section>
-
-    <!-- Second tab -->
-    <!--      Middle tabs end here-->
-
     <!--      Footer starts here-->
     <footer class="flex-box">
-
       <!-- There is nothing in footer -->
-
     </footer>
     <!--      Footer ends here-->
   </section>
-
-  
 
   <!-- Preloader -->
   <section class="preloader-box flex-box">
@@ -194,29 +150,17 @@
     <p class="loading-text">Loading... Please Wait</p>
   </section>
 
-  <!-- <script type="module" src="resources/js/api.js"></script>
-  <script type="module" src="resources/js/utils.js"></script>
-  <script type="module" src="resources/js/dashboard.js"></script>
-  <script type="module" src="resources/js/details.js"></script>
-  <script type="module" src="resources/js/resources.js"></script>
-  <script type="module" src="resources/js/invoice.js"></script> -->
-
   <!-- ionicons -->
   <script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>
-  
-
 
   <!-- Tagify. Tag view for input elements -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/tagify/3.20.3/tagify.min.js"
     integrity="sha512-Ok8DfwnjQhVsq3+9ToFXJjkWPL2h99aJWCg4U8w7iWA6i3kf4zgNLd7cLBdWdCqGZArRevXQAr8FGbucnZqrvw=="
     crossorigin="anonymous"></script>
 
-
   <script type="module" src="resources/js/api.js"></script>
   <script type="module" src="resources/js/utils.js"></script>
   <script type="module" src="resources/js/dashboard.js"></script>
   
- 
 </body>
-
 </html>

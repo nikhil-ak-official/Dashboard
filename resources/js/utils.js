@@ -170,5 +170,10 @@ let latestOfflineResourceList
 // List of technologies for popup input field.
 let arrayOfTechnologies = ["HTML", "CSS", "JavaScript", "Flutter", "Swift", "Java", "C++", "C#", "Python"]
 
-let utils = { popup, validateFields, validate, svgCircleMaker, resourceAPI, projectAPI, secretKey, arrayOfTechnologies, latestOfflineResourceList };
+// Display the count of everthing in dashboard
+function displayAllCount(totalCount, countElement) {
+  document.getElementById(countElement).innerHTML = totalCount
+}
+
+let utils = { popup, validateFields, validate, svgCircleMaker, displayAllCount, resourceAPI, projectAPI, secretKey, arrayOfTechnologies, latestOfflineResourceList };
 export default utils;

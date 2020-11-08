@@ -9,12 +9,7 @@ apis.getAPI("get", utils.projectAPI, utils.secretKey, false, (obj) => {
   projects = obj;
 
   let totalProjects = Object.keys(obj).length
-  displayProjectCount(totalProjects)
-
-  let projectIdNames = obj.map(project => {
-    return { project_id: project.id, project_name: project.project_name }
-  })
-  projectList = projectIdNames;
+  utils.displayAllCount(totalProjects, 'all-project-count')
 
   let projectNames = obj.map(project => {
     return project.project_name
@@ -31,7 +26,7 @@ apis.getAPI("get", utils.projectAPI, utils.secretKey, false, (obj) => {
 apis.getAPI("get", utils.resourceAPI, utils.secretKey, false, (obj) => {
   resources = obj;
   let totalResources = Object.keys(obj).length;
-  displayResourcesCount(totalResources)
+  utils.displayAllCount(totalResources, 'all-resource-count')
 
   let resourceIdProjectId = obj.map(resource => {
     return { resource_id: resource.id, project_id: resource.project_id }
@@ -46,7 +41,7 @@ apis.getAPI("get", utils.resourceAPI, utils.secretKey, false, (obj) => {
       totalBillables += 1
     }
   }
-  displayBillableCount(totalBillables)
+  utils.displayAllCount(totalBillables, 'all-billable-count')
 
   let totalShadows = 0
   for (let e of obj) {
@@ -54,7 +49,7 @@ apis.getAPI("get", utils.resourceAPI, utils.secretKey, false, (obj) => {
       totalShadows += 1
     }
   }
-  displayShadowCount(totalShadows);
+  utils.displayAllCount(totalShadows, 'all-shadow-count');
 
   // project vs resources 
   let resourceCount = {};
@@ -67,21 +62,16 @@ apis.getAPI("get", utils.resourceAPI, utils.secretKey, false, (obj) => {
 
 })
 
-
-
-
-
 function projectVstechChart(projectNames, technologiesInProject) {
   let proVsTechChart = document.getElementById('proVsTechChart').getContext('2d');
-
-  let barChart = new Chart(proVsTechChart, {
+  new Chart(proVsTechChart, {
     type: 'bar',
     data: {
       labels: projectNames,
       datasets: [{
         label: 'Technologies',
         data: technologiesInProject,
-        backgroundColor: ['#3065D0', '#3065D0', '#3065D0', '#3065D0', '#3065D0', '#3065D0', '#3065D0'],
+        backgroundColor: '#3065D0',
         borderWidth: 1,
         borderColor: '#777',
         hoverBorderWidth: 2,
@@ -122,14 +112,14 @@ function projectVstechChart(projectNames, technologiesInProject) {
 
 function projectVsresChart(pVsRprojectNames, pVsRresourceCount) {
   let proVsResourcesChart = document.getElementById('proVsResourcesChart').getContext('2d');
-  let doughnutChart = new Chart(proVsResourcesChart, {
+  new Chart(proVsResourcesChart, {
     type: 'horizontalBar',
     data: {
       labels: pVsRprojectNames,
       datasets: [{
         label: 'Resources',
         data: pVsRresourceCount,
-        backgroundColor: ['	#32CD32', '#d84981', '#20c997', '#ff9f00', '#00afef', '#9c52fd', '#3065D0', '#FF0000', '#F9F931', '#F99231'],
+        backgroundColor: '#32CD32',
         borderWidth: 2,
         borderColor: '#fff',
         hoverBorderWidth: 1,
@@ -137,7 +127,8 @@ function projectVsresChart(pVsRprojectNames, pVsRresourceCount) {
       }]
     },
     options: {
-      responsive: true,
+      responsive: false,
+      maintainAspectRatio: false,
 
       title: {
         display: true,
@@ -168,36 +159,7 @@ function projectVsresChart(pVsRprojectNames, pVsRresourceCount) {
 
 }
 
-
-
-
-
-
-/*-- Display count of all the projects --*/
-function displayProjectCount(totalProjects) {
-  let projectsCount = document.getElementById('all-project-count')
-  projectsCount.innerHTML = totalProjects
-}
-
-/*-- Display count of all the resources --*/
-function displayResourcesCount(totalResources) {
-  let resourcesCount = document.getElementById('all-resource-count')
-  resourcesCount.innerHTML = totalResources
-}
-
-/*-- Display count of all the billables --*/
-function displayBillableCount(totalBillables) {
-  let billableCount = document.getElementById('all-billable-count')
-  billableCount.innerHTML = totalBillables
-}
-
-/*-- Display count of all the shadows --*/
-function displayShadowCount(totalShadows) {
-  let shadowCount = document.getElementById('all-shadow-count');
-  shadowCount.innerHTML = totalShadows
-}
-
-// project count under each technologies 
+//Project count under each technologies 
 
 function projectUnderTechs() {
   let techs = [...new Set(projects.map(e => e.tech_used).flat())];

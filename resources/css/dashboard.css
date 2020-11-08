@@ -33,8 +33,6 @@
     text-rendering: optimizeLegibility;
   }
   
-
-  
   /* -------------------------------- */
   /* ----- 2. REUSED ITEMS -----------*/
   /* -------------------------------- */
@@ -77,23 +75,31 @@
     margin-left: 20px;
   }
 
-  .card-holder li {
+  .card-holder ul li {
     list-style: none;
     padding: 15px;
     background-color: #f1f1f1;
     margin: 2px;
     border-radius: 5px;
+    align-items: center;
   }
 
-  .card-holder li:hover {
-    background-color: #49d8a0;
+  .card-holder ul a{
+    color: rgb(0, 0, 0);
+  }
+
+  .card-holder ul a:hover {
     color: white;
   }
+
+  .card-holder ul a:hover li{
+    background-color: #49d8a0;
+  }
+
   .card-holder a {
     text-decoration: none;
   }
   .main-panel {
-    /* flex: 1; */
     padding: 20px;
     height: 1200px;
     width: 100%;
@@ -129,15 +135,12 @@
   /* ----- 3. SIDE PANEL -------------*/
   /* -------------------------------- */
   
-  
   .card-holder {
     height: 70%;
     padding: 0 15px;
     padding-top: 20px;
     flex-direction: column;
   }
-  
-  
   
   /* -------------------------------- */
   /* ----- 4. MAIN PANEL -------------*/
@@ -158,14 +161,17 @@
     flex:1;
     flex-basis: 50%;
     margin: 20px;
-    /* height: 350px; */
-    /* -webkit-box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3); */
-    /* box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3); */
     display: flex;
     flex-wrap: wrap;
     background-color: #f1f1f1;
     border-radius: 5px;
 
+  }
+
+  .right-graph-container:hover,
+  .left-graph-container:hover {
+    -webkit-box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3); 
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
   }
 
   .projects-count,
