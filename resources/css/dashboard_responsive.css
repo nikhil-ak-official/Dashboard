@@ -191,14 +191,7 @@
     .billable-count {
       margin-top: 30px;
     }
-    /* .graph-container {
-      display: flex;
-      flex-direction: column;
-    }
-    .left-graph-container,.right-graph-container {
-      flex: 1;
-      flex-basis: 100%;
-    } */
+
     .p {
       flex: 1;
       flex-basis: 100%;
