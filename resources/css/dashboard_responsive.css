@@ -11,7 +11,8 @@
 
 @media only screen and (max-width: 875px) {
    .main-panel {
-       height: 2000px;
+       height: 2700px;
+       margin: 0px;
    }
    header{
     height: 6%;
@@ -90,10 +91,13 @@
 
 @media only screen and (max-width: 500px) {
     
+
     .main-panel {
-        height: 2200px;
+        height: 2700px;
         padding: 20px 0px;
     }
+
+ 
     header{
      height: 5%;
     }
@@ -165,15 +169,41 @@
     .side-panel.open {
         -webkit-clip-path: circle(1100px at 90% -15%);
         clip-path: circle(1100px at 90% -15%);
+        width: 100%;
     }
 }
 
 /* mobile view  */
 @media only screen and (max-width: 425px) {
     .main-panel {
-        height: 2700px;
+        height: 3500px;
         padding: 20px 0px;
     }
+    .left-counts-container {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: nowrap;
+    }
+    .projects-count, .resources-count, .billable-count, .shadow-count {
+      flex: 1;
+      flex-basis: 100%;
+    }
+    .billable-count {
+      margin-top: 30px;
+    }
+    /* .graph-container {
+      display: flex;
+      flex-direction: column;
+    }
+    .left-graph-container,.right-graph-container {
+      flex: 1;
+      flex-basis: 100%;
+    } */
+    .p {
+      flex: 1;
+      flex-basis: 100%;
+    }
+
     header{
      height: 4%;
     }

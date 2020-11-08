@@ -43,11 +43,10 @@
   }
   .side-panel {
     display: block;
-    /* flex: 1; */
     padding: 20px;
-    width: 20%;
+    height: 100%;
     background-color: #dcdcdc;
-    /* position: fixed; */
+    position: fixed;
   }
   .head-text-logo {
     color: rgb(2, 1, 1);
@@ -101,8 +100,7 @@
     padding: 20px;
     height: 1200px;
     width: 100%;
-    margin: 0 auto;
-    max-width: 95% ;
+    margin-left: 229px;
     background-color: #f1f1f1;
   }
   
