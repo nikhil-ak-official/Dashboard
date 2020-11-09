@@ -34,7 +34,6 @@
   }
 }
 
-
 /* tab view  */
 
 @media only screen and (max-width: 875px) {
@@ -122,14 +121,11 @@
 /* mobile view large  */
 
 @media only screen and (max-width: 500px) {
-    
-
     .main-panel {
         height: 2700px;
         padding: 20px 0px;
     }
 
- 
     header{
      height: 5%;
     }
@@ -251,4 +247,8 @@
         width: 200px;
         height: 300px;
     }
+    
+  .graph-container, .counts-container {
+    height:auto;
+}
 }

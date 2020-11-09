@@ -267,6 +267,11 @@
     margin: auto;
   }
 
+  .left-graph-container,
+  .right-counts-container {
+    overflow: scroll;
+  }
+
   .progress-bar {
     width: 100%;
     background-color: #e0e0e0;
