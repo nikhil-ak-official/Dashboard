@@ -195,6 +195,16 @@ const burgerLines = document.querySelectorAll(".line");
 
 hamburger.addEventListener("click", () => {
   welcome.classList.toggle("open");
+  if(welcome.classList.value === 'side-panel open'){
+    hamburger.style.position = 'fixed';
+    hamburger.style.top = '30px';
+    hamburger.style.right = '30px'
+  }
+  else if(welcome.classList.value === 'side-panel'){
+    hamburger.style.removeProperty("position");
+    hamburger.style.removeProperty("top");
+    hamburger.style.removeProperty("right")
+  }
   burgerLines.forEach((line) => {
     line.classList.toggle("line-dark");
   });
