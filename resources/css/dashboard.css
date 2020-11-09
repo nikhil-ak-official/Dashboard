@@ -268,7 +268,7 @@
   }
 
   .left-graph-container,
-  .right-counts-container {
+  .right-graph-container {
     overflow: scroll;
   }
 
