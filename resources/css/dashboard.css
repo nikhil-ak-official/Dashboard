@@ -267,12 +267,8 @@
     margin: auto;
   }
 
-  .left-graph-container
-  {
-    overflow-x: scroll;
-  }
-  .right-graph-container {
-    overflow-y: scroll;
+  .right-graph-container, .left-graph-container {
+    overflow: scroll;
   }
   .progress-bar {
     width: 100%;

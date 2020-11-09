@@ -79,6 +79,8 @@ function projectVstechChart(projectNames, technologiesInProject) {
       }]
     },
     options: {
+      responsive: false,
+      maintainAspectRatio: false,
 
       title: {
         display: true,
@@ -125,6 +127,8 @@ function projectVsresChart(pVsRprojectNames, pVsRresourceCount) {
       }]
     },
     options: {
+      responsive: false,
+      maintainAspectRatio: false,
 
       title: {
         display: true,
