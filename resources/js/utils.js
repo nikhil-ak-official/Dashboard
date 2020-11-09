@@ -168,7 +168,7 @@ let secretKey = '$2b$10$b3HdJLya6P949p.eYlsxQuusyZSqNRrDPHWTobEvW9/c15QlIWZrK';
 let latestOfflineResourceList
 
 // List of technologies for popup input field.
-let arrayOfTechnologies = ["HTML", "CSS", "JavaScript", "Flutter", "Swift", "Java", "C++", "C#", "Python"]
+let arrayOfTechnologies = ["HTML5", "CSS3", "JavaScript", "Swift", "Java", "Python", "Django", "PHP"]
 
 // Display the count of everthing in dashboard
 function displayAllCount(totalCount, countElement) {
