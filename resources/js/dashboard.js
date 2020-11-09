@@ -75,7 +75,8 @@ function projectVstechChart(projectNames, technologiesInProject) {
         borderWidth: 1,
         borderColor: '#777',
         hoverBorderWidth: 2,
-        hoverBorderColor: '#000'
+        hoverBorderColor: '#000',
+        barThickness: 30
       }]
     },
     options: {
@@ -95,13 +96,17 @@ function projectVstechChart(projectNames, technologiesInProject) {
         bodyFontSize: 16
       },
       scales: {
+        
         xAxes: [{
+          
           ticks: {
+            
             display: false
           }
         }],
         yAxes: [{
           ticks: {
+            stepSize: 1,
             beginAtZero: true
           }
         }]
@@ -123,7 +128,8 @@ function projectVsresChart(pVsRprojectNames, pVsRresourceCount) {
         borderWidth: 2,
         borderColor: '#fff',
         hoverBorderWidth: 1,
-        hoverBorderColor: '#000'
+        hoverBorderColor: '#000',
+        barThickness: 30
       }]
     },
     options: {
@@ -144,12 +150,15 @@ function projectVsresChart(pVsRprojectNames, pVsRresourceCount) {
       },
       scales: {
         yAxes: [{
+         
           ticks: {
             display: false
           }
         }],
         xAxes: [{
+         
           ticks: {
+            stepSize: 1,
             beginAtZero: true
           }
         }]
