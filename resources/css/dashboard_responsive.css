@@ -1,4 +1,4 @@
-@media only screen and (max-width: 1080px) {
+@media (min-width: 860px) and (max-width: 1080px) {
   #proVsTechChart,
   #proVsResourcesChart{
       width: 300px;
