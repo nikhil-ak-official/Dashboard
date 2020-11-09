@@ -207,6 +207,9 @@
         height: 3000px;
         padding: 20px 0px;
     }
+    .right-graph-container, .left-graph-container, .right-counts-container, .left-counts-container {
+      height: auto;
+    }
     .left-counts-container {
       display: flex;
       flex-direction: column;
